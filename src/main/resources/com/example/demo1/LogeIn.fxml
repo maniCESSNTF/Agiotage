@@ -14,26 +14,26 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.LogeIn">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="794.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.LogeIn">
    <children>
-      <ImageView fitHeight="515.0" fitWidth="740.0" layoutX="33.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="515.0" fitWidth="740.0" layoutX="26.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@back-2.jpg" />
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#024d4a" height="494.0" layoutX="409.0" layoutY="129.0" stroke="#024d4a" strokeType="INSIDE" width="364.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#054d3d" height="444.0" layoutX="65.0" layoutY="158.0" opacity="0.5" stroke="#054d3d" strokeType="INSIDE" width="316.0" />
-      <Button fx:id="btnDone" layoutX="199.0" layoutY="422.0" mnemonicParsing="false" onAction="#PbtnDone" opacity="0.8" style="-fx-background-color: #054d3d; -fx-text-fill: white;" text="Done" />
-      <Label fx:id="lblLogeIn" layoutX="158.0" layoutY="211.0" prefHeight="52.0" prefWidth="126.0" text="LOGE IN" textFill="#fafafa" underline="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#024d4a" height="494.0" layoutX="402.0" layoutY="113.0" stroke="#024d4a" strokeType="INSIDE" width="364.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#054d3d" height="444.0" layoutX="56.0" layoutY="141.0" opacity="0.5" stroke="#054d3d" strokeType="INSIDE" width="316.0" />
+      <Button fx:id="btnDone" layoutX="188.0" layoutY="399.0" mnemonicParsing="false" onAction="#PbtnDone" opacity="0.8" style="-fx-background-color: #054d3d; -fx-text-fill: white;" text="Done" />
+      <Label fx:id="lblLogeIn" layoutX="147.0" layoutY="216.0" prefHeight="52.0" prefWidth="126.0" text="LOGE IN" textFill="#fafafa" underline="true">
          <font>
             <Font size="33.0" />
          </font>
       </Label>
-      <Button fx:id="btnDoNoHaveAnAccont" layoutX="107.0" layoutY="499.0" mnemonicParsing="false" onAction="#PbtnDoNoHaveAnAccont" opacity="0.8" style="-fx-background-color: #054d3d; -fx-text-fill: white;" text="Do no have an accont?" underline="true" />
-      <TextField fx:id="Username" layoutX="123.0" layoutY="313.0" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Username" style="-fx-text-fill: white; -fx-background-color: #054d3d;">
+      <Button fx:id="btnSignIn" layoutX="261.0" layoutY="484.0" mnemonicParsing="false" onAction="#PbtnSignIn" opacity="0.8" style="-fx-background-color: #054d3d; -fx-text-fill: white;" text="Sign In" />
+      <TextField fx:id="txtUsername" layoutX="120.0" layoutY="297.0" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Username" style="-fx-text-fill: white; -fx-background-color: #054d3d;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="Password" layoutX="123.0" layoutY="364.0" opacity="0.5" prefHeight="32.0" prefWidth="180.0" promptText="Password" style="-fx-text-fill: white; -fx-background-color: #054d3d;">
+      <TextField fx:id="txtPassword" layoutX="120.0" layoutY="347.0" opacity="0.5" prefHeight="32.0" prefWidth="180.0" promptText="Password" style="-fx-text-fill: white; -fx-background-color: #054d3d;">
          <font>
             <Font size="15.0" />
          </font>
@@ -43,7 +43,7 @@
             <Image url="@fc7e4c7d3266e5aeacf7e7a72997cfdd.png" />
          </image>
       </ImageView>
-      <ButtonBar buttonMinWidth="60.0" layoutX="-7.0" opacity="0.8" prefHeight="75.0" prefWidth="806.0" style="-fx-background-color: #024d4a;">
+      <ButtonBar buttonMinWidth="60.0" layoutX="-7.0" opacity="0.8" prefHeight="75.0" prefWidth="800.0" style="-fx-background-color: #024d4a;">
          <buttons>
             <Button mnemonicParsing="false" style="-fx-background-color: #097158; -fx-text-fill: white;" text="???" />
             <Button mnemonicParsing="false" style="-fx-background-color: #097158; -fx-text-fill: white;" text="??" />
@@ -74,6 +74,7 @@
             <Font name="Script MT Bold" size="25.0" />
          </font>
       </Label>
-      <Line endX="443.39996337890625" endY="-174.8000030517578" layoutX="356.0" layoutY="250.0" startX="-354.9070739746094" startY="-172.0" stroke="WHITE" />
+      <Line endX="437.0" endY="-174.79998779296875" layoutX="356.0" layoutY="250.0" startX="-354.9070739746094" startY="-172.0" stroke="WHITE" />
+      <Button fx:id="btnForgotPassword" layoutX="95.0" layoutY="484.0" mnemonicParsing="false" onAction="#PbtnForgotPassword" opacity="0.8" style="-fx-background-color: #054d3d; -fx-text-fill: white;" text="Forgot password" underline="true" />
    </children>
 </AnchorPane>

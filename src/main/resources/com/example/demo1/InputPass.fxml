@@ -14,7 +14,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.InputPass">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#024d4a" height="507.0" layoutX="225.0" layoutY="103.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="349.0" />
@@ -23,15 +22,15 @@
             <Image url="@a99ad8ce3a31a7444ab2a08a60fe009e.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#075b46" height="462.0" layoutX="246.0" layoutY="126.0" opacity="0.43" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" width="308.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#075b46" height="462.0" layoutX="246.0" layoutY="126.0" opacity="0.32" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" width="308.0" />
       <Label layoutX="313.0" layoutY="148.0" prefHeight="63.0" prefWidth="170.0" text="SET PASSWORD" textFill="WHITE" underline="true">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPassword1" layoutX="310.0" layoutY="299.0" opacity="0.8" prefHeight="30.0" prefWidth="180.0" promptText="Passwod" style="-fx-background-color: #024d4a;" />
-      <TextField fx:id="txtPassword2" layoutX="310.0" layoutY="346.0" opacity="0.8" prefHeight="30.0" prefWidth="180.0" promptText="Password" style="-fx-background-color: #024d4a;" />
-      <TextField fx:id="txtCapcha" layoutX="438.0" layoutY="425.0" opacity="0.8" prefHeight="49.0" prefWidth="96.0" promptText="capcha" style="-fx-background-color: #024d4a;">
+      <TextField fx:id="txtPassword1" layoutX="310.0" layoutY="299.0" opacity="0.8" prefHeight="30.0" prefWidth="180.0" promptText="Passwod" style="-fx-text-fill: white; -fx-background-color: #024d4a;" />
+      <TextField fx:id="txtPassword2" layoutX="310.0" layoutY="346.0" opacity="0.8" prefHeight="30.0" prefWidth="180.0" promptText="Password" style="-fx-text-fill: white; -fx-background-color: #024d4a;" />
+      <TextField fx:id="txtCapcha" layoutX="438.0" layoutY="425.0" opacity="0.8" prefHeight="49.0" prefWidth="96.0" promptText="capcha" style="-fx-background-color: #024d4a; -fx-text-fill: white;">
          <font>
             <Font size="22.0" />
          </font>

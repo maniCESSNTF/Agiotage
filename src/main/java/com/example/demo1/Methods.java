@@ -1,11 +1,15 @@
 package com.example.demo1;
 
 
+import javafx.scene.control.Alert;
+
 import java.util.Date;
 import java.util.Scanner;
 public class Methods {
 
     double exchangeArray[][]=new double[4][];
+    public   static  User[] users =new User[200];
+    static int UserNumber = 0 ;
 
     //        double History[][][]=new double[1000][4][];/////
     User exchangeArrayUser[]=new User[1000];

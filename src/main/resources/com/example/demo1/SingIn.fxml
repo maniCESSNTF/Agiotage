@@ -16,11 +16,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.SingIn">
+<AnchorPane prefHeight="637.0" prefWidth="794.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.SingIn">
    <children>
       <AnchorPane layoutX="31.0" layoutY="107.0" prefHeight="413.0" prefWidth="625.0">
          <children>
-            <ImageView fitHeight="515.0" fitWidth="740.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="515.0" fitWidth="740.0" layoutX="-6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@back-2.jpg" />
                </image>
@@ -28,39 +28,39 @@
                   <Cursor fx:constant="NONE" />
                </cursor>
             </ImageView>
-            <Rectangle fill="#054d3d" height="434.0" layoutX="376.0" layoutY="48.0" opacity="0.5" stroke="#054d3d" strokeType="INSIDE" width="332.0" />
-            <Rectangle fill="#024d4a" height="494.0" layoutY="22.0" stroke="#054d3d" strokeType="INSIDE" width="343.0" />
-            <Label layoutX="482.0" layoutY="56.0" prefHeight="104.0" prefWidth="120.0" text="SIGN IN" textFill="WHITE" underline="true">
+            <Rectangle fill="#054d3d" height="434.0" layoutX="371.0" layoutY="33.0" opacity="0.5" stroke="#054d3d" strokeType="INSIDE" width="332.0" />
+            <Rectangle fill="#024d4a" height="494.0" layoutX="-6.0" layoutY="2.0" stroke="#054d3d" strokeType="INSIDE" width="343.0" />
+            <Label layoutX="476.0" layoutY="40.0" prefHeight="104.0" prefWidth="120.0" text="SIGN IN" textFill="WHITE" underline="true">
                <font>
                   <Font size="33.0" />
                </font>
             </Label>
-            <TextField fx:id="txtName" layoutX="452.0" layoutY="169.0" onMouseDragEntered="#PbtnDoHaveAnAccont" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Name" style="-fx-background-color: #054d3d; -fx-text-fill: white;" />
-            <TextField fx:id="txtFamilyName" layoutX="452.0" layoutY="209.0" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Family Name" style="-fx-background-color: #054d3d; -fx-text-fill: white;" />
-            <TextField fx:id="txtEmail" layoutX="452.0" layoutY="289.0" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Email" style="-fx-background-color: #054d3d; -fx-text-fill: white;" />
-            <TextField fx:id="txtPhoneNumber" layoutX="452.0" layoutY="249.0" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Phone Number" style="-fx-background-color: #054d3d; -fx-text-fill: white;" />
-            <Button fx:id="btnSetPassword" layoutX="577.0" layoutY="356.0" mnemonicParsing="false" onAction="#PbtnSetPassword" onMouseClicked="#PbtnSetPassword" opacity="0.8" style="-fx-text-fill: white; -fx-background-color: #054d3d;" text="set password" />
-            <Button fx:id="btnDoHaveAnAccont" layoutX="413.0" layoutY="419.0" mnemonicParsing="false" onAction="#PbtnDoHaveAnAccont" opacity="0.8" style="-fx-text-fill: white; -fx-background-color: #054d3d;" text="Do have an accont?" underline="true" />
-            <ImageView fitHeight="192.0" fitWidth="220.0" layoutX="76.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="txtName" layoutX="446.0" layoutY="153.0" onMouseDragEntered="#PbtnDoHaveAnAccont" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Name" style="-fx-text-fill: white; -fx-background-color: #054d3d;" />
+            <TextField fx:id="txtFamilyName" layoutX="446.0" layoutY="193.0" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Family Name" style="-fx-text-fill: white; -fx-background-color: #054d3d;" />
+            <TextField fx:id="txtEmail" layoutX="446.0" layoutY="268.0" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Email" style="-fx-text-fill: white; -fx-background-color: #054d3d;" />
+            <TextField fx:id="txtPhoneNumber" layoutX="446.0" layoutY="233.0" opacity="0.5" prefHeight="30.0" prefWidth="180.0" promptText="Phone Number" style="-fx-text-fill: white; -fx-background-color: #054d3d;" />
+            <Button fx:id="btnDoHaveAnAccont" layoutX="407.0" layoutY="403.0" mnemonicParsing="false" onAction="#PbtnDoHaveAnAccont" opacity="0.8" style="-fx-text-fill: white; -fx-background-color: #054d3d;" text="Do have an accont?" underline="true" />
+            <ImageView fitHeight="192.0" fitWidth="220.0" layoutX="70.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@jhkh.png" />
                </image>
             </ImageView>
-            <RadioButton fx:id="rbtnClient" layoutX="446.0" layoutY="343.0" mnemonicParsing="false" onAction="#PrbtnClient" selected="true" text="client" textFill="WHITE" />
-            <RadioButton fx:id="rbtnManager" layoutX="446.0" layoutY="369.0" mnemonicParsing="false" onAction="#PrbtnManager" text="manager" textFill="WHITE" />
-            <Label layoutX="46.0" prefHeight="148.0" prefWidth="252.0" text="welcome" textFill="#097158">
+            <RadioButton fx:id="rbtnClient" layoutX="440.0" layoutY="327.0" mnemonicParsing="false" onAction="#PrbtnClient" selected="true" text="client" textFill="WHITE" />
+            <RadioButton fx:id="rbtnManager" layoutX="440.0" layoutY="353.0" mnemonicParsing="false" onAction="#PrbtnManager" text="manager" textFill="WHITE" />
+            <Label layoutX="46.0" layoutY="-25.0" prefHeight="148.0" prefWidth="252.0" text="welcome" textFill="#097158">
                <font>
                   <Font name="Script MT Bold" size="77.0" />
                </font>
             </Label>
-            <Label layoutX="45.0" layoutY="69.0" lineSpacing="2.0" prefHeight="110.0" prefWidth="266.0" text="Thank you for your choice  ..." textFill="#097158">
+            <Label layoutX="39.0" layoutY="40.0" lineSpacing="2.0" prefHeight="110.0" prefWidth="266.0" text="Thank you for your choice  ..." textFill="#097158">
                <font>
                   <Font name="Script MT Bold" size="24.0" />
                </font>
             </Label>
+            <Button fx:id="btnPass" layoutX="582.0" layoutY="340.0" mnemonicParsing="false" onAction="#PbtnPass" opacity="0.8" style="-fx-background-color: #054d3d;" text="Set Password" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <ButtonBar buttonMinWidth="60.0" opacity="0.8" prefHeight="73.0" prefWidth="800.0" style="-fx-background-color: #024d4a;" AnchorPane.rightAnchor="0.0">
+      <ButtonBar buttonMinWidth="60.0" opacity="0.8" prefHeight="73.0" prefWidth="794.0" style="-fx-background-color: #024d4a;" AnchorPane.rightAnchor="0.0">
         <buttons>
           <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="????" textFill="WHITE" />
             <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="???" textFill="WHITE" />

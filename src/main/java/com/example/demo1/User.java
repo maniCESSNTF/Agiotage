@@ -10,7 +10,7 @@ public class User {
     private String email;
     private String phoneNumber;
     private String profilePicture;
-    public  Wallet userWallet;
+    public  Wallet userWallet = new Wallet();
     public  History userhistory[]=new History[1000];
 
     public  int num;////ta 1000 user
@@ -26,6 +26,26 @@ public class User {
         this.phoneNumber = phoneNumber;
     //    this.profilePicture = profilePicture;
         this.userWallet.balance = 0.0;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String lastName) {
+        if (lastName.length() <= 18 && lastName.matches("[a-zA-Z]+")) {
+            this.LastName = lastName;
+        } else throw new InvalidIDException("PLEASE ENTER A FAMILYNAME WITH MAXIMUM 18 LETTERS");
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        if (name.length() <= 18 && name.matches("[a-zA-Z]+")) {
+            this.Name = name;
+        } else throw new InvalidIDException("PLEASE ENTER A FAMILYNAME WITH MAXIMUM 18 LETTERS");
     }
 
     public String getUsername() {
@@ -57,7 +77,10 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if((email.matches("[a-zA-Z0-9.]{1,18}@[a-z.-]{1,8}\\.[a-z]{1,4}"))){
+            this.email = email;
+        }
+        else throw new InvalidIDException("PLEASE ENTER A EMAIL WITH CORRECT FORMAT ---> ....@gmail.com & MUST BE ODD");
     }
 
     public String getPhoneNumber() {
@@ -65,7 +88,9 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        if((phoneNumber.length()==11&&phoneNumber.matches("[0-9]+")&&phoneNumber.startsWith("09"))) {
+            this.phoneNumber=phoneNumber;}
+        else throw new InvalidIDException("wrong format .enter a new phone number");
     }
 
     public String getProfilePicture() {
