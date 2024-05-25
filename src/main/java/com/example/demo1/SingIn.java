@@ -13,8 +13,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 
+import static com.example.demo1.CaptchaGenerator.GenerateCaptcha;
+import static com.example.demo1.CaptchaGenerator.captcha;
 import static com.example.demo1.Methods.UserNumber;
 import static com.example.demo1.Methods.users;
 
@@ -22,6 +25,8 @@ public class SingIn {
 
     @FXML
     private Button btnPass;
+
+
 
     @FXML
     private Button btnDoHaveAnAccont;
@@ -77,6 +82,7 @@ public class SingIn {
             primaryStage.show();
         }
     }
+
 
     @FXML
     void PbtnHome(ActionEvent event) {

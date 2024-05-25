@@ -7,10 +7,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.example.demo1.CaptchaGenerator.GenerateCaptcha;
+import static com.example.demo1.CaptchaGenerator.captcha;
+
 public class main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("Profile.fxml"));
+//        captcha(GenerateCaptcha());
+        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("InputPass.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 794, 637);
         stage.setTitle("Hello!");
         stage.setScene(scene);

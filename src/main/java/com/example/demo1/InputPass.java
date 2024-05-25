@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,11 +10,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
+
+import javax.imageio.ImageIO;
+import javax.swing.text.Element;
+import javax.swing.text.html.ImageView;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import java.util.random.*;
 
+import static com.example.demo1.CaptchaGenerator.GenerateCaptcha;
+import static com.example.demo1.CaptchaGenerator.captcha;
 import static com.example.demo1.Methods.UserNumber;
 import static com.example.demo1.Methods.users;
 
@@ -24,7 +34,26 @@ public class InputPass {
     private Button btnDone;
 
     @FXML
+    private ImageView imgCaptch ;
+
+    @FXML
     private Button btnHome;
+
+    @FXML
+    private Button btntest;
+
+
+    @FXML
+    void btntest(ActionEvent event) throws IOException{
+              captcha(GenerateCaptcha());
+        Stage stage =(Stage) btntest.getScene().getWindow();
+        stage.close();
+        Stage primaryStage=new Stage();
+        AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("InputPass.fxml"));
+        Scene scene = new Scene(root,800,650);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 
     @FXML
     private TextField txtCapcha;
@@ -34,9 +63,12 @@ public class InputPass {
 
     @FXML
     private TextField txtPassword2;
+    public InputPass() throws IOException {
+    }
 
     @FXML
     void PbtnDone(ActionEvent event) throws IOException {
+//        imgCaptch=img;
         if(txtPassword1.getText().equals(txtPassword2.getText())){
             if(isPasswordValid(txtPassword1.getText())){
                 users[UserNumber-1].setPassword(txtPassword1.getText());
