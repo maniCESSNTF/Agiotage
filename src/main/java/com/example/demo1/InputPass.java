@@ -45,7 +45,7 @@ public class InputPass {
 
     @FXML
     void btntest(ActionEvent event) throws IOException{
-              captcha(GenerateCaptcha());
+        captcha(GenerateCaptcha());
         Stage stage =(Stage) btntest.getScene().getWindow();
         stage.close();
         Stage primaryStage=new Stage();

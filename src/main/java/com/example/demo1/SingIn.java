@@ -52,6 +52,45 @@ public class SingIn {
     @FXML
     private TextField txtPhoneNumber;
 
+
+    public boolean  validName(String name){
+        if (name.length() <= 18 && name.matches("[a-zA-Z]+")){
+            return true;
+        }
+        else{
+            return  false;
+        }
+    }
+
+    public boolean  validLastName(String name){
+        if (name.length() <= 18 && name.matches("[a-zA-Z]+")){
+            return true;
+        }
+        else{
+            return  false;
+        }
+    }
+
+    public boolean  validEmail(String email){
+        if((email.matches("[a-zA-Z0-9.]{1,18}@[a-z.-]{1,8}\\.[a-z]{1,4}"))){
+            return true;
+        }
+        else{
+            return  false;
+        }
+    }
+
+
+
+    public boolean  validPhoneNumber(String phoneNumber){
+        if((phoneNumber.length()==11&&phoneNumber.matches("[0-9]+")&&phoneNumber.startsWith("09"))){
+            return true;
+        }
+        else{
+            return  false;
+        }
+    }
+
     @FXML
     void PbtnDoHaveAnAccont(ActionEvent event) throws IOException {
         Stage stage =(Stage) btnDoHaveAnAccont.getScene().getWindow();
@@ -71,7 +110,44 @@ public class SingIn {
             alert.setHeaderText(null);
             alert.setContentText("Complete all the parts!");
             alert.showAndWait();
-        }else {
+        }else if((validName(txtName.getText()) == false)||(validEmail(txtEmail.getText()) == false)||(validEmail(txtEmail.getText()) == false)||(validPhoneNumber(txtPhoneNumber.getText()) == false) ){
+            if (validName(txtName.getText()) == false) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("Your Name must be a maximum of 18 letters!");
+                alert.showAndWait();
+
+            }
+
+            if (validLastName(txtFamilyName.getText()) == false) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("Your FamilyName must be a maximum of 18 letters!");
+                alert.showAndWait();
+
+            }
+            if (validEmail(txtEmail.getText()) == false) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("Your Email must end with @gmail.com!");
+                alert.showAndWait();
+
+            }
+
+            if (validPhoneNumber(txtPhoneNumber.getText()) == false) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("Your PhoneNumber must be made up from numbers & start with 09!");
+                alert.showAndWait();
+
+            }
+
+        } else {
+
             AddUser(new User(txtName.getText(),txtFamilyName.getText(),txtEmail.getText(),txtPhoneNumber.getText()));
             Stage stage = (Stage) btnPass.getScene().getWindow();
             stage.close();
