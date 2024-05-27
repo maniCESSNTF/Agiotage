@@ -110,37 +110,87 @@ public class Profile {
             alert.showAndWait();
         } else {
             if (!txtNewName.getText().isEmpty()) {
+
+                if(txtNewName.getText().equals(txtName.getText())){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Name has not changed yet!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You entered the same name,Name has not changed yet!");
+                    alert.showAndWait();
+                }
                 // Update name
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               else{ Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Name Changed");
                 alert.setHeaderText(null);
                 alert.setContentText("You changed your name to: " + txtNewName.getText());
                 alert.showAndWait();
-            }
+            }}
             if (!txtNewLastName.getText().isEmpty()) {
-                // Update last name
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Last Name Changed");
-                alert.setHeaderText(null);
-                alert.setContentText("You changed your last name to: " + txtNewLastName.getText());
-                alert.showAndWait();
-            }
+
+                if(txtNewLastName.getText().equals(txtLastName.getText())){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Lastname has not changed yet!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You entered the same lastname,lastname has not changed yet!");
+                    alert.showAndWait();
+                }
+                // Update name
+                else{ Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("LastName Changed");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You changed your lastname to: " + txtNewLastName.getText());
+                    alert.showAndWait();
+                }}
             if (!txtNewPassword.getText().isEmpty()) {
-                // Update password
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Password Changed");
-                alert.setHeaderText(null);
-                alert.setContentText("You changed your password to: " + txtNewPassword.getText());
-                alert.showAndWait();
-            }
+
+                if(txtNewPassword.getText().equals(txtPassword.getText())){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Password has not changed yet!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You entered the same password,password has not changed yet!");
+                    alert.showAndWait();
+                }
+                // Update name
+                else{ Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("password Changed");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You changed your password to: " + txtNewPassword.getText());
+                    alert.showAndWait();
+                }}
             if (!txtNewPhoneNumber.getText().isEmpty()) {
-                // Update phone number
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Phone Number Changed");
-                alert.setHeaderText(null);
-                alert.setContentText("You changed your phone number to: " + txtNewPhoneNumber.getText());
-                alert.showAndWait();
-            }
+
+                if(txtNewPhoneNumber.getText().equals(txtPhoneNumber.getText())){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("PhoneNumber has not changed yet!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You entered the same Phone Number,phone number has not changed yet!");
+                    alert.showAndWait();
+                }
+                // Update name
+                else{ Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Phone number Changed");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You changed your phone number to: " + txtNewPhoneNumber.getText());
+                    alert.showAndWait();
+                }}
+
+
+            if (!txtNewEmail.getText().isEmpty()) {
+
+                if(txtNewEmail.getText().equals(txtEmail.getText())){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Email has not changed yet!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You entered the same email,email has not changed yet!");
+                    alert.showAndWait();
+                }
+                // Update name
+                else{ Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Email Changed");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You changed your email to: " + txtNewPhoneNumber.getText());
+                    alert.showAndWait();
+                }}
         }
     }
 }
