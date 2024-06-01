@@ -6,8 +6,8 @@ public class Demo extends  User {
 //        super( username,  password,  fullName,  email,  phoneNumber,  profilePicture);
 //        demowallet.balance=500;
 //    }
-public Demo(String Name, String LastName, String email, String phoneNumber) {
-    super( Name,  LastName,  email,  phoneNumber);
+public Demo(String Name, String LastName, String email, String phoneNumber,String user) {
+    super( Name,  LastName,  email,  phoneNumber,user);
     demowallet.balance=500;
 }
 //**********************************************************************************

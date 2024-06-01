@@ -9,8 +9,8 @@ public  class Admin extends User{
 //    public Admin(String username, String password, String fullName, String email, String phoneNumber, String profilePicture) {
 //        super( username,  password,  fullName,  email,  phoneNumber,  profilePicture);
 //    }
-public Admin(String Name, String LastName, String email, String phoneNumber) {
-    super( Name,  LastName,  email,  phoneNumber);
+public Admin(String Name, String LastName, String email, String phoneNumber,String user) {
+    super( Name,  LastName,  email,  phoneNumber,user);
 }
 
     ///ekhtelas

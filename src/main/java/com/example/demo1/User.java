@@ -16,13 +16,14 @@ public class User {
     public  int num;////ta 1000 user
     public  int transNum;
 
-    public User( String Name, String LastName, String email, String phoneNumber) {
+    public User( String Name, String LastName, String email, String phoneNumber,String username) {
     //    this.username = username;
     //    this.password = password;
         this.Name=Name;
         this.LastName=LastName;
         this.fullName = Name+LastName;
         this.email = email;
+        this.username=username;
         this.phoneNumber = phoneNumber;
     //    this.profilePicture = profilePicture;
         this.userWallet.balance = 0.0;

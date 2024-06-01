@@ -21,6 +21,16 @@
             <version>22-ea+11</version>
         </dependency>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.32</version> <!-- نسخه مناسب را انتخاب کنید -->
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>22-ea+11</version> <!-- Replace with your desired JavaFX version -->
+        </dependency>
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>22-ea+11</version>

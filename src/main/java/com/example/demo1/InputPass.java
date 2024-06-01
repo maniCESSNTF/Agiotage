@@ -18,8 +18,16 @@ import javax.swing.text.Element;
 import javax.swing.text.html.ImageView;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Random;
+import java.util.ResourceBundle;
 import java.util.random.*;
 
 import static com.example.demo1.CaptchaGenerator.GenerateCaptcha;
@@ -29,12 +37,15 @@ import static com.example.demo1.Methods.users;
 
 public class InputPass {
 
-    Random rand = new Random();
+    static Random rand = new Random();
     @FXML
     private Button btnDone;
 
     @FXML
-    private ImageView imgCaptch ;
+    public ImageView imgCaptch ;
+
+    @FXML
+    private AnchorPane passRE;
 
     @FXML
     private Button btnHome;
@@ -42,17 +53,9 @@ public class InputPass {
     @FXML
     private Button btntest;
 
-
     @FXML
-    void btntest(ActionEvent event) throws IOException{
-              captcha(GenerateCaptcha());
-        Stage stage =(Stage) btntest.getScene().getWindow();
-        stage.close();
-        Stage primaryStage=new Stage();
-        AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("InputPass.fxml"));
-        Scene scene = new Scene(root,800,650);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    void Pbtntest(ActionEvent event) {
+        Stage stage = (Stage) btnDone.getScene().getWindow();
     }
 
     @FXML
@@ -71,9 +74,26 @@ public class InputPass {
 //        imgCaptch=img;
         if(txtPassword1.getText().equals(txtPassword2.getText())){
             if(isPasswordValid(txtPassword1.getText())){
-                users[UserNumber-1].setPassword(txtPassword1.getText());
-                users[UserNumber-1].setUsername(UsernameGenerator());
-                Alert alert = new Alert(Alert.AlertType.WARNING);
+                if(!txtCapcha.getText().equals(SingIn.captcha1)){
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Warning");
+                    alert.setHeaderText(null);
+                    alert.setContentText("enterd captcha is wrong");
+                    alert.showAndWait();
+                }else{
+//                users[UserNumber-1].setPassword(txtPassword1.getText());
+//                users[UserNumber-1].setUsername(UsernameGenerator());
+                    try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                        String query = "UPDATE signin SET password = ? WHERE username = ?";
+                        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                            preparedStatement.setString(1, txtPassword1.getText());
+                            preparedStatement.setString(2, SingIn.userName);
+                            preparedStatement.executeUpdate();
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("successful");
                 alert.setHeaderText(null);
                 alert.setContentText("your password is :"+txtPassword1.getText()+"\n"+"your Username is :"+users[UserNumber-1].getUsername());
@@ -85,6 +105,8 @@ public class InputPass {
                 Scene scene = new Scene(root, 794, 637);
                 primaryStage.setScene(scene);
                 primaryStage.show();
+
+                }
             }
             else{
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -101,6 +123,8 @@ public class InputPass {
             alert.setContentText("The passwords do not match!!");
             alert.showAndWait();
         }
+
+
     }
 
     public boolean isPasswordValid(String password) {
@@ -123,7 +147,7 @@ public class InputPass {
         return (SWint&&SWUppercase&&SWlowercase);
     }
 
-    public String UsernameGenerator(){
+    public static  String UsernameGenerator(){
         String newUsername = String.valueOf((rand.nextInt(1000)*1000+UserNumber)*1000+ rand.nextInt(1000));
         return newUsername;
     }

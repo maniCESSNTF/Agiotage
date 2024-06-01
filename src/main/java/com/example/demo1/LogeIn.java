@@ -12,8 +12,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-import static com.example.demo1.Methods.users;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LogeIn {
 
@@ -43,41 +46,40 @@ public class LogeIn {
 
     @FXML
     void PbtnSignIn(ActionEvent event) throws IOException {
-        Stage stage =(Stage) btnSignIn.getScene().getWindow();
+        Stage stage = (Stage) btnSignIn.getScene().getWindow();
         stage.close();
-        Stage primaryStage=new Stage();
-        AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("SingIn.fxml"));
-        Scene scene = new Scene(root,794,637);
+        Stage primaryStage = new Stage();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("SingIn.fxml"));
+        Scene scene = new Scene(root, 794, 637);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     @FXML
     void PbtnDone(ActionEvent event) throws IOException {
-        if( txtUsername.getText().compareTo("")==0|| txtPassword.getText().compareTo("")==0){
+        if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setHeaderText(null);
             alert.setContentText("Complete all the parts!");
             alert.showAndWait();
-        }else {
+        } else {
             User nowUser = SearchUser();
-            if (nowUser instanceof User) {//برای ادمین باید جدا شود
+            if (nowUser != null) {
                 Stage stage = (Stage) btnDone.getScene().getWindow();
                 stage.close();
                 Stage primaryStage = new Stage();
-                AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                AnchorPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
                 Scene scene = new Scene(root, 794, 637);
                 primaryStage.setScene(scene);
                 primaryStage.show();
-                //ورود به صفحه کاربری
             } else {
                 txtPassword.setText("");
                 txtUsername.setText("");
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning");
                 alert.setHeaderText(null);
-                alert.setContentText("Password or Username in wrong");
+                alert.setContentText("Password or Username is wrong");
                 alert.showAndWait();
             }
         }
@@ -85,14 +87,37 @@ public class LogeIn {
 
     @FXML
     void PbtnHome(ActionEvent event) {
-
+        // Your logic here
     }
 
+    public User SearchUser() {
+        String url = "jdbc:mysql://localhost:3306/agiotage2";
+        String user = "root";
+        String password = "";
 
-    public User SearchUser(){
-        for(User user : users){
-            if(user!= null && user.getUsername().equals(txtUsername.getText()) && user.getPassword().equals(txtPassword.getText()))
-                return user;
+        String query = "SELECT * FROM signin WHERE firstname = ? AND lastname = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, txtUsername.getText());
+            preparedStatement.setString(2, txtPassword.getText());
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    // Assuming User has a constructor that takes all necessary fields
+                    return new User(
+                            resultSet.getString("firstname"),
+                            resultSet.getString("lastname"),
+                            resultSet.getString("email"),
+                            resultSet.getString("phonenumber"),
+                            resultSet.getString("username")
+                            // Add other fields as necessary
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return null;
@@ -100,6 +125,6 @@ public class LogeIn {
 
     @FXML
     void PbtnForgotPassword(ActionEvent event) {
-        //by send email!!...
+        // Your logic here
     }
 }

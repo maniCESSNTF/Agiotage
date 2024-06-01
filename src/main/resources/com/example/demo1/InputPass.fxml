@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.InputPass">
+<AnchorPane fx:id="passRE" prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.InputPass">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#024d4a" height="507.0" layoutX="225.0" layoutY="103.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="349.0" />
       <ImageView fitHeight="462.0" fitWidth="308.0" layoutX="246.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
@@ -60,6 +60,6 @@
             <Image url="@d3e2686ead31b9f31970f8466f5a1ae0.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btntest" layoutX="313.0" layoutY="244.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="btntest" layoutX="313.0" layoutY="244.0" mnemonicParsing="false" onAction="#Pbtntest" text="Button" />
    </children>
 </AnchorPane>

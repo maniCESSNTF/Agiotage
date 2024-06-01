@@ -1,74 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedAreaChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="637.0" prefWidth="794.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Profile">
-   <children>
-      <ButtonBar layoutY="-3.0" prefHeight="69.0" prefWidth="796.0" style="-fx-background-color: #054d3d;">
-        <buttons>
-          <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
-            <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
-            <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
-            <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
-        </buttons>
-      </ButtonBar>
-      <TabPane layoutX="30.0" layoutY="88.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="513.0" prefWidth="735.0" style="-fx-background-color: #054d3d; -fx-border-color: #097158;" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab style="-fx-background-color: #097158;" text="واریز">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-1.0" pannable="true" prefHeight="485.0" prefWidth="735.0" vbarPolicy="ALWAYS" vmax="2.0">
-                           <content>
-                              <GridPane prefHeight="681.0" prefWidth="726.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                              </GridPane>
-                           </content>
-                        </ScrollPane>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-          <Tab style="-fx-background-color: #097158;" text="برداشت">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="195.0" layoutY="125.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab style="-fx-background-color: #097158;" text="پشتیبانی">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-            <Tab style="-fx-background-color: #097158;" text="هشدار قیمت">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-        </tabs>
-         <opaqueInsets>
-            <Insets left="20.0" />
-         </opaqueInsets>
-      </TabPane>
-   </children>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Profile">
+    <children>
+        <ButtonBar layoutY="-3.0" prefHeight="69.0" prefWidth="796.0" style="-fx-background-color: #054d3d;">
+            <buttons>
+                <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
+                <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
+                <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
+                <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
+            </buttons>
+        </ButtonBar>
+        <TabPane layoutX="30.0" layoutY="88.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="513.0" prefWidth="735.0" style="-fx-background-color: #054d3d; -fx-border-color: #097158;" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab style="-fx-background-color: #097158;" text="واریز">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-1.0" pannable="true" prefHeight="485.0" prefWidth="735.0" vbarPolicy="ALWAYS" vmax="2.0">
+                                    <content>
+                                        <GridPane prefHeight="681.0" prefWidth="726.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                        </GridPane>
+                                    </content>
+                                </ScrollPane>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tabbardashtVaVariz" closable="false" style="-fx-background-color: #097158;" text="برداشت">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
+                            <children>
+                                <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@3757881.png" />
+                                    </image>
+                                </ImageView>
+                                <Text fill="WHITE" layoutX="585.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="494.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="account number">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="txtAmount" layoutX="506.0" layoutY="88.0" prefHeight="26.0" prefWidth="167.0" />
+                                <TextField fx:id="txtAccountNumber" layoutX="509.0" layoutY="215.0" prefHeight="26.0" prefWidth="164.0" />
+                                <RadioButton fx:id="rbtnFromAccountoWallet" layoutX="391.0" layoutY="304.0" mnemonicParsing="false" text="Transfer from account to wallet" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </RadioButton>
+                                <RadioButton fx:id="rbtnFromWallettoAccount" layoutX="389.0" layoutY="352.0" mnemonicParsing="false" text="Transfer from wallet to account" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </RadioButton>
+                                <Button fx:id="btnDone" layoutX="240.0" layoutY="317.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab style="-fx-background-color: #097158;" text="پروفایل">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Text fill="WHITE" layoutX="600.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="527.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="564.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="573.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="605.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="567.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="573.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProfilePic">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="87.0" fitWidth="118.0" layoutX="378.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
+                                <Text fx:id="txtPassword" fill="WHITE" layoutX="442.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="txtName" fill="WHITE" layoutX="440.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="txtPhoneNumber" fill="WHITE" layoutX="440.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="txtUsername" fill="WHITE" layoutX="440.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="txtEmail" fill="WHITE" layoutX="440.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="txtLastName" fill="WHITE" layoutX="440.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="txtNewName" layoutX="102.0" layoutY="51.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new name" />
+                                <TextField fx:id="txtNewLastName" layoutX="103.0" layoutY="100.0" prefHeight="26.0" prefWidth="248.0" promptText="enter new Lastname" />
+                                <TextField fx:id="txtNewPassword" layoutX="104.0" layoutY="160.0" prefHeight="26.0" prefWidth="248.0" promptText="enter new password" />
+                                <TextField fx:id="txtNewPhoneNumber" layoutX="105.0" layoutY="214.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new phone number" />
+                                <TextField fx:id="txtNewEmail" layoutX="104.0" layoutY="272.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new email" />
+                                <Button fx:id="btnChange" layoutX="102.0" layoutY="379.0" mnemonicParsing="false" style="-fx-background-color: #097158;" text="change" />
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tabWallet" style="-fx-background-color: #097158;" text="کیف پول">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Text fill="WHITE" layoutX="528.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="currentAsset" wrappingWidth="207.73666381835938">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="btncurrentAsset" fill="WHITE" layoutX="525.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.13668823242188">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="109.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="نمودار دارایی سالانه">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <StackedAreaChart layoutX="-18.0" layoutY="87.0" prefHeight="411.0" prefWidth="489.0">
+                                    <xAxis>
+                                        <NumberAxis side="BOTTOM" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                    </yAxis>
+                                </StackedAreaChart>
+                                <Text fill="WHITE" layoutX="530.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="610.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Token1" wrappingWidth="66.93670654296875">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="530.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="530.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="530.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="530.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="610.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tocken4" wrappingWidth="85.33673095703125">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="610.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tocken3" wrappingWidth="82.93670654296875">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="610.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tocken2" wrappingWidth="112.5367431640625">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="610.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tocken5" wrappingWidth="90.936767578125">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tabWallet1" style="-fx-background-color: #097158;" text="هشدار">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Text fx:id="btncurrentAsset1" fill="WHITE" layoutX="525.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.13668823242188">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="109.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+            <opaqueInsets>
+                <Insets left="20.0" />
+            </opaqueInsets>
+        </TabPane>
+    </children>
 </AnchorPane>
