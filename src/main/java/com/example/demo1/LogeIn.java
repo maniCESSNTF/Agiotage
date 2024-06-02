@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import Email.EmailSender;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.mail.Address;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,7 +24,6 @@ import java.util.Random;
 import static com.example.demo1.Methods.UserNumber;
 
 public class LogeIn {
-    Random random=new Random();
 
     @FXML
     private TextField txtPassword;
@@ -127,9 +128,13 @@ public class LogeIn {
         return null;
     }
     @FXML
-    void PbtnForgotPassword(ActionEvent event) {
-        String forgetPassCode = String.valueOf((random.nextInt(1000000)+1000000));
-
-        // Your logic here
+    void PbtnForgotPassword(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnForgotPassword.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("ForgetPass.fxml"));
+        Scene scene = new Scene(root, 800, 650);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
