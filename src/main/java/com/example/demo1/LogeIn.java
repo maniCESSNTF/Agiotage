@@ -17,8 +17,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
+
+import static com.example.demo1.Methods.UserNumber;
 
 public class LogeIn {
+    Random random=new Random();
 
     @FXML
     private TextField txtPassword;
@@ -122,9 +126,10 @@ public class LogeIn {
 
         return null;
     }
-
     @FXML
     void PbtnForgotPassword(ActionEvent event) {
+        String forgetPassCode = String.valueOf((random.nextInt(1000000)+1000000));
+
         // Your logic here
     }
 }
