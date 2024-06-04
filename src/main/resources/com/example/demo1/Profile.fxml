@@ -234,7 +234,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-1.0" pannable="true" prefHeight="485.0" prefWidth="735.0" vbarPolicy="ALWAYS" vmax="2.0" vvalue="1.7">
+                                <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-1.0" pannable="true" prefHeight="485.0" prefWidth="735.0" vbarPolicy="ALWAYS" vmax="2.0">
                            <content>
                               <AnchorPane prefHeight="750.0" prefWidth="700.0">
                                  <children>
@@ -350,6 +350,11 @@
                                        </image>
                                     </ImageView>
                                     <Button fx:id="btnRefreshCaptchaDeposit" layoutX="395.0" layoutY="307.0" mnemonicParsing="false" onAction="#PbtnRefreshCaptchaDeposit" opacity="0.51" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 15;" />
+                                    <ImageView fitHeight="78.0" fitWidth="721.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Screenshot%202024-06-03%20124511.png" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                               </AnchorPane>
                            </content>
@@ -357,6 +362,26 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
+            <Tab text="swap">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="انتقال">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="تبادل">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="تاریخچه">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
                 <Tab fx:id="tabWallet1" style="-fx-background-color: #097158;" text="هشدار">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
