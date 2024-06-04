@@ -8,23 +8,19 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 
-import static com.example.demo1.CaptchaGenerator.GenerateCaptcha;
-import static com.example.demo1.CaptchaGenerator.captcha;
 import static com.example.demo1.Methods.UserNumber;
 import static com.example.demo1.Methods.users;
 
 public class SingIn {
 
     public static String userName;
-    public  static  String captcha1;
-
-    public  static  String captcha2;
     @FXML
     private Button btnPass;
 
@@ -147,32 +143,7 @@ public class SingIn {
             }
 
         } else {
-            try {
-                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "");
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM captcha");
-                while(resultSet.next()){
-                    captcha1 = resultSet.getString("captcha");
-                    System.out.println(resultSet.getString("captcha"));
-                }
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-
             userName=InputPass.UsernameGenerator();
-            captcha2 = GenerateCaptcha();
-
-            int conditionValue = 1; // Replace this with the actual ID of the record you want to update
-
-            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                String query = "UPDATE captcha SET captcha = ? WHERE id = 1";
-                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                    preparedStatement.setString(1, captcha2);
-                    preparedStatement.executeUpdate();
-                }
-            }
-            userName=InputPass.UsernameGenerator();
-            captcha(captcha2);
             try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
                 String query = "INSERT INTO signin (firstname, lastname, email, phonenumber,password,username) VALUES (?, ?, ?, ?,?,?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -185,6 +156,7 @@ public class SingIn {
                     preparedStatement.executeUpdate();
                 }
             }
+
             AddUser(new User(txtName.getText(), txtFamilyName.getText(), txtEmail.getText(), txtPhoneNumber.getText(),userName));
             Stage stage = (Stage) btnPass.getScene().getWindow();
             stage.close();

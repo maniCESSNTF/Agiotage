@@ -1,6 +1,5 @@
 package com.example.demo1;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,22 +12,13 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
 
-import javax.imageio.ImageIO;
-import javax.swing.text.Element;
-import javax.swing.text.html.ImageView;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
+import javafx.scene.image.ImageView;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Random;
-import java.util.ResourceBundle;
-import java.util.random.*;
 
 import static com.example.demo1.CaptchaGenerator.GenerateCaptcha;
 import static com.example.demo1.CaptchaGenerator.captcha;
@@ -36,13 +26,12 @@ import static com.example.demo1.Methods.UserNumber;
 import static com.example.demo1.Methods.users;
 
 public class InputPass {
-
+    String newCaptcha = GenerateCaptcha();
     static Random rand = new Random();
     @FXML
-    private Button btnDone;
+    private static Button btnDone;
 
-    @FXML
-    public ImageView imgCaptch ;
+ //   @FXML
 
     @FXML
     private AnchorPane passRE;
@@ -51,11 +40,22 @@ public class InputPass {
     private Button btnHome;
 
     @FXML
-    private Button btntest;
+    private Button btnRefresh;
 
     @FXML
-    void Pbtntest(ActionEvent event) {
-        Stage stage = (Stage) btnDone.getScene().getWindow();
+    public  ImageView imgCaptcha;
+    @FXML
+    public void Pbtnrefresh(ActionEvent event) throws IOException {
+        newCaptcha = GenerateCaptcha();
+        captcha(newCaptcha);
+        File file = new File("C:\\Users\\mania\\Desktop\\New folder (3)\\Agiotage\\src\\main\\resources\\com\\example\\demo1\\d3e2686ead31b9f31970f8466f5a1ae0.jpg");
+        InputStream inputStream = null;
+        try{
+            inputStream = (InputStream) new FileInputStream(file);
+        }catch (FileNotFoundException e){
+            throw new RuntimeException(e);
+        }
+        imgCaptcha.setImage(new Image(inputStream));
     }
 
     @FXML
@@ -74,7 +74,7 @@ public class InputPass {
 //        imgCaptch=img;
         if(txtPassword1.getText().equals(txtPassword2.getText())){
             if(isPasswordValid(txtPassword1.getText())){
-                if(!txtCapcha.getText().equals(SingIn.captcha1)){
+                if(!txtCapcha.getText().equals(newCaptcha)){
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Warning");
                     alert.setHeaderText(null);
@@ -151,4 +151,9 @@ public class InputPass {
         String newUsername = String.valueOf((rand.nextInt(1000)*1000+UserNumber)*1000+ rand.nextInt(1000));
         return newUsername;
     }
+//
+//    @FXML
+//    void Pbtnrefresh(ActionEvent event) {
+//
+//    }
 }

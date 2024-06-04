@@ -5,23 +5,23 @@
 <?import javafx.scene.chart.StackedAreaChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Profile">
     <children>
-        <ButtonBar layoutY="-3.0" prefHeight="69.0" prefWidth="796.0" style="-fx-background-color: #054d3d;">
+        <ButtonBar layoutY="-9.0" prefHeight="69.0" prefWidth="796.0" style="-fx-background-color: #054d3d;">
             <buttons>
                 <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
                 <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
@@ -31,68 +31,6 @@
         </ButtonBar>
         <TabPane layoutX="30.0" layoutY="88.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="513.0" prefWidth="735.0" style="-fx-background-color: #054d3d; -fx-border-color: #097158;" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab style="-fx-background-color: #097158;" text="واریز">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
-                                <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-1.0" pannable="true" prefHeight="485.0" prefWidth="735.0" vbarPolicy="ALWAYS" vmax="2.0">
-                                    <content>
-                                        <GridPane prefHeight="681.0" prefWidth="726.0">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                        </GridPane>
-                                    </content>
-                                </ScrollPane>
-                            </children></AnchorPane>
-                    </content>
-                </Tab>
-                <Tab fx:id="tabbardashtVaVariz" closable="false" style="-fx-background-color: #097158;" text="برداشت">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
-                            <children>
-                                <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@3757881.png" />
-                                    </image>
-                                </ImageView>
-                                <Text fill="WHITE" layoutX="585.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="WHITE" layoutX="494.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="account number">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="txtAmount" layoutX="506.0" layoutY="88.0" prefHeight="26.0" prefWidth="167.0" />
-                                <TextField fx:id="txtAccountNumber" layoutX="509.0" layoutY="215.0" prefHeight="26.0" prefWidth="164.0" />
-                                <RadioButton fx:id="rbtnFromAccountoWallet" layoutX="391.0" layoutY="304.0" mnemonicParsing="false" text="Transfer from account to wallet" textFill="WHITE">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </RadioButton>
-                                <RadioButton fx:id="rbtnFromWallettoAccount" layoutX="389.0" layoutY="352.0" mnemonicParsing="false" text="Transfer from wallet to account" textFill="WHITE">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </RadioButton>
-                                <Button fx:id="btnDone" layoutX="240.0" layoutY="317.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Button>
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
                 <Tab style="-fx-background-color: #097158;" text="پروفایل">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -249,6 +187,173 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tabbardashtVaVariz" closable="false" style="-fx-background-color: #097158;" text="برداشت">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
+                            <children>
+                                <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@3757881.png" />
+                                    </image>
+                                </ImageView>
+                                <Text fill="WHITE" layoutX="585.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="494.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="account number">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="txtAmount" layoutX="506.0" layoutY="88.0" prefHeight="26.0" prefWidth="167.0" />
+                                <TextField fx:id="txtAccountNumber" layoutX="509.0" layoutY="215.0" prefHeight="26.0" prefWidth="164.0" />
+                                <RadioButton fx:id="rbtnFromAccountoWallet" layoutX="391.0" layoutY="304.0" mnemonicParsing="false" text="Transfer from account to wallet" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </RadioButton>
+                                <RadioButton fx:id="rbtnFromWallettoAccount" layoutX="389.0" layoutY="352.0" mnemonicParsing="false" text="Transfer from wallet to account" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </RadioButton>
+                                <Button fx:id="btnDone" layoutX="240.0" layoutY="317.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab style="-fx-background-color: #097158;" text="واریز">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-1.0" pannable="true" prefHeight="485.0" prefWidth="735.0" vbarPolicy="ALWAYS" vmax="2.0" vvalue="1.7">
+                           <content>
+                              <AnchorPane prefHeight="750.0" prefWidth="700.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#054d3d" height="750.0" layoutX="-1.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="735.0" />
+                                    <TextField fx:id="txtCardNumberDeposit" layoutX="121.0" layoutY="135.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtCVV2Deposit" layoutX="120.0" layoutY="193.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtEXMonthDeposit" layoutX="122.0" layoutY="251.0" opacity="0.8" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtEXYearDeposit" layoutX="185.0" layoutY="252.0" opacity="0.8" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtCaptchaCodeDeposit" layoutX="121.0" layoutY="303.0" opacity="0.8" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtPasswordDeposit" layoutX="117.0" layoutY="354.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <Button fx:id="btnSendEmailDeposit" layoutX="293.0" layoutY="358.0" mnemonicParsing="false" onAction="#PbtnSendEmailDeposit" opacity="0.8" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="Send pass" />
+                                    <Button fx:id="btnDoneDeposit" layoutX="120.0" layoutY="447.0" mnemonicParsing="false" onAction="#PbtnDoneDeposit" opacity="0.8" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="Payment" />
+                                    <ImageView fx:id="imgCaptcha2" fitHeight="35.0" fitWidth="110.0" layoutX="279.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@d3e2686ead31b9f31970f8466f5a1ae0.jpg" />
+                                       </image></ImageView>
+                                    <Label layoutX="121.0" layoutY="96.0" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  اطلاعات کارت">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea layoutY="483.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="269.0" prefWidth="721.0" style="-fx-border-color: #054d3d; -fx-background-color: #000000;" text="راهنما و نکات ایمنی&#10;شماره کارت: 16 رقمی بوده و بصورت 4 قسمت 4 رقمی روی کارت درج شده است.&#10;cvv2: با طول 3 یا 4 رقم کنار شماره کارت و یا پشت کارت درج شده است.&#10;تاریخ انقضا: شامل دو بخش ماه و سال انقضا در کنار شماره کارت درج شده است.&#10;رمز اینترنتی: با عنوان رمز دوم و در برخی موارد با PIN2 شناخته می شود، از طریق بانک صادر کننده کارت تولید شده و همچنین از طریق دستگاه &#10;های خودپرداز بانک صادر کننده قابل تهیه و یا تغییر می باشد.&#10;کد امنیتی: بخشی از محتوای صفحه پرداخت است و لازم است برای ادامه فرایند خرید ، کد موجود که به صورت عددی در تصویر مشخص شده است&#10; در محل پیش بینی شده درج شود.&#10;دروازه پرداخت اینترنتی به پرداخت ملت با استفاده از پروتکل امن https به مشتریان خود ارایه خدمت نموده و با آدرس https://bpm.shaparak.ir &#10;شروع می شود. خواهشمند است به منظور جلوگیری از سوء استفاده های احتمالی پیش از ورود هرگونه اطلاعات، آدرس موجود در بخش مرورگر &#10;وب خود را با آدرس فوق مقایسه نمایید و درصورت مشاهده هر نوع مغایرت احتمالی، موضوع را با ما درمیان بگذارید.&#10;برای جلوگیری از افشای رمز کارت خود،حتی المقدور از صفحه کلید مجازی استفاده فرمایید.&#10;لطفا از صحت نام فروشنده و مبلغ نمایش داده شده، اطمینان حاصل فرمایید.&#10;برای کسب اطلاعات بیشتر، گزارش فروشگاههای مشکوک و همچنین اطلاع از وضعیت پذیرندگان اینترنتی با ما تماس بگیرید" />
+                                    <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#097158" height="304.0" layoutX="471.0" layoutY="101.0" stroke="DARKSEAGREEN" strokeType="INSIDE" width="234.0" />
+                                    <Label layoutX="478.0" layoutY="105.0" opacity="0.9" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-color: #054d3d;" text="  اطلاعات پذیرنده">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="481.0" layoutY="221.0" opacity="0.9" prefHeight="26.0" prefWidth="57.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-color: #054d3d;" text="  پذیرنده : ">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="479.0" layoutY="258.0" opacity="0.9" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-color: #054d3d; -fx-border-radius: 25;" text="  شماره پذیرنده : ">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="479.0" layoutY="294.0" opacity="0.9" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-color: #054d3d; -fx-border-radius: 25;" text="  شماره ترمینال : ">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="482.0" layoutY="346.0" opacity="0.9" prefHeight="26.0" prefWidth="42.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-color: #054d3d; -fx-border-radius: 25;" text="  مبلغ : ">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Text fill="WHITE" layoutX="561.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="117.5999755859375">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Label layoutX="28.0" layoutY="139.0" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text=" شماره کارت">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="33.0" layoutY="198.0" prefHeight="26.0" prefWidth="56.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="CVV2    ">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="27.0" layoutY="253.0" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  تاریخ انقضا">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="28.0" layoutY="307.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  کد امنیتی">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="8.0" layoutY="360.0" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  رمز اینترنتی کارت">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Text fx:id="txtPrice" fill="DARKSEAGREEN" layoutX="573.0" layoutY="365.0" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="102.936767578125">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="DARKSEAGREEN" layoutX="591.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="58419145">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="DARKSEAGREEN" layoutX="595.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2374237">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="DARKSEAGREEN" layoutX="560.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agiotage-project">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fitHeight="70.0" fitWidth="120.0" layoutX="528.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@1111.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="txtEmailDeposit" layoutX="113.0" layoutY="402.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <Label layoutX="38.0" layoutY="405.0" prefHeight="26.0" prefWidth="40.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  ایمیل">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="70.0" fitWidth="67.0" layoutX="378.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@6516.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="btnRefreshCaptchaDeposit" layoutX="395.0" layoutY="307.0" mnemonicParsing="false" onAction="#PbtnRefreshCaptchaDeposit" opacity="0.51" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 15;" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                                </ScrollPane>
                             </children></AnchorPane>
                     </content>
                 </Tab>

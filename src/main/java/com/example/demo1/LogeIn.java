@@ -100,7 +100,7 @@ public class LogeIn {
         String user = "root";
         String password = "";
 
-        String query = "SELECT * FROM signin WHERE firstname = ? AND lastname = ?";
+        String query = "SELECT * FROM signin WHERE username = ? AND password = ?";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
