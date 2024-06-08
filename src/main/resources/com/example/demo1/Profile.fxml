@@ -76,11 +76,6 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fx:id="txtName" fill="WHITE" layoutX="440.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
                                 <Text fx:id="txtPhoneNumber" fill="WHITE" layoutX="440.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                     <font>
                                         <Font size="18.0" />
@@ -102,11 +97,15 @@
                                     </font>
                                 </Text>
                                 <TextField fx:id="txtNewName" layoutX="102.0" layoutY="51.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new name" />
-                                <TextField fx:id="txtNewLastName" layoutX="103.0" layoutY="100.0" prefHeight="26.0" prefWidth="248.0" promptText="enter new Lastname" />
+                                <TextField fx:id="txtNewLastName" layoutX="103.0" layoutY="106.0" prefHeight="26.0" prefWidth="248.0" promptText="enter new Lastname" />
                                 <TextField fx:id="txtNewPassword" layoutX="104.0" layoutY="160.0" prefHeight="26.0" prefWidth="248.0" promptText="enter new password" />
                                 <TextField fx:id="txtNewPhoneNumber" layoutX="105.0" layoutY="214.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new phone number" />
-                                <TextField fx:id="txtNewEmail" layoutX="104.0" layoutY="272.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new email" />
-                                <Button fx:id="btnChange" layoutX="102.0" layoutY="379.0" mnemonicParsing="false" style="-fx-background-color: #097158;" text="change" />
+                                <TextField fx:id="txtNewEmail" layoutX="104.0" layoutY="267.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new email" />
+                                <Button fx:id="btnChange" layoutX="102.0" layoutY="379.0" mnemonicParsing="false" onAction="#PbtnChange" style="-fx-background-color: #097158;" text="change" />
+                        <Text fx:id="txtName" fill="WHITE" layoutX="442.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Text>
                             </children></AnchorPane>
                     </content>
                 </Tab>
@@ -221,7 +220,7 @@
                                         <Font size="18.0" />
                                     </font>
                                 </RadioButton>
-                                <Button fx:id="btnDone" layoutX="240.0" layoutY="317.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
+                                <Button fx:id="btnDone" layoutX="240.0" layoutY="317.0" mnemonicParsing="false" onAction="#PbtnDone" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
                                     <font>
                                         <Font size="18.0" />
                                     </font>

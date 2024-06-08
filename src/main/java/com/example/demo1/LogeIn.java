@@ -25,6 +25,9 @@ import static com.example.demo1.Methods.UserNumber;
 
 public class LogeIn {
 
+
+    public String str;
+
     @FXML
     private TextField txtPassword;
 
@@ -49,6 +52,8 @@ public class LogeIn {
     @FXML
     private Label lblLogeIn;
 
+    public static Profile profile1 =null;
+
     @FXML
     void PbtnSignIn(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnSignIn.getScene().getWindow();
@@ -61,7 +66,7 @@ public class LogeIn {
     }
 
     @FXML
-    void PbtnDone(ActionEvent event) throws IOException {
+    void PbtnDone(ActionEvent event) throws IOException, SQLException {
         if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
@@ -74,6 +79,7 @@ public class LogeIn {
                 Stage stage = (Stage) btnDone.getScene().getWindow();
                 stage.close();
                 Stage primaryStage = new Stage();
+                Profile.thisUsername=txtUsername.getText();
                 AnchorPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
                 Scene scene = new Scene(root, 794, 637);
                 primaryStage.setScene(scene);
@@ -87,6 +93,8 @@ public class LogeIn {
                 alert.setContentText("Password or Username is wrong");
                 alert.showAndWait();
             }
+          //  Profile.setUser(txtUsername.getText());
+
         }
     }
 
@@ -128,7 +136,7 @@ public class LogeIn {
         return null;
     }
     @FXML
-    void PbtnForgotPassword(ActionEvent event) throws IOException {
+    void PbtnForgotPassword(ActionEvent event) throws IOException, SQLException {
         Stage stage = (Stage) btnForgotPassword.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
