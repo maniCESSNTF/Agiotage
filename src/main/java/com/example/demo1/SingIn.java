@@ -144,8 +144,9 @@ public class SingIn {
 
         } else {
             userName=InputPass.UsernameGenerator();
+
             try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                String query = "INSERT INTO signin (firstname, lastname, email, phonenumber,password,username) VALUES (?, ?, ?, ?,?,?)";
+                String query = "INSERT INTO signin (firstname, lastname, email, phonenumber,password,username,WalletId) VALUES (?, ?, ?, ?,?,?,?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                     preparedStatement.setString(1, txtName.getText());
                     preparedStatement.setString(2, txtFamilyName.getText());
@@ -153,6 +154,7 @@ public class SingIn {
                     preparedStatement.setString(4, txtPhoneNumber.getText());
                     preparedStatement.setString(5, null);
                     preparedStatement.setString(6, userName);
+                    preparedStatement.setString(7, InputPass.GenerateWalletId());
                     preparedStatement.executeUpdate();
                 }
             }

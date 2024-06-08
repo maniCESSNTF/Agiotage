@@ -9,6 +9,7 @@ public class User {
     private String LastName;
     private String email;
     private String phoneNumber;
+    private String WalletId;
     private String profilePicture;
     public  Wallet userWallet = new Wallet();
     public  History userhistory[]=new History[1000];
@@ -47,6 +48,14 @@ public class User {
         if (name.length() <= 18 && name.matches("[a-zA-Z]+")) {
             this.Name = name;
         } else throw new InvalidIDException("PLEASE ENTER A FAMILYNAME WITH MAXIMUM 18 LETTERS");
+    }
+
+    public String getWalletId() {
+        return WalletId;
+    }
+
+    public void setWalletId(String walletId) {
+        WalletId = walletId;
     }
 
     public String getUsername() {

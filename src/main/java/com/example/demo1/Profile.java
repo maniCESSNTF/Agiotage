@@ -3,14 +3,10 @@ package com.example.demo1;
 import Email.EmailSender;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 import java.io.*;
 import java.sql.*;
@@ -24,9 +20,32 @@ public class Profile {
     public String newCaptcha = GenerateCaptcha();
     public EmailSender emailSender = new EmailSender();
     public  String code;
+    public int[] typeTransfer = {0,0,0,0,0,0};
+
 
 
     public static String thisUsername;
+
+    @FXML
+    private Text txtWallet_id;
+
+    @FXML
+    private MenuItem coin1;
+
+    @FXML
+    private MenuItem coin2;
+
+    @FXML
+    private MenuItem coin3;
+
+    @FXML
+    private MenuItem coin4;
+
+    @FXML
+    private MenuItem coin5;
+
+    @FXML
+    private MenuItem coin6;
 
     @FXML
     private Button btnDoneDeposit;
@@ -39,6 +58,17 @@ public class Profile {
 
     @FXML
     private Button btnChange;
+
+
+
+    @FXML
+    private Button btnDoneTrans;
+
+    @FXML
+    private TextField txtWalletidTra;
+
+    @FXML
+    private TextField txtAmountTra;
 
     @FXML
     private Button btnDone;
@@ -147,6 +177,8 @@ public class Profile {
                         txtPhoneNumber.setText(resultSet.getString("phonenumber"));
                         txtEmail.setText(resultSet.getString("email"));
                         txtPassword.setText(resultSet.getString("password"));
+                        txtWallet_id.setText(resultSet.getString("walletid"));
+
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -232,6 +264,7 @@ public class Profile {
                         txtPhoneNumber.setText(resultSet.getString("phonenumber"));
                         txtEmail.setText(resultSet.getString("email"));
                         txtPassword.setText(resultSet.getString("password"));
+                        txtWallet_id.setText(resultSet.getString("walletid"));
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -316,6 +349,120 @@ public class Profile {
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @FXML
+    void mnuCoin1(ActionEvent event) {
+        typeTransfer[0]=1;
+    }
+
+    @FXML
+    void mnucoin2(ActionEvent event) {
+        typeTransfer[1]=1;
+    }
+
+    @FXML
+    void mnuCoin3(ActionEvent event) {
+        typeTransfer[2]=1;
+    }
+
+    @FXML
+    void mnuCoin4(ActionEvent event) {
+        typeTransfer[3]=1;
+    }
+
+    @FXML
+    void mnuCoin5(ActionEvent event) {
+        typeTransfer[4]=1;
+    }
+
+    @FXML
+    void mnuCoin6(ActionEvent event) {
+        typeTransfer[5]=1;
+    }
+
+
+    @FXML
+    void PbtnDonetrans(ActionEvent event) throws SQLException {
+
+
+
+
+
+
+
+
+
+        try (Connection connection1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+            String sql1 = "SELECT * FROM signin WHERE username = ?";
+            try (PreparedStatement statement1 = connection1.prepareStatement(sql1)) {
+                statement1.setString(1, thisUsername);
+                ResultSet resultSetME = statement1.executeQuery();
+                Integer yy = Integer.parseInt(resultSetME.getString("rippel")) - Integer.parseInt(txtAmountTra.getText());
+
+                System.out.println("YIIIIIIIIIIII"+(int)yy);
+
+
+                if (typeTransfer[0] == 1 && Integer.parseInt(resultSetME.getString("rippel")) >= Integer.parseInt(txtAmountTra.getText())) {
+                    try (Connection connectionME = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                        String queryME = "UPDATE signin SET rippel = ? WHERE username = ?";
+                        try (PreparedStatement preparedStatementME = connectionME.prepareStatement(queryME)) {
+                            Integer y = Integer.parseInt(resultSetME.getString("rippel")) - Integer.parseInt(txtAmountTra.getText());
+                            preparedStatementME.setString(1, y.toString());
+                            preparedStatementME.setString(2, thisUsername);
+                            preparedStatementME.executeUpdate();
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                        String sqlYOU1 = "SELECT * FROM signin WHERE walletid = ?";
+                        try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
+                            statementYOU1.setString(1, txtWalletidTra.getText());
+                            ResultSet resultSetYOU1 = statementYOU1.executeQuery();
+                            if (resultSetYOU1.next()) {
+                                try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                    String queryYOU = "UPDATE signin SET rippel = ? WHERE walletid = ?";
+                                    try (PreparedStatement preparedStatementYOU = connectionYOU.prepareStatement(queryYOU)) {
+                                        Integer y = Integer.parseInt(resultSetYOU1.getString("rippel")) + Integer.parseInt(txtAmountTra.getText());
+                                        preparedStatementYOU.setString(1, y.toString());
+                                        preparedStatementYOU.setString(2, txtWalletidTra.getText());
+                                        preparedStatementYOU.executeUpdate();
+                                    }
+                                } catch (SQLException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            } else {
+                                Alert alert = new Alert(Alert.AlertType.WARNING);
+                                alert.setTitle("Warning");
+                                alert.setHeaderText(null);
+                                alert.setContentText("################!");
+                                alert.showAndWait();
+                            }
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                }
+
+
             }
         }
     }

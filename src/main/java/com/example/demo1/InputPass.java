@@ -29,7 +29,7 @@ public class InputPass {
     String newCaptcha = GenerateCaptcha();
     static Random rand = new Random();
     @FXML
-    private static Button btnDone;
+    private  Button btnDone;
 
  //   @FXML
 
@@ -98,13 +98,13 @@ public class InputPass {
                 alert.setHeaderText(null);
                 alert.setContentText("your password is :"+txtPassword1.getText()+"\n"+"your Username is :"+users[UserNumber-1].getUsername());
                 alert.showAndWait();
-                Stage stage = (Stage) btnDone.getScene().getWindow();
-                stage.close();
-                Stage primaryStage = new Stage();
-                AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("LogeIn.fxml"));
-                Scene scene = new Scene(root, 794, 637);
-                primaryStage.setScene(scene);
-                primaryStage.show();
+                    Stage stage = (Stage) btnDone.getScene().getWindow();
+                    stage.close();
+                    Stage primaryStage = new Stage();
+                    AnchorPane root = FXMLLoader.load(getClass().getResource("LogeIn.fxml"));
+                    Scene scene = new Scene(root, 794, 637);
+                    primaryStage.setScene(scene);
+                    primaryStage.show();
 
                 }
             }
@@ -150,6 +150,17 @@ public class InputPass {
     public static  String UsernameGenerator(){
         String newUsername = String.valueOf((rand.nextInt(1000)*1000+UserNumber)*1000+ rand.nextInt(1000));
         return newUsername;
+    }
+
+    public static String GenerateWalletId(){
+        Random rand = new Random();
+        int length = 10;
+        String characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder captcha = new StringBuilder();
+        for(int i=0;i<length;i++){
+            captcha.append(characters.charAt(rand.nextInt(characters.length())));
+        }
+        return captcha.toString();
     }
 //
 //    @FXML

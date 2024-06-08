@@ -6,8 +6,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
@@ -65,12 +66,12 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="573.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProfilePic">
+                                <Text fill="WHITE" layoutX="573.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProfilePic">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <ImageView fitHeight="87.0" fitWidth="118.0" layoutX="378.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
+                                <ImageView fitHeight="87.0" fitWidth="118.0" layoutX="226.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true" />
                                 <Text fx:id="txtPassword" fill="WHITE" layoutX="442.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                     <font>
                                         <Font size="18.0" />
@@ -106,6 +107,16 @@
                            <font>
                               <Font size="18.0" />
                            </font></Text>
+                        <Text fill="WHITE" layoutX="573.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wallet_id">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtWallet_id" fill="WHITE" layoutX="440.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
                             </children></AnchorPane>
                     </content>
                 </Tab>
@@ -136,56 +147,81 @@
                                         <NumberAxis side="LEFT" />
                                     </yAxis>
                                 </StackedAreaChart>
-                                <Text fill="WHITE" layoutX="530.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fill="WHITE" layoutX="505.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="610.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Token1" wrappingWidth="66.93670654296875">
+                                <Text fill="WHITE" layoutX="585.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ریپل" wrappingWidth="66.93670654296875">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="530.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fill="WHITE" layoutX="505.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="530.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fill="WHITE" layoutX="505.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="530.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fill="WHITE" layoutX="505.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="530.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fill="WHITE" layoutX="505.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="610.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tocken4" wrappingWidth="85.33673095703125">
+                                <Text fill="WHITE" layoutX="585.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="دای" wrappingWidth="85.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="610.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tocken3" wrappingWidth="82.93670654296875">
+                                <Text fill="WHITE" layoutX="585.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لایت کوین" wrappingWidth="82.93670654296875">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="610.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tocken2" wrappingWidth="112.5367431640625">
+                                <Text fill="WHITE" layoutX="585.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="آوالانچ" wrappingWidth="112.5367431640625">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="610.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tocken5" wrappingWidth="90.936767578125">
+                                <Text fill="WHITE" layoutX="585.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="استلار" wrappingWidth="90.936767578125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
+                        <ImageView fitHeight="41.0" fitWidth="38.0" layoutX="665.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@coin1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="41.0" fitWidth="38.0" layoutX="665.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@coin2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="41.0" fitWidth="38.0" layoutX="665.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@coin3.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="41.0" fitWidth="38.0" layoutX="664.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@coin4.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="41.0" fitWidth="38.0" layoutX="661.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@coin5.png" />
+                           </image>
+                        </ImageView>
                             </children></AnchorPane>
                     </content>
                 </Tab>
@@ -193,38 +229,46 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
                             <children>
-                                <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@3757881.png" />
                                     </image>
                                 </ImageView>
-                                <Text fill="WHITE" layoutX="585.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
+                                <Text fill="WHITE" layoutX="56.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="494.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="account number">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="txtAmount" layoutX="506.0" layoutY="88.0" prefHeight="26.0" prefWidth="167.0" />
-                                <TextField fx:id="txtAccountNumber" layoutX="509.0" layoutY="215.0" prefHeight="26.0" prefWidth="164.0" />
-                                <RadioButton fx:id="rbtnFromAccountoWallet" layoutX="391.0" layoutY="304.0" mnemonicParsing="false" text="Transfer from account to wallet" textFill="WHITE">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </RadioButton>
-                                <RadioButton fx:id="rbtnFromWallettoAccount" layoutX="389.0" layoutY="352.0" mnemonicParsing="false" text="Transfer from wallet to account" textFill="WHITE">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </RadioButton>
-                                <Button fx:id="btnDone" layoutX="240.0" layoutY="317.0" mnemonicParsing="false" onAction="#PbtnDone" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
+                                <TextField fx:id="txtAmount" layoutX="148.0" layoutY="76.0" prefHeight="26.0" prefWidth="167.0" />
+                                <TextField fx:id="txtAccountNumber" layoutX="136.0" layoutY="223.0" prefHeight="26.0" prefWidth="164.0" />
+                                <Button fx:id="btnDone" layoutX="538.0" layoutY="342.0" mnemonicParsing="false" onAction="#PbtnDone" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Button>
+                        <Text layoutX="52.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="شماره کارت" wrappingWidth="82.192626953125">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="56.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کد امنیتی">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="70.0" fitWidth="84.0" layoutX="219.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@d3e2686ead31b9f31970f8466f5a1ae0.jpg" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="342.0" layoutY="172.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" text="Button" />
+                        <Text layoutX="59.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="رمز اینترنتی">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="txtAccountNumber2" layoutX="141.0" layoutY="169.0" prefHeight="7.0" prefWidth="75.0" />
+                        <TextField fx:id="txtAmount2" layoutX="139.0" layoutY="125.0" prefHeight="26.0" prefWidth="167.0" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -399,6 +443,46 @@
                         </AnchorPane>
                     </content>
                 </Tab>
+            <Tab fx:id="tabbardashtVaVariz1" closable="false" style="-fx-background-color: #097158;" text="انتقال">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
+                     <children>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@3757881.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="585.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="574.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wallet_id">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="txtAmountTra" layoutX="399.0" layoutY="88.0" prefHeight="26.0" prefWidth="275.0" />
+                        <TextField fx:id="txtAccountNumberTra" layoutX="394.0" layoutY="215.0" prefHeight="26.0" prefWidth="279.0" />
+                        <Button fx:id="btnDoneTrans" layoutX="538.0" layoutY="342.0" mnemonicParsing="false" onAction="#PbtnDonetrans" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <SplitMenuButton fx:id="chooseCoin" layoutX="80.0" layoutY="87.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="239.0" text="coin type">
+                          <items>
+                            <MenuItem fx:id="coin1" mnemonicParsing="false" onAction="#mnuCoin1" text="ریپل" />
+                            <MenuItem fx:id="coin2" mnemonicParsing="false" onAction="#mnucoin2" text="آوالانچ" />
+                              <MenuItem fx:id="coin3" mnemonicParsing="false" onAction="#mnuCoin3" text="لایت کوین" />
+                              <MenuItem fx:id="coin4" mnemonicParsing="false" onAction="#mnuCoin4" text="دای" />
+                              <MenuItem fx:id="coin5" mnemonicParsing="false" onAction="#mnuCoin5" text="استلار" />
+                              <MenuItem fx:id="coin6" mnemonicParsing="false" onAction="#mnuCoin6" text="پول" />
+                          </items>
+                        </SplitMenuButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
             </tabs>
             <opaqueInsets>
                 <Insets left="20.0" />
