@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class History {
     public Date date;
-    public int state;//0=buy 1=sell 2=pending
+    public int state;//0=buy 1=sell 2=pending //3=swap //4=
     ////نوع، مقدار و قیمت ارزو تاریخ
     public int typeToken;
     public int amount;

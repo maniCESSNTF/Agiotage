@@ -6,7 +6,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
@@ -410,15 +412,73 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
             </Tab>
-            <Tab text="انتقال">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
             <Tab text="تبادل">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <MenuButton fx:id="mnuChoosEx" layoutX="25.0" layoutY="77.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="262.0" text="select">
+                          <items>
+                            <MenuItem fx:id="mnurippelEx" mnemonicParsing="false" onAction="#PmnurippelEx" text="ریپل " />
+                              <MenuItem fx:id="mnuAvalanchEx" mnemonicParsing="false" onAction="#PmnuAvalanchEx" text="آوالانچ" />
+                              <MenuItem fx:id="mnuLightCoinEx" mnemonicParsing="false" onAction="#PmnuLightCoinEx" text="لایت کوین" />
+                              <MenuItem fx:id="mnuDayEx" mnemonicParsing="false" onAction="#PmnuDayEx" text="دی" />
+                              <MenuItem fx:id="mnuStellarEx" mnemonicParsing="false" onAction="#PmnuStellarEx" text="استلار" />
+                              <MenuItem fx:id="mnuonyEx" mnemonicParsing="false" onAction="#PmnuonyEx" text="پول" />
+                          </items>
+                        </MenuButton>
+                        <TextField fx:id="txtamountEx" layoutX="19.0" layoutY="159.0" prefHeight="26.0" prefWidth="269.0" promptText="amount" />
+                        <RadioButton fx:id="btnSellEx" layoutX="70.0" layoutY="246.0" mnemonicParsing="false" onAction="#PbtnSellEx" text="sell" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="btnBuyEx" layoutX="200.0" layoutY="246.0" mnemonicParsing="false" onAction="#PbtnBuyEx" text="buy" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                     </children></AnchorPane>
               </content>
+            </Tab>
+            <Tab fx:id="tabbardashtVaVariz1" closable="false" style="-fx-background-color: #097158;" text="انتقال">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
+                     <children>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@3757881.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="585.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="574.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wallet_id">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="txtAmountTra" layoutX="399.0" layoutY="88.0" prefHeight="26.0" prefWidth="275.0" />
+                        <TextField fx:id="txtWalletidTra" layoutX="394.0" layoutY="215.0" prefHeight="26.0" prefWidth="279.0" />
+                        <Button fx:id="btnDoneTrans" layoutX="538.0" layoutY="342.0" mnemonicParsing="false" onAction="#PbtnDonetrans" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <SplitMenuButton fx:id="chooseCoin" layoutX="80.0" layoutY="87.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="239.0" text="coin type">
+                          <items>
+                            <MenuItem fx:id="coin1" mnemonicParsing="false" onAction="#mnuCoin1" text="ریپل" />
+                            <MenuItem fx:id="coin2" mnemonicParsing="false" onAction="#mnucoin2" text="آوالانچ" />
+                              <MenuItem fx:id="coin3" mnemonicParsing="false" onAction="#mnuCoin3" text="لایت کوین" />
+                              <MenuItem fx:id="coin4" mnemonicParsing="false" onAction="#mnuCoin4" text="دای" />
+                              <MenuItem fx:id="coin5" mnemonicParsing="false" onAction="#mnuCoin5" text="استلار" />
+                              <MenuItem fx:id="coin6" mnemonicParsing="false" onAction="#mnuCoin6" text="پول" />
+                          </items>
+                        </SplitMenuButton>
+                     </children>
+                  </AnchorPane>
+               </content>
             </Tab>
             <Tab text="تاریخچه">
               <content>
@@ -443,46 +503,6 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-            <Tab fx:id="tabbardashtVaVariz1" closable="false" style="-fx-background-color: #097158;" text="انتقال">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
-                     <children>
-                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@3757881.png" />
-                           </image>
-                        </ImageView>
-                        <Text fill="WHITE" layoutX="585.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="574.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wallet_id">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="txtAmountTra" layoutX="399.0" layoutY="88.0" prefHeight="26.0" prefWidth="275.0" />
-                        <TextField fx:id="txtAccountNumberTra" layoutX="394.0" layoutY="215.0" prefHeight="26.0" prefWidth="279.0" />
-                        <Button fx:id="btnDoneTrans" layoutX="538.0" layoutY="342.0" mnemonicParsing="false" onAction="#PbtnDonetrans" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <SplitMenuButton fx:id="chooseCoin" layoutX="80.0" layoutY="87.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="239.0" text="coin type">
-                          <items>
-                            <MenuItem fx:id="coin1" mnemonicParsing="false" onAction="#mnuCoin1" text="ریپل" />
-                            <MenuItem fx:id="coin2" mnemonicParsing="false" onAction="#mnucoin2" text="آوالانچ" />
-                              <MenuItem fx:id="coin3" mnemonicParsing="false" onAction="#mnuCoin3" text="لایت کوین" />
-                              <MenuItem fx:id="coin4" mnemonicParsing="false" onAction="#mnuCoin4" text="دای" />
-                              <MenuItem fx:id="coin5" mnemonicParsing="false" onAction="#mnuCoin5" text="استلار" />
-                              <MenuItem fx:id="coin6" mnemonicParsing="false" onAction="#mnuCoin6" text="پول" />
-                          </items>
-                        </SplitMenuButton>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
             </tabs>
             <opaqueInsets>
                 <Insets left="20.0" />

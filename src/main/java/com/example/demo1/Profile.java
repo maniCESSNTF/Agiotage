@@ -21,10 +21,41 @@ public class Profile {
     public EmailSender emailSender = new EmailSender();
     public  String code;
     public int[] typeTransfer = {0,0,0,0,0,0};
-
+    public int[] typeTransferEx = {0,0,0,0,0,0};
 
 
     public static String thisUsername;
+
+
+    @FXML
+    private RadioButton btnSellEx;
+    @FXML
+    private RadioButton btnBuyEx;
+
+    @FXML
+    private TextField txtamountEx;
+
+    @FXML
+    private MenuItem mnuAvalanchEx;
+
+    @FXML
+    private MenuButton mnuChoosEx;
+
+    @FXML
+    private MenuItem mnuDayEx;
+
+    @FXML
+    private MenuItem mnuLightCoinEx;
+
+    @FXML
+    private MenuItem mnuStellarEx;
+
+    @FXML
+    private MenuItem mnuonyEx;
+
+    @FXML
+    private MenuItem mnurippelEx;
+
 
     @FXML
     private Text txtWallet_id;
@@ -140,6 +171,8 @@ public class Profile {
 
     @FXML
     private TextField txtPasswordDeposit;
+
+
 
 
     @FXML
@@ -353,6 +386,91 @@ public class Profile {
         }
     }
 
+
+
+
+
+    @FXML
+    void PbtnSellEx(ActionEvent event) {
+
+        if (btnSellEx.isSelected()) {
+            btnBuyEx.setSelected(false);
+        }
+
+    }
+
+    @FXML
+    void PbtnBuyEx(ActionEvent event) {
+
+        if (btnBuyEx.isSelected()) {
+            btnSellEx.setSelected(false);
+        }
+    }
+
+
+
+    @FXML
+    void PmnuAvalanchEx(ActionEvent event) {
+        typeTransferEx[1]=1;
+
+    }
+
+    @FXML
+    void PmnuDayEx(ActionEvent event) {
+
+        typeTransferEx[3]=1;
+    }
+
+    @FXML
+    void PmnuLightCoinEx(ActionEvent event) {
+
+        typeTransferEx[2]=1;
+    }
+
+    @FXML
+    void PmnuStellarEx(ActionEvent event) {
+
+        typeTransferEx[4]=1;
+    }
+
+    @FXML
+    void PmnuonyEx(ActionEvent event) {
+
+        typeTransferEx[5]=1;
+    }
+
+    @FXML
+    void PmnurippelEx(ActionEvent event) {
+
+        typeTransferEx[0]=1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @FXML
     void mnuCoin1(ActionEvent event) {
         typeTransfer[0]=1;
@@ -386,31 +504,63 @@ public class Profile {
 
     @FXML
     void PbtnDonetrans(ActionEvent event) throws SQLException {
-
-
-
-
-
-
-
-
-
         try (Connection connection1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
             String sql1 = "SELECT * FROM signin WHERE username = ?";
             try (PreparedStatement statement1 = connection1.prepareStatement(sql1)) {
                 statement1.setString(1, thisUsername);
                 ResultSet resultSetME = statement1.executeQuery();
-                Integer yy = Integer.parseInt(resultSetME.getString("rippel")) - Integer.parseInt(txtAmountTra.getText());
+                if (resultSetME.next()) {
+                    int yy = Integer.parseInt(resultSetME.getString("rippel")) - Integer.parseInt(txtAmountTra.getText());
 
-                System.out.println("YIIIIIIIIIIII"+(int)yy);
+                    System.out.println("YIIIIIIIIIIII" + yy);
 
+                    if (typeTransfer[0] == 1&& Integer.parseInt(resultSetME.getString("rippel")) >= Integer.parseInt(txtAmountTra.getText())) {
+                        try (Connection connectionME = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String queryME = "UPDATE signin SET rippel = ? WHERE username = ?";
+                            try (PreparedStatement preparedStatementME = connectionME.prepareStatement(queryME)) {
+                                int y = Integer.parseInt(resultSetME.getString("rippel")) - Integer.parseInt(txtAmountTra.getText());
+                                preparedStatementME.setString(1, String.valueOf(y));
+                                preparedStatementME.setString(2, thisUsername);
+                                preparedStatementME.executeUpdate();
+                            }
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
 
-                if (typeTransfer[0] == 1 && Integer.parseInt(resultSetME.getString("rippel")) >= Integer.parseInt(txtAmountTra.getText())) {
+                        try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String sqlYOU1 = "SELECT * FROM signin WHERE walletid = ?";
+                            try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
+                                statementYOU1.setString(1, txtWalletidTra.getText());
+                                ResultSet resultSetYOU1 = statementYOU1.executeQuery();
+                                if (resultSetYOU1.next()) {
+                                    try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                        String queryYOU = "UPDATE signin SET rippel = ? WHERE walletid = ?";
+                                        try (PreparedStatement preparedStatementYOU = connectionYOU.prepareStatement(queryYOU)) {
+                                            int y = Integer.parseInt(resultSetYOU1.getString("rippel")) + Integer.parseInt(txtAmountTra.getText());
+                                            preparedStatementYOU.setString(1, String.valueOf(y));
+                                            preparedStatementYOU.setString(2, txtWalletidTra.getText());
+                                            preparedStatementYOU.executeUpdate();
+                                        }
+                                    } catch (SQLException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                } else {
+                                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                                    alert.setTitle("Warning");
+                                    alert.setHeaderText(null);
+                                    alert.setContentText("################!");
+                                    alert.showAndWait();
+                                }
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    } else if (typeTransfer[1] == 1&& Integer.parseInt(resultSetME.getString("avalanche")) >= Integer.parseInt(txtAmountTra.getText())) {
                     try (Connection connectionME = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                        String queryME = "UPDATE signin SET rippel = ? WHERE username = ?";
+                        String queryME = "UPDATE signin SET avalanche = ? WHERE username = ?";
                         try (PreparedStatement preparedStatementME = connectionME.prepareStatement(queryME)) {
-                            Integer y = Integer.parseInt(resultSetME.getString("rippel")) - Integer.parseInt(txtAmountTra.getText());
-                            preparedStatementME.setString(1, y.toString());
+                            int y = Integer.parseInt(resultSetME.getString("avalanche")) - Integer.parseInt(txtAmountTra.getText());
+                            preparedStatementME.setString(1, String.valueOf(y));
                             preparedStatementME.setString(2, thisUsername);
                             preparedStatementME.executeUpdate();
                         }
@@ -425,10 +575,10 @@ public class Profile {
                             ResultSet resultSetYOU1 = statementYOU1.executeQuery();
                             if (resultSetYOU1.next()) {
                                 try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                                    String queryYOU = "UPDATE signin SET rippel = ? WHERE walletid = ?";
+                                    String queryYOU = "UPDATE signin SET avalanche = ? WHERE walletid = ?";
                                     try (PreparedStatement preparedStatementYOU = connectionYOU.prepareStatement(queryYOU)) {
-                                        Integer y = Integer.parseInt(resultSetYOU1.getString("rippel")) + Integer.parseInt(txtAmountTra.getText());
-                                        preparedStatementYOU.setString(1, y.toString());
+                                        int y = Integer.parseInt(resultSetYOU1.getString("avalanche")) + Integer.parseInt(txtAmountTra.getText());
+                                        preparedStatementYOU.setString(1, String.valueOf(y));
                                         preparedStatementYOU.setString(2, txtWalletidTra.getText());
                                         preparedStatementYOU.executeUpdate();
                                     }
@@ -446,24 +596,177 @@ public class Profile {
                             throw new RuntimeException(e);
                         }
                     }
+                } else if (typeTransfer[2] == 1&& Integer.parseInt(resultSetME.getString("lightcoin")) >= Integer.parseInt(txtAmountTra.getText())) {
+                        try (Connection connectionME = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String queryME = "UPDATE signin SET lightcoin = ? WHERE username = ?";
+                            try (PreparedStatement preparedStatementME = connectionME.prepareStatement(queryME)) {
+                                int y = Integer.parseInt(resultSetME.getString("lightcoin")) - Integer.parseInt(txtAmountTra.getText());
+                                preparedStatementME.setString(1, String.valueOf(y));
+                                preparedStatementME.setString(2, thisUsername);
+                                preparedStatementME.executeUpdate();
+                            }
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
 
+                        try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String sqlYOU1 = "SELECT * FROM signin WHERE walletid = ?";
+                            try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
+                                statementYOU1.setString(1, txtWalletidTra.getText());
+                                ResultSet resultSetYOU1 = statementYOU1.executeQuery();
+                                if (resultSetYOU1.next()) {
+                                    try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                        String queryYOU = "UPDATE signin SET lightcoin = ? WHERE walletid = ?";
+                                        try (PreparedStatement preparedStatementYOU = connectionYOU.prepareStatement(queryYOU)) {
+                                            int y = Integer.parseInt(resultSetYOU1.getString("lightcoin")) + Integer.parseInt(txtAmountTra.getText());
+                                            preparedStatementYOU.setString(1, String.valueOf(y));
+                                            preparedStatementYOU.setString(2, txtWalletidTra.getText());
+                                            preparedStatementYOU.executeUpdate();
+                                        }
+                                    } catch (SQLException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                } else {
+                                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                                    alert.setTitle("Warning");
+                                    alert.setHeaderText(null);
+                                    alert.setContentText("################!");
+                                    alert.showAndWait();
+                                }
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    } else if (typeTransfer[3] == 1&& Integer.parseInt(resultSetME.getString("day")) >= Integer.parseInt(txtAmountTra.getText())) {
+                        try (Connection connectionME = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String queryME = "UPDATE signin SET day = ? WHERE username = ?";
+                            try (PreparedStatement preparedStatementME = connectionME.prepareStatement(queryME)) {
+                                int y = Integer.parseInt(resultSetME.getString("day")) - Integer.parseInt(txtAmountTra.getText());
+                                preparedStatementME.setString(1, String.valueOf(y));
+                                preparedStatementME.setString(2, thisUsername);
+                                preparedStatementME.executeUpdate();
+                            }
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
 
+                        try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String sqlYOU1 = "SELECT * FROM signin WHERE walletid = ?";
+                            try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
+                                statementYOU1.setString(1, txtWalletidTra.getText());
+                                ResultSet resultSetYOU1 = statementYOU1.executeQuery();
+                                if (resultSetYOU1.next()) {
+                                    try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                        String queryYOU = "UPDATE signin SET day = ? WHERE walletid = ?";
+                                        try (PreparedStatement preparedStatementYOU = connectionYOU.prepareStatement(queryYOU)) {
+                                            int y = Integer.parseInt(resultSetYOU1.getString("day")) + Integer.parseInt(txtAmountTra.getText());
+                                            preparedStatementYOU.setString(1, String.valueOf(y));
+                                            preparedStatementYOU.setString(2, txtWalletidTra.getText());
+                                            preparedStatementYOU.executeUpdate();
+                                        }
+                                    } catch (SQLException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                } else {
+                                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                                    alert.setTitle("Warning");
+                                    alert.setHeaderText(null);
+                                    alert.setContentText("################!");
+                                    alert.showAndWait();
+                                }
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    } else if (typeTransfer[4] == 1&& Integer.parseInt(resultSetME.getString("stellar")) >= Integer.parseInt(txtAmountTra.getText())) {
+                        try (Connection connectionME = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String queryME = "UPDATE signin SET stellar = ? WHERE username = ?";
+                            try (PreparedStatement preparedStatementME = connectionME.prepareStatement(queryME)) {
+                                int y = Integer.parseInt(resultSetME.getString("stellar")) - Integer.parseInt(txtAmountTra.getText());
+                                preparedStatementME.setString(1, String.valueOf(y));
+                                preparedStatementME.setString(2, thisUsername);
+                                preparedStatementME.executeUpdate();
+                            }
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
 
-
-
-
-
-
-
-
-
-
-
-
+                        try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String sqlYOU1 = "SELECT * FROM signin WHERE walletid = ?";
+                            try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
+                                statementYOU1.setString(1, txtWalletidTra.getText());
+                                ResultSet resultSetYOU1 = statementYOU1.executeQuery();
+                                if (resultSetYOU1.next()) {
+                                    try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                        String queryYOU = "UPDATE signin SET stellar = ? WHERE walletid = ?";
+                                        try (PreparedStatement preparedStatementYOU = connectionYOU.prepareStatement(queryYOU)) {
+                                            int y = Integer.parseInt(resultSetYOU1.getString("stellar")) + Integer.parseInt(txtAmountTra.getText());
+                                            preparedStatementYOU.setString(1, String.valueOf(y));
+                                            preparedStatementYOU.setString(2, txtWalletidTra.getText());
+                                            preparedStatementYOU.executeUpdate();
+                                        }
+                                    } catch (SQLException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                } else {
+                                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                                    alert.setTitle("Warning");
+                                    alert.setHeaderText(null);
+                                    alert.setContentText("################!");
+                                    alert.showAndWait();
+                                }
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    } else if (typeTransfer[5] == 1&& Integer.parseInt(resultSetME.getString("money")) >= Integer.parseInt(txtAmountTra.getText())) {
+                        try (Connection connectionME = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String queryME = "UPDATE signin SET money = ? WHERE username = ?";
+                            try (PreparedStatement preparedStatementME = connectionME.prepareStatement(queryME)) {
+                                int y = Integer.parseInt(resultSetME.getString("money")) - Integer.parseInt(txtAmountTra.getText());
+                                preparedStatementME.setString(1, String.valueOf(y));
+                                preparedStatementME.setString(2, thisUsername);
+                                preparedStatementME.executeUpdate();
+                            }
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                        try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                            String sqlYOU1 = "SELECT * FROM signin WHERE walletid = ?";
+                            try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
+                                statementYOU1.setString(1, txtWalletidTra.getText());
+                                ResultSet resultSetYOU1 = statementYOU1.executeQuery();
+                                if (resultSetYOU1.next()) {
+                                    try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                        String queryYOU = "UPDATE signin SET money = ? WHERE walletid = ?";
+                                        try (PreparedStatement preparedStatementYOU = connectionYOU.prepareStatement(queryYOU)) {
+                                            int y = Integer.parseInt(resultSetYOU1.getString("money")) + Integer.parseInt(txtAmountTra.getText());
+                                            preparedStatementYOU.setString(1, String.valueOf(y));
+                                            preparedStatementYOU.setString(2, txtWalletidTra.getText());
+                                            preparedStatementYOU.executeUpdate();
+                                        }
+                                    } catch (SQLException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                } else {
+                                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                                    alert.setTitle("Warning");
+                                    alert.setHeaderText(null);
+                                    alert.setContentText("################!");
+                                    alert.showAndWait();
+                                }
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    }
+            }else {
+                    System.err.println("Wallet_id not found!");
                 }
-
-
             }
         }
     }
+
+
+
 }
