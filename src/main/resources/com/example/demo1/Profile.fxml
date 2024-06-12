@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Profile">
+<AnchorPane fx:id="imgCaptchaCodeWthdrawal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Profile">
     <children>
         <ButtonBar layoutY="-9.0" prefHeight="69.0" prefWidth="796.0" style="-fx-background-color: #054d3d;">
             <buttons>
@@ -34,94 +34,6 @@
         </ButtonBar>
         <TabPane layoutX="30.0" layoutY="88.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="513.0" prefWidth="735.0" style="-fx-background-color: #054d3d; -fx-border-color: #097158;" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab style="-fx-background-color: #097158;" text="پروفایل">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
-                                <Text fill="WHITE" layoutX="600.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="WHITE" layoutX="527.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="WHITE" layoutX="564.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="WHITE" layoutX="573.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="WHITE" layoutX="605.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="WHITE" layoutX="567.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="WHITE" layoutX="573.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProfilePic">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <ImageView fitHeight="87.0" fitWidth="118.0" layoutX="226.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true" />
-                                <Text fx:id="txtPassword" fill="WHITE" layoutX="442.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fx:id="txtPhoneNumber" fill="WHITE" layoutX="440.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fx:id="txtUsername" fill="WHITE" layoutX="440.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fx:id="txtEmail" fill="WHITE" layoutX="440.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Text fx:id="txtLastName" fill="WHITE" layoutX="440.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="txtNewName" layoutX="102.0" layoutY="51.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new name" />
-                                <TextField fx:id="txtNewLastName" layoutX="103.0" layoutY="106.0" prefHeight="26.0" prefWidth="248.0" promptText="enter new Lastname" />
-                                <TextField fx:id="txtNewPassword" layoutX="104.0" layoutY="160.0" prefHeight="26.0" prefWidth="248.0" promptText="enter new password" />
-                                <TextField fx:id="txtNewPhoneNumber" layoutX="105.0" layoutY="214.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new phone number" />
-                                <TextField fx:id="txtNewEmail" layoutX="104.0" layoutY="267.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new email" />
-                                <Button fx:id="btnChange" layoutX="102.0" layoutY="379.0" mnemonicParsing="false" onAction="#PbtnChange" style="-fx-background-color: #097158;" text="change" />
-                        <Text fx:id="txtName" fill="WHITE" layoutX="442.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                           <font>
-                              <Font size="18.0" />
-                           </font></Text>
-                        <Text fill="WHITE" layoutX="573.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wallet_id">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txtWallet_id" fill="WHITE" layoutX="440.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                            </children></AnchorPane>
-                    </content>
-                </Tab>
                 <Tab fx:id="tabWallet" style="-fx-background-color: #097158;" text="کیف پول">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -227,54 +139,6 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabbardashtVaVariz" closable="false" style="-fx-background-color: #097158;" text="برداشت">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
-                            <children>
-                                <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@3757881.png" />
-                                    </image>
-                                </ImageView>
-                                <Text fill="WHITE" layoutX="56.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="txtAmount" layoutX="148.0" layoutY="76.0" prefHeight="26.0" prefWidth="167.0" />
-                                <TextField fx:id="txtAccountNumber" layoutX="136.0" layoutY="223.0" prefHeight="26.0" prefWidth="164.0" />
-                                <Button fx:id="btnDone" layoutX="538.0" layoutY="342.0" mnemonicParsing="false" onAction="#PbtnDone" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Button>
-                        <Text layoutX="52.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="شماره کارت" wrappingWidth="82.192626953125">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="56.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کد امنیتی">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <ImageView fitHeight="70.0" fitWidth="84.0" layoutX="219.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@d3e2686ead31b9f31970f8466f5a1ae0.jpg" />
-                           </image>
-                        </ImageView>
-                        <Button layoutX="342.0" layoutY="172.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" text="Button" />
-                        <Text layoutX="59.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="رمز اینترنتی">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="txtAccountNumber2" layoutX="141.0" layoutY="169.0" prefHeight="7.0" prefWidth="75.0" />
-                        <TextField fx:id="txtAmount2" layoutX="139.0" layoutY="125.0" prefHeight="26.0" prefWidth="167.0" />
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
                 <Tab style="-fx-background-color: #097158;" text="واریز">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -284,25 +148,20 @@
                               <AnchorPane prefHeight="750.0" prefWidth="700.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#054d3d" height="750.0" layoutX="-1.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="735.0" />
-                                    <TextField fx:id="txtCardNumberDeposit" layoutX="121.0" layoutY="135.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
-                                    <TextField fx:id="txtCVV2Deposit" layoutX="120.0" layoutY="193.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
-                                    <TextField fx:id="txtEXMonthDeposit" layoutX="122.0" layoutY="251.0" opacity="0.8" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
-                                    <TextField fx:id="txtEXYearDeposit" layoutX="185.0" layoutY="252.0" opacity="0.8" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
-                                    <TextField fx:id="txtCaptchaCodeDeposit" layoutX="121.0" layoutY="303.0" opacity="0.8" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
-                                    <TextField fx:id="txtPasswordDeposit" layoutX="117.0" layoutY="354.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
-                                    <Button fx:id="btnSendEmailDeposit" layoutX="293.0" layoutY="358.0" mnemonicParsing="false" onAction="#PbtnSendEmailDeposit" opacity="0.8" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="Send pass" />
-                                    <Button fx:id="btnDoneDeposit" layoutX="120.0" layoutY="447.0" mnemonicParsing="false" onAction="#PbtnDoneDeposit" opacity="0.8" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="Payment" />
-                                    <ImageView fx:id="imgCaptcha2" fitHeight="35.0" fitWidth="110.0" layoutX="279.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+                                    <TextField fx:id="txtCardNumberDeposit" layoutX="121.0" layoutY="168.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtCVV2Deposit" layoutX="120.0" layoutY="226.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtEXMonthDeposit" layoutX="130.0" layoutY="285.0" opacity="0.8" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtEXYearDeposit" layoutX="193.0" layoutY="286.0" opacity="0.8" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtCaptchaCodeDeposit" layoutX="128.0" layoutY="337.0" opacity="0.8" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #097158; -fx-background-radius: 30; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <TextField fx:id="txtPasswordDeposit" layoutX="121.0" layoutY="391.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <Button fx:id="btnSendEmailDeposit" layoutX="298.0" layoutY="395.0" mnemonicParsing="false" onAction="#PbtnSendEmailDeposit" opacity="0.8" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="Send pass" />
+                                    <Button fx:id="btnDoneDeposit" layoutX="120.0" layoutY="489.0" mnemonicParsing="false" onAction="#PbtnDoneDeposit" opacity="0.8" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-color: ff0000; -fx-border-radius: 25;" text="Payment" textFill="RED" />
+                                    <ImageView fx:id="imgCaptcha2" fitHeight="35.0" fitWidth="110.0" layoutX="286.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@d3e2686ead31b9f31970f8466f5a1ae0.jpg" />
                                        </image></ImageView>
-                                    <Label layoutX="121.0" layoutY="96.0" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  اطلاعات کارت">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <TextArea layoutY="483.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="269.0" prefWidth="721.0" style="-fx-border-color: #054d3d; -fx-background-color: #000000;" text="راهنما و نکات ایمنی&#10;شماره کارت: 16 رقمی بوده و بصورت 4 قسمت 4 رقمی روی کارت درج شده است.&#10;cvv2: با طول 3 یا 4 رقم کنار شماره کارت و یا پشت کارت درج شده است.&#10;تاریخ انقضا: شامل دو بخش ماه و سال انقضا در کنار شماره کارت درج شده است.&#10;رمز اینترنتی: با عنوان رمز دوم و در برخی موارد با PIN2 شناخته می شود، از طریق بانک صادر کننده کارت تولید شده و همچنین از طریق دستگاه &#10;های خودپرداز بانک صادر کننده قابل تهیه و یا تغییر می باشد.&#10;کد امنیتی: بخشی از محتوای صفحه پرداخت است و لازم است برای ادامه فرایند خرید ، کد موجود که به صورت عددی در تصویر مشخص شده است&#10; در محل پیش بینی شده درج شود.&#10;دروازه پرداخت اینترنتی به پرداخت ملت با استفاده از پروتکل امن https به مشتریان خود ارایه خدمت نموده و با آدرس https://bpm.shaparak.ir &#10;شروع می شود. خواهشمند است به منظور جلوگیری از سوء استفاده های احتمالی پیش از ورود هرگونه اطلاعات، آدرس موجود در بخش مرورگر &#10;وب خود را با آدرس فوق مقایسه نمایید و درصورت مشاهده هر نوع مغایرت احتمالی، موضوع را با ما درمیان بگذارید.&#10;برای جلوگیری از افشای رمز کارت خود،حتی المقدور از صفحه کلید مجازی استفاده فرمایید.&#10;لطفا از صحت نام فروشنده و مبلغ نمایش داده شده، اطمینان حاصل فرمایید.&#10;برای کسب اطلاعات بیشتر، گزارش فروشگاههای مشکوک و همچنین اطلاع از وضعیت پذیرندگان اینترنتی با ما تماس بگیرید" />
-                                    <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#097158" height="304.0" layoutX="471.0" layoutY="101.0" stroke="DARKSEAGREEN" strokeType="INSIDE" width="234.0" />
+                                    <TextArea layoutY="527.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="269.0" prefWidth="721.0" style="-fx-border-color: #054d3d; -fx-background-color: #000000;" text="راهنما و نکات ایمنی&#10;شماره کارت: 16 رقمی بوده و بصورت 4 قسمت 4 رقمی روی کارت درج شده است.&#10;cvv2: با طول 3 یا 4 رقم کنار شماره کارت و یا پشت کارت درج شده است.&#10;تاریخ انقضا: شامل دو بخش ماه و سال انقضا در کنار شماره کارت درج شده است.&#10;رمز اینترنتی: با عنوان رمز دوم و در برخی موارد با PIN2 شناخته می شود، از طریق بانک صادر کننده کارت تولید شده و همچنین از طریق دستگاه &#10;های خودپرداز بانک صادر کننده قابل تهیه و یا تغییر می باشد.&#10;کد امنیتی: بخشی از محتوای صفحه پرداخت است و لازم است برای ادامه فرایند خرید ، کد موجود که به صورت عددی در تصویر مشخص شده است&#10; در محل پیش بینی شده درج شود.&#10;دروازه پرداخت اینترنتی به پرداخت ملت با استفاده از پروتکل امن https به مشتریان خود ارایه خدمت نموده و با آدرس https://bpm.shaparak.ir &#10;شروع می شود. خواهشمند است به منظور جلوگیری از سوء استفاده های احتمالی پیش از ورود هرگونه اطلاعات، آدرس موجود در بخش مرورگر &#10;وب خود را با آدرس فوق مقایسه نمایید و درصورت مشاهده هر نوع مغایرت احتمالی، موضوع را با ما درمیان بگذارید.&#10;برای جلوگیری از افشای رمز کارت خود،حتی المقدور از صفحه کلید مجازی استفاده فرمایید.&#10;لطفا از صحت نام فروشنده و مبلغ نمایش داده شده، اطمینان حاصل فرمایید.&#10;برای کسب اطلاعات بیشتر، گزارش فروشگاههای مشکوک و همچنین اطلاع از وضعیت پذیرندگان اینترنتی با ما تماس بگیرید" />
+                                    <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#097158" height="266.0" layoutX="471.0" layoutY="101.0" stroke="DARKSEAGREEN" strokeType="INSIDE" width="234.0" />
                                     <Label layoutX="478.0" layoutY="105.0" opacity="0.9" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-color: #054d3d;" text="  اطلاعات پذیرنده">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
@@ -323,7 +182,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="482.0" layoutY="346.0" opacity="0.9" prefHeight="26.0" prefWidth="42.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-color: #054d3d; -fx-border-radius: 25;" text="  مبلغ : ">
+                                    <Label layoutX="57.0" layoutY="116.0" opacity="0.9" prefHeight="26.0" prefWidth="42.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-color: #054d3d; -fx-border-radius: 25;" text="  مبلغ : ">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -333,36 +192,31 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Text>
-                                    <Label layoutX="28.0" layoutY="139.0" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text=" شماره کارت">
+                                    <Label layoutX="28.0" layoutY="172.0" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text=" شماره کارت">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="33.0" layoutY="198.0" prefHeight="26.0" prefWidth="56.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="CVV2    ">
+                                    <Label layoutX="41.0" layoutY="232.0" prefHeight="26.0" prefWidth="56.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="CVV2    ">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="27.0" layoutY="253.0" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  تاریخ انقضا">
+                                    <Label layoutX="34.0" layoutY="287.0" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  تاریخ انقضا">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="28.0" layoutY="307.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  کد امنیتی">
+                                    <Label layoutX="35.0" layoutY="341.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  کد امنیتی">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="8.0" layoutY="360.0" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  رمز اینترنتی کارت">
+                                    <Label layoutX="16.0" layoutY="394.0" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  رمز اینترنتی کارت">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Text fx:id="txtPrice" fill="DARKSEAGREEN" layoutX="573.0" layoutY="365.0" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="102.936767578125">
-                                       <font>
-                                          <Font size="17.0" />
-                                       </font>
-                                    </Text>
                                     <Text fill="DARKSEAGREEN" layoutX="591.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="58419145">
                                        <font>
                                           <Font size="17.0" />
@@ -383,23 +237,24 @@
                                           <Image url="@1111.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="txtEmailDeposit" layoutX="113.0" layoutY="402.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
-                                    <Label layoutX="38.0" layoutY="405.0" prefHeight="26.0" prefWidth="40.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  ایمیل">
+                                    <TextField fx:id="txtEmailDeposit" layoutX="117.0" layoutY="439.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
+                                    <Label layoutX="42.0" layoutY="442.0" prefHeight="26.0" prefWidth="40.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="  ایمیل">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <ImageView fitHeight="70.0" fitWidth="67.0" layoutX="378.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="70.0" fitWidth="67.0" layoutX="385.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@6516.png" />
                                        </image>
                                     </ImageView>
-                                    <Button fx:id="btnRefreshCaptchaDeposit" layoutX="395.0" layoutY="307.0" mnemonicParsing="false" onAction="#PbtnRefreshCaptchaDeposit" opacity="0.51" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 15;" />
+                                    <Button fx:id="btnRefreshCaptchaDeposit" layoutX="402.0" layoutY="341.0" mnemonicParsing="false" onAction="#PbtnRefreshCaptchaDeposit" opacity="0.51" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 15;" />
                                     <ImageView fitHeight="78.0" fitWidth="721.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@Screenshot%202024-06-03%20124511.png" />
                                        </image>
                                     </ImageView>
+                                    <TextField fx:id="txtmoaneyDeposit1" layoutX="120.0" layoutY="110.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -407,40 +262,83 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-            <Tab text="swap">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-            <Tab text="تبادل">
+                <Tab fx:id="tabbardashtVaVariz" style="-fx-background-color: #097158;" text="برداشت">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
+                            <children>
+                                <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="20.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@3757881.png" />
+                                    </image>
+                                </ImageView>
+                                <Text layoutX="53.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" مقدار">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="txtAmountwWthdrawal" layoutX="140.0" layoutY="76.0" prefHeight="30.0" prefWidth="170.0" />
+                                <TextField fx:id="txtOnlineCode" layoutX="140.0" layoutY="215.0" prefHeight="30.0" prefWidth="170.0" />
+                                <Button fx:id="btnDoneWthdrawal" layoutX="538.0" layoutY="342.0" mnemonicParsing="false" onAction="#PbtnDoneWthdrawal" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #097158;" text="Done">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+                        <Text layoutX="52.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="شماره کارت" wrappingWidth="82.192626953125">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="56.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کد امنیتی">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="btnRefreshCaptchaWthdrawal" layoutX="342.0" layoutY="172.0" mnemonicParsing="false" onAction="#PbtnRefreshCaptchaWthdrawal" prefHeight="30.0" prefWidth="30.0" text="Button" />
+                        <Text layoutX="55.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="رمز اینترنتی">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="txtCodeWthdrawal" layoutX="141.0" layoutY="169.0" prefHeight="30.0" prefWidth="75.0" />
+                        <TextField fx:id="txtAmountWthdrawal" layoutX="141.0" layoutY="123.0" prefHeight="30.0" prefWidth="170.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            <Tab style="-fx-background-color: #097158;" text="swap">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <MenuButton fx:id="mnuChoosEx" layoutX="25.0" layoutY="77.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="262.0" text="select">
+                        <TextField fx:id="txtamoutSWAP" layoutX="125.0" layoutY="122.0" prefHeight="35.0" prefWidth="276.0" promptText="enter amount" />
+                        <MenuButton fx:id="mnuTypeSWAP" layoutX="335.0" layoutY="126.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" text="type">
                           <items>
-                            <MenuItem fx:id="mnurippelEx" mnemonicParsing="false" onAction="#PmnurippelEx" text="ریپل " />
-                              <MenuItem fx:id="mnuAvalanchEx" mnemonicParsing="false" onAction="#PmnuAvalanchEx" text="آوالانچ" />
-                              <MenuItem fx:id="mnuLightCoinEx" mnemonicParsing="false" onAction="#PmnuLightCoinEx" text="لایت کوین" />
-                              <MenuItem fx:id="mnuDayEx" mnemonicParsing="false" onAction="#PmnuDayEx" text="دی" />
-                              <MenuItem fx:id="mnuStellarEx" mnemonicParsing="false" onAction="#PmnuStellarEx" text="استلار" />
-                              <MenuItem fx:id="mnuonyEx" mnemonicParsing="false" onAction="#PmnuonyEx" text="پول" />
+                            <MenuItem fx:id="mnureppleSWAP" mnemonicParsing="false" onAction="#PmnureppleSWAP" text="ریپل" />
+                            <MenuItem fx:id="mnuavalancheSWAP" mnemonicParsing="false" onAction="#PmnuavalancheSWAP" text="آوالانچ" />
+                              <MenuItem fx:id="mnuLightcoinSWAP" mnemonicParsing="false" onAction="#PmnuLightcoinSWAP" text="لایت کوین" />
+                              <MenuItem fx:id="mnudaySWAP" mnemonicParsing="false" onAction="#PmnudaySWAP" text="دی" />
+                              <MenuItem fx:id="mnustellarSWAP" mnemonicParsing="false" onAction="#PmnustellarSWAP" text="استلار" />
                           </items>
                         </MenuButton>
-                        <TextField fx:id="txtamountEx" layoutX="19.0" layoutY="159.0" prefHeight="26.0" prefWidth="269.0" promptText="amount" />
-                        <RadioButton fx:id="btnSellEx" layoutX="70.0" layoutY="246.0" mnemonicParsing="false" onAction="#PbtnSellEx" text="sell" textFill="WHITE">
+                        <TextField fx:id="txtamoutSWAP1" layoutX="125.0" layoutY="206.0" prefHeight="35.0" prefWidth="276.0" promptText="enter amount" />
+                        <MenuButton fx:id="mnuTypeSWAP1" layoutX="336.0" layoutY="210.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" text="type">
+                           <items>
+                              <MenuItem fx:id="mnureppleSWAP1" mnemonicParsing="false" onAction="#PmnureppleSWAP1" text="ریپل" />
+                              <MenuItem fx:id="mnuavalancheSWAP1" mnemonicParsing="false" onAction="#PmnuavalancheSWAP1" text="آوالانچ" />
+                              <MenuItem fx:id="mnuLightcoinSWAP1" mnemonicParsing="false" onAction="#PmnuLightcoinSWAP1" text="لایت کوین" />
+                              <MenuItem fx:id="mnudaySWAP1" mnemonicParsing="false" onAction="#PmnudaySWAP1" text="دی" />
+                              <MenuItem fx:id="mnustellarSWAP1" mnemonicParsing="false" onAction="#PmnustellarSWAP1" text="استلار" />
+                           </items>
+                        </MenuButton>
+                        <Button fx:id="btnDoneSWAP" layoutX="478.0" layoutY="167.0" mnemonicParsing="false" onAction="#PbtnDoneSWAP" text="Done">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="14.0" />
                            </font>
-                        </RadioButton>
-                        <RadioButton fx:id="btnBuyEx" layoutX="200.0" layoutY="246.0" mnemonicParsing="false" onAction="#PbtnBuyEx" text="buy" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </RadioButton>
+                        </Button>
+                        <Button layoutX="341.0" layoutY="169.0" mnemonicParsing="false" text="Button" />
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="tabbardashtVaVariz1" closable="false" style="-fx-background-color: #097158;" text="انتقال">
+            <Tab fx:id="tabbardashtVaVariz1" style="-fx-background-color: #097158;" text="انتقال">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="628.0">
                      <children>
@@ -480,7 +378,123 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="تاریخچه">
+            <Tab style="-fx-background-color: #097158;" text="تبادل">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <MenuButton fx:id="mnuChoosEx" layoutX="25.0" layoutY="77.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="262.0" text="select">
+                          <items>
+                            <MenuItem fx:id="mnurippelEx" mnemonicParsing="false" onAction="#PmnurippelEx" text="ریپل " />
+                              <MenuItem fx:id="mnuAvalanchEx" mnemonicParsing="false" onAction="#PmnuAvalanchEx" text="آوالانچ" />
+                              <MenuItem fx:id="mnuLightCoinEx" mnemonicParsing="false" onAction="#PmnuLightCoinEx" text="لایت کوین" />
+                              <MenuItem fx:id="mnuDayEx" mnemonicParsing="false" onAction="#PmnuDayEx" text="دی" />
+                              <MenuItem fx:id="mnuStellarEx" mnemonicParsing="false" onAction="#PmnuStellarEx" text="استلار" />
+                              <MenuItem fx:id="mnuonyEx" mnemonicParsing="false" onAction="#PmnuonyEx" text="پول" />
+                          </items>
+                        </MenuButton>
+                        <TextField fx:id="txtamountEx" layoutX="19.0" layoutY="159.0" prefHeight="26.0" prefWidth="269.0" promptText="amount" />
+                        <RadioButton fx:id="btnSellEx" layoutX="70.0" layoutY="246.0" mnemonicParsing="false" onAction="#PbtnSellEx" text="sell" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="btnBuyEx" layoutX="200.0" layoutY="246.0" mnemonicParsing="false" onAction="#PbtnBuyEx" text="buy" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+                <Tab fx:id="TabProfile" style="-fx-background-color: #097158;" text="پروفایل">
+                    <content>
+                        <AnchorPane fx:id="TabPrifile" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Text fill="WHITE" layoutX="601.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="527.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="564.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="573.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="605.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="567.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="573.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProfilePic">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="87.0" fitWidth="118.0" layoutX="226.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true" />
+                                <Text fx:id="txtPassword" fill="WHITE" layoutX="442.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="txtPhoneNumber" fill="WHITE" layoutX="440.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="txtUsername" fill="WHITE" layoutX="440.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="txtEmail" fill="WHITE" layoutX="440.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="txtLastName" fill="WHITE" layoutX="440.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="txtNewName" layoutX="102.0" layoutY="51.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new name" />
+                                <TextField fx:id="txtNewLastName" layoutX="103.0" layoutY="106.0" prefHeight="26.0" prefWidth="248.0" promptText="enter new Lastname" />
+                                <TextField fx:id="txtNewPassword" layoutX="104.0" layoutY="160.0" prefHeight="26.0" prefWidth="248.0" promptText="enter new password" />
+                                <TextField fx:id="txtNewPhoneNumber" layoutX="105.0" layoutY="214.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new phone number" />
+                                <TextField fx:id="txtNewEmail" layoutX="104.0" layoutY="267.0" prefHeight="26.0" prefWidth="249.0" promptText="enter new email" />
+                                <Button fx:id="btnChange" layoutX="102.0" layoutY="379.0" mnemonicParsing="false" onAction="#PbtnChange" style="-fx-background-color: #097158;" text="change" />
+                        <Text fx:id="txtName" fill="WHITE" layoutX="442.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Text>
+                        <Text fill="WHITE" layoutX="573.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wallet_id">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtWallet_id" fill="WHITE" layoutX="440.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+            <Tab style="-fx-background-color: #097158;" text="تاریخچه">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
