@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import javax.crypto.spec.PSource;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,6 +32,15 @@ public class CalendarTime {
         return formattedTime;
     }
 
+    public String formatTime35(long milli) {
+        Calendar customTime = Calendar.getInstance();
+        customTime.setTimeInMillis(milli);
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:35");
+        String formattedTime = timeFormat.format(customTime.getTime());
+        return formattedTime;
+    }
+
+
     public long dif(int year,int month,int dey,int hour,int minute,int sec) {
         CalendarTime currentTime = new CalendarTime();
         // currentTime.calculateRemainingTime(Calendar.getInstance());
@@ -56,7 +66,8 @@ public class CalendarTime {
         CalendarTime s=new CalendarTime();
         String datetime = s + " " + "ff";
 
-        long g=1717646675187L;
+        System.out.println("-----------------------"+s.formatTime(1718196335501L));
+        long g=1718196335501L;
         String dateNow= s.dateNow(g);
         System.out.println(dateNow);
         String dateNow1= s.formatDate(g);
@@ -64,7 +75,5 @@ public class CalendarTime {
 
         String dateNow11= s.formatTime(g);
         System.out.println(dateNow11);
-
-
     }
 }

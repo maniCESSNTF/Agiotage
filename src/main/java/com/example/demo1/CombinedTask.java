@@ -14,10 +14,12 @@ import java.util.Calendar;
 public class CombinedTask {
     static class LinearRegressionExample {
 
+
         public long miliSec(String date, String time) {
             // ترکیب تاریخ و زمان با یک فاصله (space) بین آن‌ها
             String datetime = date + " " + time;
             String regex = "(\\d{4})-(\\d{2})-(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})(\\.\\d+)?";
+
 
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(datetime);
@@ -214,6 +216,6 @@ public class CombinedTask {
         TimerTask task = new ReadPrices();
 
         // برنامه‌ریزی برای اجرای متد هر ۱۵ ثانیه (۱۵۰۰۰ میلی‌ثانیه)
-        timer.schedule(task, 0, 60000);
+        timer.schedule(task, 0, 1);
     }
 }
