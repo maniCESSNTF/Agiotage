@@ -101,6 +101,9 @@ public class Profile {
     private TextField txtCodeWthdrawal;
 
     @FXML
+    private TextField txtpriceEx1;
+
+    @FXML
     private Tab TabProfile;
 
     @FXML
@@ -621,7 +624,7 @@ public class Profile {
         if(SWExchange || !btnSellEx.isSelected()) {
 
             try (Connection connectionSWAP = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                String queryEx = "INSERT INTO exchange (username, time, date, sellbuy,type,amount) VALUES (?, ?, ?, ?, ?, ?)";
+                String queryEx = "INSERT INTO exchange (username, time, date, sellbuy,type,amount,price) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 try (PreparedStatement preparedStatementSWAP = connectionSWAP.prepareStatement(queryEx)) {
                     CalendarTime calendarTime = new CalendarTime();
                     preparedStatementSWAP.setString(1, thisUsername);
@@ -630,6 +633,7 @@ public class Profile {
                     preparedStatementSWAP.setInt(4, typeEX);
                     preparedStatementSWAP.setString(5, typeCoinEx);
                     preparedStatementSWAP.setDouble(6, Double.parseDouble(txtamountEx.getText()));
+                    preparedStatementSWAP.setDouble(7, Double.parseDouble(txtpriceEx1.getText()));
                     preparedStatementSWAP.executeUpdate();
                 }
             } catch (SQLException e) {
@@ -1363,7 +1367,7 @@ void PbtnDoneSWAP(ActionEvent event) throws SQLException {
         Stage stage = (Stage) btnGoHomePage.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
-        AnchorPane root = FXMLLoader.load(getClass().getResource("coiinPage.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         Scene scene = new Scene(root, 794, 637);
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -383,7 +383,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <MenuButton fx:id="mnuChoosEx" layoutX="25.0" layoutY="77.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="262.0" text="select">
+                        <MenuButton fx:id="mnuChoosEx" layoutX="62.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="260.0" text="select">
                           <items>
                             <MenuItem fx:id="mnurippelEx" mnemonicParsing="false" onAction="#PmnurippelEx" text="ریپل " />
                               <MenuItem fx:id="mnuAvalanchEx" mnemonicParsing="false" onAction="#PmnuAvalanchEx" text="آوالانچ" />
@@ -392,18 +392,19 @@
                               <MenuItem fx:id="mnuStellarEx" mnemonicParsing="false" onAction="#PmnuStellarEx" text="استلار" />
                           </items>
                         </MenuButton>
-                        <TextField fx:id="txtamountEx" layoutX="19.0" layoutY="159.0" prefHeight="26.0" prefWidth="269.0" promptText="amount" />
-                        <RadioButton fx:id="btnSellEx" layoutX="70.0" layoutY="246.0" mnemonicParsing="false" onAction="#PbtnSellEx" text="sell" textFill="WHITE">
+                        <TextField fx:id="txtamountEx" layoutX="62.0" layoutY="165.0" prefHeight="30.0" prefWidth="260.0" promptText="amount" />
+                        <RadioButton fx:id="btnSellEx" layoutX="70.0" layoutY="243.0" mnemonicParsing="false" onAction="#PbtnSellEx" text="sell" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="btnBuyEx" layoutX="200.0" layoutY="246.0" mnemonicParsing="false" onAction="#PbtnBuyEx" text="buy" textFill="WHITE">
+                        <RadioButton fx:id="btnBuyEx" layoutX="70.0" layoutY="211.0" mnemonicParsing="false" onAction="#PbtnBuyEx" text="buy" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </RadioButton>
-                        <Button fx:id="btnDoneEx" layoutX="205.0" layoutY="324.0" mnemonicParsing="false" onAction="#PbtnDoneEx" text="Done" />
+                        <Button fx:id="btnDoneEx" layoutX="219.0" layoutY="234.0" mnemonicParsing="false" onAction="#PbtnDoneEx" text="Done" />
+                        <TextField fx:id="txtpriceEx1" layoutX="63.0" layoutY="122.0" prefHeight="30.0" prefWidth="260.0" promptText="price" />
                      </children></AnchorPane>
               </content>
             </Tab>
