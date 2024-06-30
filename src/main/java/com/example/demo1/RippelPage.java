@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.DecimalFormat;
 
 public class RippelPage {
 
@@ -118,6 +119,9 @@ public class RippelPage {
     private Button btnHome;
 
     @FXML
+    private Button btnrippleDia;
+
+    @FXML
     private Button btnset;
 
     @FXML
@@ -220,7 +224,13 @@ public class RippelPage {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    @FXML
+    void PbtnrippleDia(ActionEvent event) throws IOException {
+        LineChartExample line = new LineChartExample();
+        Stage stage = (Stage) btnHome.getScene().getWindow();
+        line.start(stage);
 
+    }
     @FXML
     void Pbtnset(ActionEvent event)throws  IOException {
         String[][] changesDuring = new String[10][3];
@@ -263,6 +273,43 @@ public class RippelPage {
                 SQLException e) {
             e.printStackTrace();
         }
+
+        String url = "jdbc:mysql://localhost:3306/agiotage2";
+        String user = "root";
+        String password = "";
+
+        double usd24=0;
+        double usd=0;
+        boolean sw24=true;
+
+        try {
+            Connection conn = DriverManager.getConnection(url, user, password);
+            String initialEmail = "2024-06-12";
+
+            // همه ردیف‌هایی که ایمیل آن‌ها بزرگتر یا مساوی با ایمیل مورد نظر است را بخوانید
+            String sql = "SELECT * FROM prices WHERE DATE >= ? ORDER BY DATE";
+
+            try (PreparedStatement preparedStatementYOU = conn.prepareStatement(sql)) {
+                preparedStatementYOU.setString(1, initialEmail);
+                ResultSet rs = preparedStatementYOU.executeQuery();
+                while (rs.next()) {
+                    if(sw24){
+                        usd24=rs.getDouble("USD");
+                        sw24=false;
+                    }
+                    usd=rs.getDouble("USD");
+                }
+                rs.close();
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        txtNowPrice.setText(String.valueOf(Double.valueOf(df.format(usd))));
+        txtPercentage.setText(String.valueOf(Double.valueOf(df.format(((usd-usd24)/usd)*100))));
+//        txtVolume-----------------------------------------------------حجم معاملات
 
         txt11.setText(changesDuring[0][0]);
         txt12.setText(changesDuring[0][1]);

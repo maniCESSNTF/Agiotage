@@ -2,7 +2,8 @@ package com.example.demo1;
 
 public class User {
     ///پروفایل/کیف پول/تاریخچه
-    private String username;
+    int Role;
+    public String username;
     private String password;
     private String fullName;
     private String Name;

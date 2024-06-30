@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -254,26 +255,30 @@ public class HomePage {
             e.printStackTrace();
         }
 
-        txt11.setText(String.valueOf(usd));
-        txt12.setText(String.valueOf((usd-usd24)*100/usd));
-        txt13.setText(String.valueOf(usdmax));
-        txt14.setText(String.valueOf(usdmin));
-        txt21.setText(String.valueOf(eur));
-        txt22.setText(String.valueOf((eur-eur24)*100/eur));
-        txt23.setText(String.valueOf(eurmax));
-        txt24.setText(String.valueOf(eurmin));
-        txt31.setText(String.valueOf(toman));
-        txt32.setText(String.valueOf((toman-toman24)*100/toman));
-        txt33.setText(String.valueOf(tomanmax));
-        txt34.setText(String.valueOf(tomanmin));
-        txt41.setText(String.valueOf(yen));
-        txt42.setText(String.valueOf((yen-yen24)*100/yen));
-        txt43.setText(String.valueOf(yenmax));
-        txt44.setText(String.valueOf(yenmin));
-        txt51.setText(String.valueOf(gbp));
-        txt52.setText(String.valueOf((gbp-gbp24)*100/gbp));
-        txt53.setText(String.valueOf(gbpmax));
-        txt54.setText(String.valueOf(gbpmin));
+
+        DecimalFormat df = new DecimalFormat("#.##");
+//        double roundedNumber = Double.valueOf(df.format(number));
+
+        txt11.setText(String.valueOf(Double.valueOf(df.format(usd))));
+        txt12.setText(String.valueOf((Double.valueOf(df.format((usd-usd24)*100/usd)))));
+        txt13.setText(String.valueOf(Double.valueOf(df.format(usdmax))));
+        txt14.setText(String.valueOf(Double.valueOf(df.format(usdmin))));
+        txt21.setText(String.valueOf(Double.valueOf(df.format(eur))));
+        txt22.setText(String.valueOf(Double.valueOf(df.format((eur-eur24)*100/eur))));
+        txt23.setText(String.valueOf(Double.valueOf(df.format(eurmax))));
+        txt24.setText(String.valueOf(Double.valueOf(df.format(eurmin))));
+        txt31.setText(String.valueOf(Double.valueOf(df.format(toman))));
+        txt32.setText(String.valueOf(Double.valueOf(df.format((toman-toman24)*100/toman))));
+        txt33.setText(String.valueOf(Double.valueOf(df.format(tomanmax))));
+        txt34.setText(String.valueOf(Double.valueOf(df.format(tomanmin))));
+        txt41.setText(String.valueOf(Double.valueOf(df.format(yen))));
+        txt42.setText(String.valueOf(Double.valueOf(df.format((yen-yen24)*100/yen))));
+        txt43.setText(String.valueOf(Double.valueOf(df.format(yenmax))));
+        txt44.setText(String.valueOf(Double.valueOf(df.format(yenmin))));
+        txt51.setText(String.valueOf(Double.valueOf(df.format(gbp))));
+        txt52.setText(String.valueOf(Double.valueOf(df.format((gbp-gbp24)*100/gbp))));
+        txt53.setText(String.valueOf(Double.valueOf(df.format(gbpmax))));
+        txt54.setText(String.valueOf(Double.valueOf(df.format(gbpmin))));
 
 
 
@@ -366,142 +371,218 @@ public class HomePage {
     }
 
     void changeTartib(int sorted[]){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        DecimalFormat df = new DecimalFormat("#.##");
+
+
+
+
+        txt11.setText(String.valueOf(Double.valueOf(df.format(usd))));
+        txt12.setText(String.valueOf((Double.valueOf(df.format((usd-usd24)*100/usd)))));
+        txt13.setText(String.valueOf(Double.valueOf(df.format(usdmax))));
+        txt14.setText(String.valueOf(Double.valueOf(df.format(usdmin))));
+        txt21.setText(String.valueOf(Double.valueOf(df.format(eur))));
+        txt22.setText(String.valueOf(Double.valueOf(df.format((eur-eur24)*100/eur))));
+        txt23.setText(String.valueOf(Double.valueOf(df.format(eurmax))));
+        txt24.setText(String.valueOf(Double.valueOf(df.format(eurmin))));
+        txt31.setText(String.valueOf(Double.valueOf(df.format(toman))));
+        txt32.setText(String.valueOf(Double.valueOf(df.format((toman-toman24)*100/toman))));
+        txt33.setText(String.valueOf(Double.valueOf(df.format(tomanmax))));
+        txt34.setText(String.valueOf(Double.valueOf(df.format(tomanmin))));
+        txt41.setText(String.valueOf(Double.valueOf(df.format(yen))));
+        txt42.setText(String.valueOf(Double.valueOf(df.format((yen-yen24)*100/yen))));
+        txt43.setText(String.valueOf(Double.valueOf(df.format(yenmax))));
+        txt44.setText(String.valueOf(Double.valueOf(df.format(yenmin))));
+        txt51.setText(String.valueOf(Double.valueOf(df.format(gbp))));
+        txt52.setText(String.valueOf(Double.valueOf(df.format((gbp-gbp24)*100/gbp))));
+        txt53.setText(String.valueOf(Double.valueOf(df.format(gbpmax))));
+        txt54.setText(String.valueOf(Double.valueOf(df.format(gbpmin))));
+
+
+
+
+
         if(sorted[0]==0){
-            txt11.setText(String.valueOf(usd));
-            txt12.setText(String.valueOf((usd-usd24)*100/usd));
-            txt13.setText(String.valueOf(usdmax));
-            txt14.setText(String.valueOf(usdmin));
+            txt11.setText(String.valueOf(Double.valueOf(df.format(usd))));
+            txt12.setText(String.valueOf((Double.valueOf(df.format((usd-usd24)*100/usd)))));
+            txt13.setText(String.valueOf(Double.valueOf(df.format(usdmax))));
+            txt14.setText(String.valueOf(Double.valueOf(df.format(usdmin))));
+            btnrippel.setLayoutY(145);
         }else  if(sorted[1]==0){
-            txt21.setText(String.valueOf(usd));
-            txt22.setText(String.valueOf((usd-usd24)*100/usd));
-            txt23.setText(String.valueOf(usdmax));
-            txt24.setText(String.valueOf(usdmin));
+            txt21.setText(String.valueOf(Double.valueOf(df.format(usd))));
+            txt22.setText(String.valueOf((Double.valueOf(df.format((usd-usd24)*100/usd)))));
+            txt23.setText(String.valueOf(Double.valueOf(df.format(usdmax))));
+            txt24.setText(String.valueOf(Double.valueOf(df.format(usdmin))));
+            btnrippel.setLayoutY(217);
         }else if(sorted[2]==0){
-            txt31.setText(String.valueOf(usd));
-            txt32.setText(String.valueOf((usd-usd24)*100/usd));
-            txt33.setText(String.valueOf(usdmax));
-            txt34.setText(String.valueOf(usdmin));
+            txt31.setText(String.valueOf(Double.valueOf(df.format(usd))));
+            txt32.setText(String.valueOf((Double.valueOf(df.format((usd-usd24)*100/usd)))));
+            txt33.setText(String.valueOf(Double.valueOf(df.format(usdmax))));
+            txt34.setText(String.valueOf(Double.valueOf(df.format(usdmin))));
+            btnrippel.setLayoutY(283);
         }else if(sorted[3]==0){
-            txt41.setText(String.valueOf(usd));
-            txt42.setText(String.valueOf((usd-usd24)*100/usd));
-            txt43.setText(String.valueOf(usdmax));
-            txt44.setText(String.valueOf(usdmin));
+            txt41.setText(String.valueOf(Double.valueOf(df.format(usd))));
+            txt42.setText(String.valueOf((Double.valueOf(df.format((usd-usd24)*100/usd)))));
+            txt43.setText(String.valueOf(Double.valueOf(df.format(usdmax))));
+            txt44.setText(String.valueOf(Double.valueOf(df.format(usdmin))));
+            btnrippel.setLayoutY(352);
         }else if(sorted[4]==0){
-            txt51.setText(String.valueOf(usd));
-            txt52.setText(String.valueOf((usd-usd24)*100/usd));
-            txt53.setText(String.valueOf(usdmax));
-            txt54.setText(String.valueOf(usdmin));
+            txt51.setText(String.valueOf(Double.valueOf(df.format(usd))));
+            txt52.setText(String.valueOf((Double.valueOf(df.format((usd-usd24)*100/usd)))));
+            txt53.setText(String.valueOf(Double.valueOf(df.format(usdmax))));
+            txt54.setText(String.valueOf(Double.valueOf(df.format(usdmin))));
+            btnrippel.setLayoutY(423);
         }
 
 
         if(sorted[0]==1){
-            txt11.setText(String.valueOf(eur));
-            txt12.setText(String.valueOf((eur-eur24)*100/eur));
-            txt13.setText(String.valueOf(eurmax));
-            txt14.setText(String.valueOf(eurmin));
+            txt11.setText(String.valueOf(Double.valueOf(df.format(eur))));
+            txt12.setText(String.valueOf(Double.valueOf(df.format((eur-eur24)*100/eur))));
+            txt13.setText(String.valueOf(Double.valueOf(df.format(eurmax))));
+            txt14.setText(String.valueOf(Double.valueOf(df.format(eurmin))));
+            btnavalanche.setLayoutY(145);
         }else  if(sorted[1]==1){
-            txt21.setText(String.valueOf(eur));
-            txt22.setText(String.valueOf((eur-eur24)*100/eur));
-            txt23.setText(String.valueOf(eurmax));
-            txt24.setText(String.valueOf(eurmin));
+            txt21.setText(String.valueOf(Double.valueOf(df.format(eur))));
+            txt22.setText(String.valueOf(Double.valueOf(df.format((eur-eur24)*100/eur))));
+            txt23.setText(String.valueOf(Double.valueOf(df.format(eurmax))));
+            txt24.setText(String.valueOf(Double.valueOf(df.format(eurmin))));
+            btnavalanche.setLayoutY(217);
         }else if(sorted[2]==1){
-            txt31.setText(String.valueOf(eur));
-            txt32.setText(String.valueOf((eur-eur24)*100/eur));
-            txt33.setText(String.valueOf(eurmax));
-            txt34.setText(String.valueOf(eurmin));
+            txt31.setText(String.valueOf(Double.valueOf(df.format(eur))));
+            txt32.setText(String.valueOf(Double.valueOf(df.format((eur-eur24)*100/eur))));
+            txt33.setText(String.valueOf(Double.valueOf(df.format(eurmax))));
+            txt34.setText(String.valueOf(Double.valueOf(df.format(eurmin))));
+            btnavalanche.setLayoutY(283);
         }else if(sorted[3]==1){
-            txt41.setText(String.valueOf(eur));
-            txt42.setText(String.valueOf((eur-eur24)*100/eur));
-            txt43.setText(String.valueOf(eurmax));
-            txt44.setText(String.valueOf(eurmin));
+            txt41.setText(String.valueOf(Double.valueOf(df.format(eur))));
+            txt42.setText(String.valueOf(Double.valueOf(df.format((eur-eur24)*100/eur))));
+            txt43.setText(String.valueOf(Double.valueOf(df.format(eurmax))));
+            txt44.setText(String.valueOf(Double.valueOf(df.format(eurmin))));
+            btnavalanche.setLayoutY(352);
+
         }else if(sorted[4]==1){
-            txt51.setText(String.valueOf(eur));
-            txt52.setText(String.valueOf((eur-eur24)*100/eur));
-            txt53.setText(String.valueOf(eurmax));
-            txt54.setText(String.valueOf(eurmin));
+            txt51.setText(String.valueOf(Double.valueOf(df.format(eur))));
+            txt52.setText(String.valueOf(Double.valueOf(df.format((eur-eur24)*100/eur))));
+            txt53.setText(String.valueOf(Double.valueOf(df.format(eurmax))));
+            txt54.setText(String.valueOf(Double.valueOf(df.format(eurmin))));
+            btnavalanche.setLayoutY(423);
+
         }
 
 
         if(sorted[0]==2){
-            txt11.setText(String.valueOf(toman));
-            txt12.setText(String.valueOf((toman-toman24)*100/toman));
-            txt13.setText(String.valueOf(tomanmax));
-            txt14.setText(String.valueOf(tomanmin));
+            txt11.setText(String.valueOf(Double.valueOf(df.format(toman))));
+            txt12.setText(String.valueOf(Double.valueOf(df.format((toman-toman24)*100/toman))));
+            txt13.setText(String.valueOf(Double.valueOf(df.format(tomanmax))));
+            txt14.setText(String.valueOf(Double.valueOf(df.format(tomanmin))));
+            btnlightcoin.setLayoutY(145);
         }else  if(sorted[1]==2){
-            txt21.setText(String.valueOf(toman));
-            txt22.setText(String.valueOf((toman-toman24)*100/toman));
-            txt23.setText(String.valueOf(tomanmax));
-            txt24.setText(String.valueOf(tomanmin));
+            txt21.setText(String.valueOf(Double.valueOf(df.format(toman))));
+            txt22.setText(String.valueOf(Double.valueOf(df.format((toman-toman24)*100/toman))));
+            txt23.setText(String.valueOf(Double.valueOf(df.format(tomanmax))));
+            txt24.setText(String.valueOf(Double.valueOf(df.format(tomanmin))));
+            btnlightcoin.setLayoutY(217);
         }else if(sorted[2]==2){
-            txt31.setText(String.valueOf(toman));
-            txt32.setText(String.valueOf((toman-toman24)*100/toman));
-            txt33.setText(String.valueOf(tomanmax));
-            txt34.setText(String.valueOf(tomanmin));
+            txt31.setText(String.valueOf(Double.valueOf(df.format(toman))));
+            txt32.setText(String.valueOf(Double.valueOf(df.format((toman-toman24)*100/toman))));
+            txt33.setText(String.valueOf(Double.valueOf(df.format(tomanmax))));
+            txt34.setText(String.valueOf(Double.valueOf(df.format(tomanmin))));
+            btnlightcoin.setLayoutY(283);
         }else if(sorted[3]==2){
-            txt41.setText(String.valueOf(toman));
-            txt42.setText(String.valueOf((toman-toman24)*100/toman));
-            txt43.setText(String.valueOf(tomanmax));
-            txt44.setText(String.valueOf(tomanmin));
+            txt41.setText(String.valueOf(Double.valueOf(df.format(toman))));
+            txt42.setText(String.valueOf(Double.valueOf(df.format((toman-toman24)*100/toman))));
+            txt43.setText(String.valueOf(Double.valueOf(df.format(tomanmax))));
+            txt44.setText(String.valueOf(Double.valueOf(df.format(tomanmin))));
+            btnlightcoin.setLayoutY(352);
         }else if(sorted[4]==2){
-            txt51.setText(String.valueOf(toman));
-            txt52.setText(String.valueOf((toman-toman24)*100/toman));
-            txt53.setText(String.valueOf(tomanmax));
-            txt54.setText(String.valueOf(tomanmin));
+            txt51.setText(String.valueOf(Double.valueOf(df.format(toman))));
+            txt52.setText(String.valueOf(Double.valueOf(df.format((toman-toman24)*100/toman))));
+            txt53.setText(String.valueOf(Double.valueOf(df.format(tomanmax))));
+            txt54.setText(String.valueOf(Double.valueOf(df.format(tomanmin))));
+            btnlightcoin.setLayoutY(423);
         }
 
         if(sorted[0]==3){
-            txt11.setText(String.valueOf(yen));
-            txt12.setText(String.valueOf((yen-yen24)*100/yen));
-            txt13.setText(String.valueOf(yenmax));
-            txt14.setText(String.valueOf(yenmin));
+            txt11.setText(String.valueOf(Double.valueOf(df.format(yen))));
+            txt12.setText(String.valueOf(Double.valueOf(df.format((yen-yen24)*100/yen))));
+            txt13.setText(String.valueOf(Double.valueOf(df.format(yenmax))));
+            txt14.setText(String.valueOf(Double.valueOf(df.format(yenmin))));
+            btnday.setLayoutY(145);
         }else  if(sorted[1]==3){
-            txt21.setText(String.valueOf(yen));
-            txt22.setText(String.valueOf((yen-yen24)*100/yen));
-            txt23.setText(String.valueOf(yenmax));
-            txt24.setText(String.valueOf(yenmin));
+            txt21.setText(String.valueOf(Double.valueOf(df.format(yen))));
+            txt22.setText(String.valueOf(Double.valueOf(df.format((yen-yen24)*100/yen))));
+            txt23.setText(String.valueOf(Double.valueOf(df.format(yenmax))));
+            txt24.setText(String.valueOf(Double.valueOf(df.format(yenmin))));
+            btnday.setLayoutY(217);
         }else if(sorted[2]==3){
-            txt31.setText(String.valueOf(yen));
-            txt32.setText(String.valueOf((yen-yen24)*100/yen));
-            txt33.setText(String.valueOf(yenmax));
-            txt34.setText(String.valueOf(yenmin));
+            txt31.setText(String.valueOf(Double.valueOf(df.format(yen))));
+            txt32.setText(String.valueOf(Double.valueOf(df.format((yen-yen24)*100/yen))));
+            txt33.setText(String.valueOf(Double.valueOf(df.format(yenmax))));
+            txt34.setText(String.valueOf(Double.valueOf(df.format(yenmin))));
+            btnday.setLayoutY(283);
         }else if(sorted[3]==3){
-            txt41.setText(String.valueOf(yen));
-            txt42.setText(String.valueOf((yen-yen24)*100/yen));
-            txt43.setText(String.valueOf(yenmax));
-            txt44.setText(String.valueOf(yenmin));
+            txt41.setText(String.valueOf(Double.valueOf(df.format(yen))));
+            txt42.setText(String.valueOf(Double.valueOf(df.format((yen-yen24)*100/yen))));
+            txt43.setText(String.valueOf(Double.valueOf(df.format(yenmax))));
+            txt44.setText(String.valueOf(Double.valueOf(df.format(yenmin))));
+            btnday.setLayoutY(352);
         }else if(sorted[4]==3){
-            txt51.setText(String.valueOf(yen));
-            txt52.setText(String.valueOf((yen-yen24)*100/yen));
-            txt53.setText(String.valueOf(yenmax));
-            txt54.setText(String.valueOf(yenmin));
+            txt51.setText(String.valueOf(Double.valueOf(df.format(yen))));
+            txt52.setText(String.valueOf(Double.valueOf(df.format((yen-yen24)*100/yen))));
+            txt53.setText(String.valueOf(Double.valueOf(df.format(yenmax))));
+            txt54.setText(String.valueOf(Double.valueOf(df.format(yenmin))));
+            btnday.setLayoutY(423);
         }
 
 
         if(sorted[0]==4){
-            txt11.setText(String.valueOf(gbp));
-            txt12.setText(String.valueOf((gbp-gbp24)*100/gbp));
-            txt13.setText(String.valueOf(gbpmax));
-            txt14.setText(String.valueOf(gbpmin));
+            txt11.setText(String.valueOf(Double.valueOf(df.format(gbp))));
+            txt12.setText(String.valueOf(Double.valueOf(df.format((gbp-gbp24)*100/gbp))));
+            txt13.setText(String.valueOf(Double.valueOf(df.format(gbpmax))));
+            txt14.setText(String.valueOf(Double.valueOf(df.format(gbpmin))));
+            btnstellar.setLayoutY(145);
+
         }else  if(sorted[1]==4){
-            txt21.setText(String.valueOf(gbp));
-            txt22.setText(String.valueOf((gbp-gbp24)*100/gbp));
-            txt23.setText(String.valueOf(gbpmax));
-            txt24.setText(String.valueOf(gbpmin));
+            txt21.setText(String.valueOf(Double.valueOf(df.format(gbp))));
+            txt22.setText(String.valueOf(Double.valueOf(df.format((gbp-gbp24)*100/gbp))));
+            txt23.setText(String.valueOf(Double.valueOf(df.format(gbpmax))));
+            txt24.setText(String.valueOf(Double.valueOf(df.format(gbpmin))));
+            btnstellar.setLayoutY(217);
         }else if(sorted[2]==4){
-            txt31.setText(String.valueOf(gbp));
-            txt32.setText(String.valueOf((gbp-gbp24)*100/gbp));
-            txt33.setText(String.valueOf(gbpmax));
-            txt34.setText(String.valueOf(gbpmin));
+            txt31.setText(String.valueOf(Double.valueOf(df.format(gbp))));
+            txt32.setText(String.valueOf(Double.valueOf(df.format((gbp-gbp24)*100/gbp))));
+            txt33.setText(String.valueOf(Double.valueOf(df.format(gbpmax))));
+            txt34.setText(String.valueOf(Double.valueOf(df.format(gbpmin))));
+            btnstellar.setLayoutY(283);
         }else if(sorted[3]==4){
-            txt41.setText(String.valueOf(gbp));
-            txt42.setText(String.valueOf((gbp-gbp24)*100/gbp));
-            txt43.setText(String.valueOf(gbpmax));
-            txt44.setText(String.valueOf(gbpmin));
+            txt41.setText(String.valueOf(Double.valueOf(df.format(gbp))));
+            txt42.setText(String.valueOf(Double.valueOf(df.format((gbp-gbp24)*100/gbp))));
+            txt43.setText(String.valueOf(Double.valueOf(df.format(gbpmax))));
+            txt44.setText(String.valueOf(Double.valueOf(df.format(gbpmin))));
+            btnstellar.setLayoutY(352);
         }else if(sorted[4]==4){
-            txt51.setText(String.valueOf(gbp));
-            txt52.setText(String.valueOf((gbp-gbp24)*100/gbp));
-            txt53.setText(String.valueOf(gbpmax));
-            txt54.setText(String.valueOf(gbpmin));
+            txt51.setText(String.valueOf(Double.valueOf(df.format(gbp))));
+            txt52.setText(String.valueOf(Double.valueOf(df.format((gbp-gbp24)*100/gbp))));
+            txt53.setText(String.valueOf(Double.valueOf(df.format(gbpmax))));
+            txt54.setText(String.valueOf(Double.valueOf(df.format(gbpmin))));
+            btnstellar.setLayoutY(423);
         }
+
+
+
+
     }
 }

@@ -1,0 +1,12 @@
+.chart-series-line {
+    -fx-stroke: #0000ff; /* رنگ خط نمودار (آبی) */
+}
+
+.chart-legend-item-symbol {
+    -fx-background-color: #0000ff, white; /* رنگ نماد در لِجند (آبی) */
+}
+.chart-line-symbol {
+    -fx-background-color: orange, white; /* رنگ پس زمینه نقطه (نارنجی) */
+    -fx-background-radius: 0.5px; /* شعاع گوشه‌های گوشه نقطه */
+    -fx-padding:0.5px; /* فاصله بین نقطه و محتوای داخلی آن */
+}

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="txtNowPrice" prefHeight="601.0" prefWidth="796.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.RippelPage">
+<AnchorPane prefHeight="601.0" prefWidth="796.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.RippelPage">
    <children>
       <Button fx:id="btnHome" layoutX="687.0" layoutY="23.0" mnemonicParsing="false" onAction="#PbtnHome" prefHeight="26.0" prefWidth="82.0" text="Home" />
       <Text fill="WHITE" layoutX="132.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="حجم معامله" wrappingWidth="126.13671875">
@@ -24,11 +24,6 @@
          </font>
       </Text>
       <Text fill="#f7f7f7" layoutX="123.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="قیمت لحظه ای" wrappingWidth="164.5367431640625">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="310.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="51.7366943359375">
          <font>
             <Font size="18.0" />
          </font>
@@ -197,5 +192,11 @@
             <Image url="@coin1.png" />
          </image>
       </ImageView>
+      <Text fx:id="txtNowPrice" fill="WHITE" layoutX="310.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="51.7366943359375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnrippleDia" layoutX="54.0" layoutY="288.0" mnemonicParsing="false" onAction="#PbtnrippleDia" text="Button" />
    </children>
 </AnchorPane>

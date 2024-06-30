@@ -158,15 +158,15 @@ public class SingIn {
                     preparedStatement.executeUpdate();
                 }
             }
+                AddUser(new User(txtName.getText(), txtFamilyName.getText(), txtEmail.getText(), txtPhoneNumber.getText(), userName));
+                Stage stage = (Stage) btnPass.getScene().getWindow();
+                stage.close();
+                Stage primaryStage = new Stage();
+                AnchorPane root = FXMLLoader.load(getClass().getResource("InputPass.fxml"));
+                Scene scene = new Scene(root, 794, 637);
+                primaryStage.setScene(scene);
+                primaryStage.show();
 
-            AddUser(new User(txtName.getText(), txtFamilyName.getText(), txtEmail.getText(), txtPhoneNumber.getText(),userName));
-            Stage stage = (Stage) btnPass.getScene().getWindow();
-            stage.close();
-            Stage primaryStage = new Stage();
-            AnchorPane root = FXMLLoader.load(getClass().getResource("InputPass.fxml"));
-            Scene scene = new Scene(root, 794, 637);
-            primaryStage.setScene(scene);
-            primaryStage.show();
         }
     }
 

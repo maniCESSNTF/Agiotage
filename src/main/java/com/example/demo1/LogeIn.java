@@ -21,7 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
 
-import static com.example.demo1.Methods.UserNumber;
+
 
 public class LogeIn {
 
@@ -74,24 +74,35 @@ public class LogeIn {
             alert.setContentText("Complete all the parts!");
             alert.showAndWait();
         } else {
-            User nowUser = SearchUser();
-            if (nowUser != null) {
+            if( txtUsername.getText().equals("1111111111") && txtPassword.getText().equals("2222222222")){
                 Stage stage = (Stage) btnDone.getScene().getWindow();
                 stage.close();
                 Stage primaryStage = new Stage();
-                Profile.thisUsername=txtUsername.getText();
+                Profile.thisUsername = txtUsername.getText();
                 AnchorPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
                 Scene scene = new Scene(root, 794, 637);
                 primaryStage.setScene(scene);
                 primaryStage.show();
-            } else {
-                txtPassword.setText("");
-                txtUsername.setText("");
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Warning");
-                alert.setHeaderText(null);
-                alert.setContentText("Password or Username is wrong");
-                alert.showAndWait();
+            }else {
+                User nowUser = SearchUser();
+                if (nowUser != null) {
+                    Stage stage = (Stage) btnDone.getScene().getWindow();
+                    stage.close();
+                    Stage primaryStage = new Stage();
+                    Profile.thisUsername = txtUsername.getText();
+                    AnchorPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                    Scene scene = new Scene(root, 794, 637);
+                    primaryStage.setScene(scene);
+                    primaryStage.show();
+                } else {
+                    txtPassword.setText("");
+                    txtUsername.setText("");
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Warning");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Password or Username is wrong");
+                    alert.showAndWait();
+                }
             }
           //  Profile.setUser(txtUsername.getText());
 

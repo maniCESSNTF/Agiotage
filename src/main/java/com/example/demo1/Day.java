@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.DecimalFormat;
 
 public class Day {
 
@@ -239,7 +240,7 @@ public class Day {
                 int iDuring=0;
                 int iAccepted=0;
                 while (rs.next()) {
-                    if(rs.getString("type").equals("rippel")) {
+                    if(rs.getString("type").equals("day")) {
                         if(rs.getInt("state") == 0 && iDuring<10){
                             changesDuring[iDuring][0] = rs.getString("amount");
                             changesDuring[iDuring][1] = rs.getString("price");
@@ -264,6 +265,44 @@ public class Day {
                 SQLException e) {
             e.printStackTrace();
         }
+
+        String url = "jdbc:mysql://localhost:3306/agiotage2";
+        String user = "root";
+        String password = "";
+
+        double yen24=0;
+        double yen=0;
+        boolean sw24=true;
+
+        try {
+            Connection conn = DriverManager.getConnection(url, user, password);
+            String initialEmail = "2024-06-12";
+
+            // همه ردیف‌هایی که ایمیل آن‌ها بزرگتر یا مساوی با ایمیل مورد نظر است را بخوانید
+            String sql = "SELECT * FROM prices WHERE DATE >= ? ORDER BY DATE";
+
+            try (PreparedStatement preparedStatementYOU = conn.prepareStatement(sql)) {
+                preparedStatementYOU.setString(1, initialEmail);
+                ResultSet rs = preparedStatementYOU.executeQuery();
+                while (rs.next()) {
+                    if(sw24){
+                        yen24=rs.getDouble("YEN");
+                        sw24=false;
+                    }
+                    yen=rs.getDouble("YEN");
+                }
+                rs.close();
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        txtNowPrice.setText(String.valueOf(Double.valueOf(df.format(yen))));
+        txtPercentage.setText(String.valueOf(Double.valueOf(df.format(((yen-yen24)/yen)*100))));
+//        txtVolume-----------------------------------------------------حجم معاملات
 
         txt11.setText(changesDuring[0][0]);
         txt12.setText(changesDuring[0][1]);

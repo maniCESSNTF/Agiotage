@@ -15,7 +15,7 @@ public class Methods {
     User exchangeArrayUser[]=new User[1000];
 
 
-    ////list exchang(buy==0,sell==1)
+    //list exchang(buy==0,sell==1)
     public void exchang(User userExchang,int tokenNum,int tokenName,int BuySell,double price){
         addExchangeList( userExchang, tokenNum, tokenName, BuySell, price);
         Date date=new Date();
@@ -123,6 +123,9 @@ public class Methods {
             }
         }
     }
+
+
+
 
 //            public  void addHistory(user userExchang,int tokenNum,int tokenName,int BuySell,double price){
 //                  ///  public  history(int typeToken,int amount,double price,Date date,int state){
