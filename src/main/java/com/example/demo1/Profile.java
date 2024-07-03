@@ -1,24 +1,31 @@
 package com.example.demo1;
 
 import Email.EmailSender;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Random;
 
 import static com.example.demo1.CaptchaGenerator.GenerateCaptcha;
 import static com.example.demo1.CaptchaGenerator.captcha;
 import static com.example.demo1.CombinedTask.ReadPrices.calendarTime;
+import static com.example.demo1.Profile.FileOperations.writeToAndPrintFile;
 
 public class Profile {
     Random random = new Random();
@@ -38,6 +45,8 @@ public class Profile {
     @FXML
     private Button btnGoHomePage;
 
+    @FXML
+    private Button btnLogout;
     @FXML
     private Button btnDoneSWAP;
 
@@ -252,6 +261,18 @@ public class Profile {
     @FXML
     private TextField txtPasswordDeposit;
 
+
+    @FXML
+    private Button btnFile;
+
+
+    String urll=null;
+
+
+    @FXML
+    private ImageView ProfilePic;
+
+
     @FXML
     void PbtnDone(ActionEvent event) throws IOException {
         if (txtAmount.getText().isEmpty() || txtAccountNumber.getText().isEmpty()) {
@@ -260,6 +281,22 @@ public class Profile {
             alert.setHeaderText(null);
             alert.setContentText("Complete all the parts!");
             alert.showAndWait();
+        }
+    }
+
+    @FXML
+    protected void PbtnProfilePic() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            ProfilePic.setImage(image);
+            urll=image.getUrl();
+        //    ProfilePic.setId(image.getUrl());
         }
     }
 
@@ -383,7 +420,7 @@ public class Profile {
     @FXML
     void PbtnDoneDeposit(ActionEvent event) throws IOException, SQLException {
        // setUser("ssss");
-        if(txtPasswordDeposit.getText().equals(code) && newCaptcha.equals(txtCaptchaCodeDeposit.getText())){
+        if(txtPasswordDeposit.getText().equals(code) ){//&& newCaptcha.equals(txtCaptchaCodeDeposit.getText())
             try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
                 String sqlYOU1 = "SELECT * FROM signin WHERE username = ?";
                 try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
@@ -403,21 +440,6 @@ public class Profile {
                                 preparedStatementYOU.setString(2, thisUsername);
                                 preparedStatementYOU.executeUpdate();
                                 System.out.println(y);
-
-//                                try {
-//                                    int currentMoney = Integer.parseInt(resultSetYOU1.getString("money"));
-//                                    int depositMoney = Integer.parseInt(txtmoaneyDeposit1.getText());
-//                                    int totalMoney = currentMoney + depositMoney;
-//
-//                                    System.out.println("مقدار ورودی معتبر نیست"+totalMoney);
-//
-//                                } catch (NumberFormatException e) {
-//                                    // مدیریت خطا، مثلا نمایش پیام خطا به کاربر
-//
-//                                    System.out.println("مقدار ورودی معتبر نیست");
-//                                }
-
-
 
 
                             }
@@ -574,432 +596,468 @@ public class Profile {
         typeTransferEx[3]=0;
         typeTransferEx[4]=1;
     }
-//
-//    @FXML
-//    void PbtnDoneEx(ActionEvent event) throws SQLException {
-//
-//        String username1;
-//        double money1;
-//        double coin1;
-//
-//        String username2;
-//        double money2;
-//        double coin2;
-//
-//        int typeEX=0;
-//        String typeCoinEx=null;
-//        boolean SWExchange=false;
-//
-//        if(btnSellEx.isSelected())
-//            typeEX=0;
-//        else typeEX=1;
-//
-//
-//        if(typeTransferEx[0]==1)
-//            typeCoinEx="rippel";
-//        else if(typeTransferEx[1]==1)
-//            typeCoinEx="avalanche";
-//        else if(typeTransferEx[2]==1)
-//        typeCoinEx="lightcoin";
-//        else if(typeTransferEx[3]==1)
-//        typeCoinEx="day";
-//        else if(typeTransferEx[4]==1)
-//        typeCoinEx="stellar";
-//
-//
-//
-//
-//        try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-//            String sqlYOU1 = "SELECT * FROM signin WHERE username = ?";
-//            try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
-//                statementYOU1.setString(1, thisUsername);
-//                ResultSet resultSetYOU1 = statementYOU1.executeQuery();
-//                if (resultSetYOU1.next()) {
-//                    if(resultSetYOU1.getDouble(typeCoinEx)>Double.parseDouble(txtamountEx.getText())){
-//                        username1=resultSetYOU1.getString("username");
-//                        coin1=resultSetYOU1.getDouble(typeCoinEx);
-//                        money1=resultSetYOU1.getDouble("money");
-//                        SWExchange=true;
-//                    }
-//                } else {
-//                    Alert alert = new Alert(Alert.AlertType.WARNING);
-//                    alert.setTitle("Warning");
-//                    alert.setHeaderText(null);
-//                    alert.setContentText("################!");
-//                    alert.showAndWait();
-//                }
-//            } catch (SQLException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//
-//        String  nowTime = calendarTime.formatTime(calendarTime.now());
-//        String  nowDate = calendarTime.formatDate(calendarTime.now());
-//
-//
-//
-//        if(SWExchange || !btnSellEx.isSelected()) {
-//
-//            try (Connection connectionSWAP = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-//                String queryEx = "INSERT INTO exchange (username, time, date, sellbuy,type,amount,price) VALUES (?, ?, ?, ?, ?, ?, ?)";
-//                try (PreparedStatement preparedStatementSWAP = connectionSWAP.prepareStatement(queryEx)) {
-//                    CalendarTime calendarTime = new CalendarTime();
-//                    preparedStatementSWAP.setString(1, thisUsername);
-//                    preparedStatementSWAP.setString(2, nowTime);
-//                    preparedStatementSWAP.setString(3, nowDate);
-//                    preparedStatementSWAP.setInt(4, typeEX);
-//                    preparedStatementSWAP.setString(5, typeCoinEx);
-//                    preparedStatementSWAP.setDouble(6, Double.parseDouble(txtamountEx.getText()));
-//                    preparedStatementSWAP.setDouble(7, Double.parseDouble(txtpriceEx1.getText()));
-//                    preparedStatementSWAP.executeUpdate();
-//                }
-//            } catch (SQLException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }else {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Warning");
-//            alert.setHeaderText(null);
-//            alert.setContentText("you dont have enough : "+typeCoinEx);
-//            alert.showAndWait();
-//        }
-//
-//
-//
-//
-//        String usernameBefore;
-//        String timeBefore;
-//        String dateBefore;
-//        int sellbuyBefore;
-//        String typeBefore;
-//        double amountBefore;
-//        int priceBefore;
-//
-//
-//
-//
-//
-//
-//
-//
-//    String url = "jdbc:mysql://localhost:3306/agiotage2";
-//        String user = "root";
-//        String password = "";
-//
-//        boolean sw24 = true;
-//
-//        try {
-//            Connection conn = DriverManager.getConnection(url, user, password);
-//            String initialEmail = "2040-06-12";
-//            // همه ردیف‌هایی که ایمیل آن‌ها بزرگتر یا مساوی با ایمیل مورد نظر است را بخوانید
-//            String sql = "SELECT * FROM exchange WHERE date >= ? ORDER BY date";
-//
-//            try (PreparedStatement preparedStatementYOU = conn.prepareStatement(sql)) {
-//                preparedStatementYOU.setString(1, initialEmail);
-//                ResultSet rs = preparedStatementYOU.executeQuery();
-//
-//                while (rs.next()) {
-//                    if(rs.getString("type").equals(typeCoinEx) && typeTransferEx[0]==1){
-//                        if(btnBuyEx.isSelected() && rs.getInt("sellbuy")==0){
-//                            if(rs.getInt("price") <= Integer.parseInt(txtpriceEx1.getText())) {
-//
-//                                usernameBefore=rs.getString("username");
-//                                timeBefore=rs.getString("time");
-//                                dateBefore=rs.getString("date");
-//                                sellbuyBefore=rs.getInt("sellbuy");
-//                                typeBefore=rs.getString("type");
-//                                amountBefore=rs.getDouble("amount");
-//                                priceBefore=rs.getInt("price");
-//
-//                                double buyAmount=Double.parseDouble(txtamountEx.getText());
-//                                double sellAmount=rs.getDouble("amount");
-//                                int buyMoney=Integer.parseInt(txtpriceEx1.getText());
-//                                int sellbuy=Integer.parseInt(txtpriceEx1.getText());
-//                                double min=0;
-//
-//                                if(buyAmount>sellAmount)
-//                                    min = sellAmount;
-//                                else min=buyAmount;
-//
-//                                buyAmount+=min;
-//                                sellAmount-=min;
-//
-//                                try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-//                                    String query = "UPDATE exchange SET amount AND state  = ? WHERE username = ? AND time = ? AND date = ? AND sellbuy = ? AND type = ?  AND amount = ? AND state = ? AND price = ? ";
-//                                    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-//                                        preparedStatement.setDouble(1,sellAmount);
-//                                        if(sellAmount>0)
-//                                            preparedStatement.setInt(2,0);
-//                                        else
-//                                            preparedStatement.setInt(2,1);
-//                                        preparedStatement.setString(3, rs.getString("username"));
-//                                        preparedStatement.setString(4, rs.getString("time"));
-//                                        preparedStatement.setString(5, rs.getString("date"));
-//                                        preparedStatement.setInt(6, 0);
-//                                        preparedStatement.setString(7, typeCoinEx);
-//                                        preparedStatement.setDouble(8, rs.getDouble("amount"));
-//                                        preparedStatement.setInt(9,0);
-//                                        preparedStatement.setInt(10, rs.getInt("price"));
-//                                        preparedStatement.executeUpdate();
-//                                    }
-//                                } catch (SQLException e) {
-//                                    throw new RuntimeException(e);
-//                                }
-//
-//                                try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-//                                    String query = "UPDATE exchange SET amount AND state  = ? WHERE username = ? AND time = ? AND date = ? AND sellbuy = ? AND type = ?  AND amount = ? AND state = ? AND price = ? ";
-//                                    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-//                                        preparedStatement.setDouble(1,sellAmount);
-//                                        if(sellAmount>0)
-//                                            preparedStatement.setInt(2,0);
-//                                        else
-//                                            preparedStatement.setInt(2,1);
-//                                        preparedStatement.setString(1, rs.getString(thisUsername));
-//                                        preparedStatement.setString(2, nowTime);
-//                                        preparedStatement.setString(3,nowDate);
-//                                        preparedStatement.setInt(4, 1);
-//                                        preparedStatement.setString(5, typeCoinEx);
-//                                        preparedStatement.setDouble(6, Double.parseDouble(txtamountEx.getText()));
-//                                        preparedStatement.setInt(7, 0);
-//                                        preparedStatement.setInt(8, Integer.parseInt(txtpriceEx1.getText()));
-//                                        preparedStatement.executeUpdate();
-//                                    }
-//                                } catch (SQLException e) {
-//                                    throw new RuntimeException(e);
-//                                }
-//
-//
-//
-//
-//
-//                            }
-//                        }
-//                    }
-//
-//
-//
-//                }
-//
-//
-//                rs.close();
-//            }
-//
-//            conn.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//
-//
-//    }
-//
-///////////////////////////////////////////////////////////
 
 
     @FXML
     void PbtnDoneEx(ActionEvent event) throws SQLException {
-        String username1;
-        double money1;
-        double coin1;
-        String username2;
-        double money2;
-        double coin2;
-        int typeEX = 0;
-        int sw=0;
-        String typeCoinEx = null;
-        boolean SWExchange = false;
 
-        int amountTxt=Integer.parseInt(txtamountEx.getText());
-        System.out.println(amountTxt+"amountTxt"+"4444444444444444444444444444444444444444");
-        if (btnSellEx.isSelected())
-            typeEX = 0;
-        else
-            typeEX = 1;
+        int newMoneyAmount=0;
 
-        if (typeTransferEx[0] == 1)
-            typeCoinEx = "rippel";
-        else if (typeTransferEx[1] == 1)
-            typeCoinEx = "avalanche";
-        else if (typeTransferEx[2] == 1)
-            typeCoinEx = "lightcoin";
-        else if (typeTransferEx[3] == 1)
-            typeCoinEx = "day";
-        else if (typeTransferEx[4] == 1)
-            typeCoinEx = "stellar";
 
-        try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-            String sqlYOU1 = "SELECT * FROM signin WHERE username = ?";
-            try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
-                statementYOU1.setString(1, thisUsername);
-                ResultSet resultSetYOU1 = statementYOU1.executeQuery();
-                if (resultSetYOU1.next()) {
-                    if (Double.valueOf(resultSetYOU1.getDouble(typeCoinEx)) > Double.parseDouble(txtamountEx.getText())) {
-                        username1 = resultSetYOU1.getString("username");
-                        coin1 = resultSetYOU1.getDouble(typeCoinEx);
-                        money1 = resultSetYOU1.getDouble("money");
-                        SWExchange = true;
+
+
+
+
+        int moneyManager=0;
+        try (Connection connection1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+            String sql3 = "SELECT * FROM manager WHERE username = ?";
+            try (PreparedStatement statement1 = connection1.prepareStatement(sql3)) {
+                statement1.setString(1, "1111111111");
+                ResultSet resultSet11 = statement1.executeQuery();
+                if (resultSet11.next()) {
+                    moneyManager = resultSet11.getInt("money");
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+            if(Manager.closeOpen==0) {
+            String url = "jdbc:mysql://localhost:3306/agiotage2";
+            String user = "root";
+            String password = "";
+
+            String username1;
+            double money1 = 0;
+            double coin1 = 0;
+            String username2;
+            double money2 = 0;
+            double coin2 = 0;
+            int typeEX = 0;
+            int sw = 0;
+            String typeCoinEx = null;
+            boolean SWExchange = false;
+            double amountTxt = Double.parseDouble(txtamountEx.getText());
+            String typeBefore;
+            int priceBefore;
+            int demo1=0;
+            int demo2=0;
+
+
+            String usernameBefore;
+            String timeBefore;
+            String dateBefore;
+            double sellbuyBefore;
+
+            String nowTime = calendarTime.formatTime(calendarTime.now());
+            String nowDate = calendarTime.formatDate(calendarTime.now());
+
+            if (btnSellEx.isSelected()) typeEX = 0;
+            else typeEX = 1;
+
+            if (typeTransferEx[0] == 1)
+                typeCoinEx = "rippel";
+            else if (typeTransferEx[1] == 1)
+                typeCoinEx = "avalanche";
+            else if (typeTransferEx[2] == 1)
+                typeCoinEx = "lightcoin";
+            else if (typeTransferEx[3] == 1)
+                typeCoinEx = "day";
+            else if (typeTransferEx[4] == 1)
+                typeCoinEx = "stellar";
+
+            //بررسی امکان ثبت درخواست تبادل جهت فروش
+            try (Connection connectionYOU1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                String sqlYOU1 = "SELECT * FROM signin WHERE username = ?";
+                try (PreparedStatement statementYOU1 = connectionYOU1.prepareStatement(sqlYOU1)) {
+                    statementYOU1.setString(1, thisUsername);
+                    ResultSet resultSetYOU1 = statementYOU1.executeQuery();
+                    if (resultSetYOU1.next()) {
+                        if (Double.valueOf(resultSetYOU1.getDouble(typeCoinEx)) > Double.parseDouble(txtamountEx.getText())) {
+                            coin1 = resultSetYOU1.getDouble(typeCoinEx);
+                            money1 = resultSetYOU1.getDouble("money");
+                            demo1 = resultSetYOU1.getInt("demo");
+                            SWExchange = true;
+                        }
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Warning");
+                        alert.setHeaderText(null);
+                        alert.setContentText("################!");
+                        alert.showAndWait();
                     }
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setHeaderText(null);
-                    alert.setContentText("################!");
-                    alert.showAndWait();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
             }
-        }
-
-        String nowTime = calendarTime.formatTime(calendarTime.now());
-        String nowDate = calendarTime.formatDate(calendarTime.now());
-
-        if (SWExchange || !btnSellEx.isSelected()) {
-            try (Connection connectionSWAP = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                String queryEx = "INSERT INTO exchange (username, time, date, sellbuy, type, amount, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                try (PreparedStatement preparedStatementSWAP = connectionSWAP.prepareStatement(queryEx)) {
-                    CalendarTime calendarTime = new CalendarTime();
-                    preparedStatementSWAP.setString(1, thisUsername);
-                    preparedStatementSWAP.setString(2, nowTime);
-                    preparedStatementSWAP.setString(3, nowDate);
-                    preparedStatementSWAP.setInt(4, typeEX);
-                    preparedStatementSWAP.setString(5, typeCoinEx);
-                    preparedStatementSWAP.setDouble(6, Double.parseDouble(txtamountEx.getText()));
-                    preparedStatementSWAP.setDouble(7, Double.parseDouble(txtpriceEx1.getText()));
-                    preparedStatementSWAP.executeUpdate();
+//ثبت درخواست
+            if (SWExchange || !btnSellEx.isSelected()) {
+                try (Connection connectionSWAP = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                    String queryEx = "INSERT INTO exchange (username, time, date, sellbuy, type, amount, state, price, copyAmount,demo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    try (PreparedStatement preparedStatementSWAP = connectionSWAP.prepareStatement(queryEx)) {
+                        CalendarTime calendarTime = new CalendarTime();
+                        preparedStatementSWAP.setString(1, thisUsername);
+                        preparedStatementSWAP.setString(2, nowTime);
+                        preparedStatementSWAP.setString(3, nowDate);
+                        preparedStatementSWAP.setInt(4, typeEX);
+                        preparedStatementSWAP.setString(5, typeCoinEx);
+                        preparedStatementSWAP.setDouble(6, Double.parseDouble(txtamountEx.getText()));
+                        preparedStatementSWAP.setDouble(7, 0);
+                        preparedStatementSWAP.setDouble(8, Double.parseDouble(txtpriceEx1.getText()));
+                        preparedStatementSWAP.setDouble(9, Double.parseDouble(txtamountEx.getText()));
+                        preparedStatementSWAP.setInt(10,demo1);
+                        preparedStatementSWAP.executeUpdate();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("you dont have enough : " + typeCoinEx);
+                alert.showAndWait();
             }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText(null);
-            alert.setContentText("you dont have enough : " + typeCoinEx);
-            alert.showAndWait();
-        }
 
-        String usernameBefore;
-        String timeBefore;
-        String dateBefore;
-        int sellbuyBefore;
-        String typeBefore;
-        double amountBefore;
-        int priceBefore;
+            //بررسی تمامی درخواست های قبلی برای مچ کردن با درخواست فعلی
+            try {
+                Connection conn = DriverManager.getConnection(url, user, password);
+                String initialEmail = "2000-06-30";
+                String sql = "SELECT * FROM exchange WHERE date >=? ORDER BY date";
+                try (PreparedStatement preparedStatementYOU = conn.prepareStatement(sql)) {
+                    preparedStatementYOU.setString(1, initialEmail);
+                    ResultSet rs = preparedStatementYOU.executeQuery();
 
-        String url = "jdbc:mysql://localhost:3306/agiotage2";
-        String user = "root";
-        String password = "";
+                    while (rs.next() && amountTxt > 0) {
+                        if (rs.getString("type").equals(typeCoinEx)) {// && typeTransferEx[0] == 1
+                            if (btnBuyEx.isSelected() && rs.getInt("sellbuy") == 0) {
+                                if (Integer.valueOf(rs.getInt("price")) <= Integer.parseInt(txtpriceEx1.getText())) {
+                                    double min = 0;
+                                    usernameBefore = rs.getString("username");
+                                    sellbuyBefore = rs.getInt("amount");
+                                    priceBefore = rs.getInt("price");
 
-        boolean sw24 = true;
+                                    //خواندن اطلاعات فرد فروشنده(فرد ۲) برای انجام تبادل
+                                    String querybef = "SELECT * FROM signin WHERE username = ?";
+                                    try (Connection connection = DriverManager.getConnection(url, user, password);
+                                         PreparedStatement preparedStatement = connection.prepareStatement(querybef)) {
+                                        preparedStatement.setString(1, usernameBefore);
+                                        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                                            if (resultSet.next()) {
+                                                money2 = resultSet.getInt("money");
+                                                coin2 = resultSet.getInt(typeCoinEx);
+                                                demo2 = resultSet.getInt("demo");
 
-        try {
-            Connection conn = DriverManager.getConnection(url, user, password);
-            String initialEmail = "2000-06-30";
-            String sql = "SELECT * FROM exchange WHERE date >=? ORDER BY date";
-            System.out.println("if2hhhhhhhhhhhhhh");
-
-            try (PreparedStatement preparedStatementYOU = conn.prepareStatement(sql)) {
-                preparedStatementYOU.setString(1, initialEmail);
-                ResultSet rs = preparedStatementYOU.executeQuery();
-                System.out.println("ifgggggggggg2");
-
-                while (rs.next( )&& amountTxt>0) {
-                    if (rs.getString("type").equals(typeCoinEx) && typeTransferEx[0] == 1) {
-                        System.out.println("if1");
-                        if (btnBuyEx.isSelected() && rs.getInt("sellbuy") == 0) {
-                            System.out.println("if2");
-                            if (   Integer.valueOf(rs.getInt("price")) <= Integer.parseInt(txtpriceEx1.getText())) {
-                                System.out.println("if3");
-
-                                double min = 0;
-                                usernameBefore = rs.getString("username");
-                                timeBefore = rs.getString("time");
-                                dateBefore = rs.getString("date");
-                                typeBefore = rs.getString("type");
-                                sellbuyBefore = rs.getInt("amount");
-                                priceBefore = rs.getInt("price");
-                                if (amountTxt >= sellbuyBefore){
-                                    System.out.println("uuuuuuuuuuuu"+"amountTxt : "+amountTxt +"  "+ sellbuyBefore);
-                                    min = sellbuyBefore;}
-                                else{
-                                    System.out.println("hhhhhhhhhhhhhhhhhhhhh"+"amountTxt : "+amountTxt +"  "+ sellbuyBefore);
-                                    min = amountTxt;
-                                }
-                                double buyAmount = Double.parseDouble(txtamountEx.getText());
-                                double sellAmount = rs.getDouble("amount");
-                                int buyMoney = Integer.parseInt(txtpriceEx1.getText());
-                                int sellbuy = Integer.parseInt(txtpriceEx1.getText());
-                                System.out.println("min1 ; "+min);
-                                System.out.println("amountTxt1 ; "+amountTxt);
-                                System.out.println("sellAmount1 ; "+sellAmount);
-
-                                amountTxt-=min;
-                                sellAmount -= min;
-
-                                System.out.println("min2 ; "+min);
-                                System.out.println("amountTxt2 ; "+amountTxt);
-                                System.out.println("sellAmount 2; "+sellAmount);
-
-
-                                System.out.println("min"+min+"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
-
-                                try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                                    String query = "UPDATE exchange SET amount = ?, state = ? WHERE username = ? AND time = ? AND date = ? AND sellbuy = ? AND type = ? AND price = ?";
-                                    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                                        preparedStatement.setDouble(1, sellAmount);
-                                        if (sellAmount > 0)
-                                            preparedStatement.setInt(2, 0);
-                                        else
-                                            preparedStatement.setInt(2, 1);
-                                        preparedStatement.setString(3, rs.getString("username"));
-                                        preparedStatement.setString(4, rs.getString("time"));
-                                        preparedStatement.setString(5, rs.getString("date"));
-                                        preparedStatement.setInt(6, 0);
-                                        preparedStatement.setString(7, typeCoinEx);
-                                        preparedStatement.setInt(8, rs.getInt("price"));
-                                        preparedStatement.executeUpdate();
+                                            }
+                                        }
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
                                     }
-                                } catch (SQLException e) {
-                                    throw new RuntimeException(e);
-                                }
 
-                                try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                                    String query = "UPDATE exchange SET amount = ?, state = ? WHERE username = ? AND time = ? AND date = ? AND sellbuy = ? AND type = ? AND amount = ? AND price = ?";
-                                    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                                        System.out.println(amountTxt+"####################################aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#");
 
-                                        preparedStatement.setDouble(1, amountTxt);
-                                        System.out.println(amountTxt+"#####################################");
-
-                                        if (sellAmount > 0)
-                                            preparedStatement.setInt(2, 0);
-                                        else
-                                            preparedStatement.setInt(2, 1);
-                                        preparedStatement.setString(3, thisUsername);
-                                        preparedStatement.setString(4, nowTime);
-                                        preparedStatement.setString(5, nowDate);
-                                        preparedStatement.setInt(6, 1);
-                                        preparedStatement.setString(7, typeCoinEx);
-                                        preparedStatement.setDouble(8, Double.parseDouble(txtamountEx.getText()));
-                                        preparedStatement.setInt(9, Integer.parseInt(txtpriceEx1.getText()));
-                                        preparedStatement.executeUpdate();
+                                    if (amountTxt >= sellbuyBefore) {
+                                        min = sellbuyBefore;
+                                    } else {
+                                        min = amountTxt;
                                     }
-                                } catch (SQLException e) {
-                                    throw new RuntimeException(e);
+                                    if (coin2 >= min && money1 >= min * Integer.parseInt(txtpriceEx1.getText()) && !thisUsername.equals(usernameBefore)) {
+                                        double buyAmount = Double.parseDouble(txtamountEx.getText());
+                                        double sellAmount = rs.getDouble("amount");
+                                        int buyMoney = Integer.parseInt(txtpriceEx1.getText());
+                                        int sellbuy = Integer.parseInt(txtpriceEx1.getText());
+                                        System.out.println("min1 ; " + min);
+                                        System.out.println("amountTxt1 ; " + amountTxt);
+                                        System.out.println("sellAmount1 ; " + sellAmount);
+
+                                        amountTxt -= min;
+                                        sellAmount -= min;
+
+                                        newMoneyAmount+=0.005*(min*Integer.parseInt(txtpriceEx1.getText()));
+
+                                        //(فرد 2)اپدیت درخواس شخص فروشنده
+                                        if((demo2==0 && demo1 ==1)) {
+
+                                        }else{
+//                                            method(money1,thisUsername,money2,usernameBefore,newMoneyAmount);
+                                            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                                String query = "UPDATE exchange SET amount = ?, state = ? WHERE username = ? AND time = ? AND date = ? AND sellbuy = ? AND type = ? AND price = ?";
+                                                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                    preparedStatement.setDouble(1, sellAmount);
+                                                    preparedStatement.setInt(2, sellAmount > 0 ? 0 : 1);
+                                                    preparedStatement.setString(3, rs.getString("username"));
+                                                    preparedStatement.setString(4, rs.getString("time"));
+                                                    preparedStatement.setString(5, rs.getString("date"));
+                                                    preparedStatement.setInt(6, 0);
+                                                    preparedStatement.setString(7, typeCoinEx);
+                                                    preparedStatement.setInt(8, rs.getInt("price"));
+                                                    int rowsUpdated = preparedStatement.executeUpdate();
+                                                    if (rowsUpdated == 0) {
+                                                        System.out.println("Update failed: No rows updated");
+                                                    } else {
+                                                        System.out.println("Update succeeded: " + rowsUpdated + " rows updated");
+                                                    }
+                                                }
+                                            } catch (SQLException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+
+                                        //اپدیت درخواست شخص خریدار
+                                        if((demo2==1 && demo1 ==0)) {
+
+                                        }else {
+                                            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                                String query = "UPDATE exchange SET amount = ?, state = ? WHERE username = ? AND time = ? AND date = ? AND sellbuy = ? AND type = ? AND price = ?";//AND amount = ?
+                                                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                    preparedStatement.setDouble(1, amountTxt);
+                                                    if (amountTxt > 0)
+                                                        preparedStatement.setDouble(2, 0);
+                                                    else
+                                                        preparedStatement.setInt(2, 1);
+                                                    preparedStatement.setString(3, thisUsername);
+                                                    preparedStatement.setString(4, nowTime);
+                                                    preparedStatement.setString(5, nowDate);
+                                                    preparedStatement.setInt(6, 1);
+                                                    preparedStatement.setString(7, typeCoinEx);
+                                                    preparedStatement.setInt(8, Integer.parseInt(txtpriceEx1.getText()));
+                                                    preparedStatement.executeUpdate();
+                                                }
+                                            } catch (SQLException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                        }
+                                        //اپدیت اطلاعات دارایی شخص خریدار
+                                        if((demo2==1 && demo1 ==0)) {
+
+                                        }else {
+                                            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                                String query = "UPDATE signin SET money = ?, " + typeCoinEx + " = ? WHERE username = ? ";//AND amount = ?
+                                                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                    preparedStatement.setDouble(1, money1 - (Integer.parseInt(txtpriceEx1.getText()) * min) );
+                                                    preparedStatement.setDouble(2, coin1 + min*(0.995));
+                                                    preparedStatement.setString(3, thisUsername);
+                                                    preparedStatement.executeUpdate();
+                                                }
+                                            } catch (SQLException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                        }
+                                        //اپدیت اطلاعات دارایی شخص فروشنده
+                                        if((demo2==0 && demo1 ==1)) {
+
+                                        }else {
+                                            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                                String query = "UPDATE signin SET money = ?, " + typeCoinEx + " = ? WHERE username = ? ";//AND amount = ?
+                                                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                    preparedStatement.setDouble(1, money2 + ((Integer.parseInt(txtpriceEx1.getText()) * min)*0.995));
+                                                    preparedStatement.setDouble(2, coin2 - min);
+                                                    preparedStatement.setString(3, usernameBefore);
+                                                    preparedStatement.executeUpdate();
+                                                }
+                                            } catch (SQLException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                        }
+
+                                        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                            String query = "UPDATE manager SET money = ? WHERE username = ? ";//AND amount = ?
+                                            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                preparedStatement.setDouble(1, moneyManager +  (min*0.005*priceBefore));
+                                                preparedStatement.setString(2, "1111111111");
+                                                preparedStatement.executeUpdate();
+                                            }
+                                        } catch (SQLException e) {
+                                            throw new RuntimeException(e);
+                                        }
+
+                                    }
+                                }
+                            } else if (btnSellEx.isSelected() && rs.getInt("sellbuy") == 1) {
+                                if (Integer.valueOf(rs.getInt("price")) >= Integer.parseInt(txtpriceEx1.getText())) {
+                                    double min = 0;
+                                    int demo11=0;
+                                    int demo22=0;
+                                    usernameBefore = rs.getString("username");
+                                    timeBefore = rs.getString("time");
+                                    dateBefore = rs.getString("date");
+                                    typeBefore = rs.getString("type");
+                                    sellbuyBefore = rs.getInt("amount");
+                                    priceBefore = rs.getInt("price");
+
+                                    //خواندن اطلاعات فرد خریدار برای انجام تبادل
+                                    String querybef = "SELECT * FROM signin WHERE username = ?";
+                                    try (Connection connection = DriverManager.getConnection(url, user, password);
+                                         PreparedStatement preparedStatement = connection.prepareStatement(querybef)) {
+                                        preparedStatement.setString(1, thisUsername);
+                                        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                                            if (resultSet.next()) {
+                                                money2 = resultSet.getInt("money");
+                                                coin2 = resultSet.getInt(typeCoinEx);
+                                                demo22 = resultSet.getInt("demo");
+                                            }
+                                        }
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    String querybef1 = "SELECT * FROM signin WHERE username = ?";
+                                    try (Connection connection = DriverManager.getConnection(url, user, password);
+                                         PreparedStatement preparedStatement = connection.prepareStatement(querybef1)) {
+                                        preparedStatement.setString(1, usernameBefore);
+                                        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                                            if (resultSet.next()) {
+                                                money1 = resultSet.getInt("money");
+                                                coin1 = resultSet.getInt(typeCoinEx);
+                                                demo11 = resultSet.getInt("demo");
+
+                                            }
+                                        }
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    if (amountTxt >= sellbuyBefore) {
+                                        min = sellbuyBefore;
+                                    } else {
+                                        min = amountTxt;
+                                    }
+
+                                    if (coin2 >= min && money1 >= min * Integer.parseInt(txtpriceEx1.getText()) && !thisUsername.equals(usernameBefore)) {
+                                        double buyAmount = Double.parseDouble(txtamountEx.getText());
+                                        double sellAmount = rs.getDouble("amount");
+                                        int buyMoney = Integer.parseInt(txtpriceEx1.getText());
+
+
+                                        amountTxt -= min;
+                                        sellAmount -= min;
+
+                                        //اپدیت درخواس شخص خریدار
+                                        if(demo22==1 && demo11 ==0) {
+
+                                        }else {
+                                            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                                String query = "UPDATE exchange SET amount = ?, state = ? WHERE username = ? AND time = ? AND date = ? AND sellbuy = ? AND type = ? AND price = ?";
+                                                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                    preparedStatement.setDouble(1, sellAmount);
+                                                    preparedStatement.setInt(2, sellAmount > 0 ? 0 : 1);
+                                                    preparedStatement.setString(3, rs.getString("username"));
+                                                    preparedStatement.setString(4, rs.getString("time"));
+                                                    preparedStatement.setString(5, rs.getString("date"));
+                                                    preparedStatement.setInt(6, 1);
+                                                    preparedStatement.setString(7, typeCoinEx);
+                                                    preparedStatement.setInt(8, rs.getInt("price"));
+                                                    int rowsUpdated = preparedStatement.executeUpdate();
+                                                    if (rowsUpdated == 0) {
+                                                        System.out.println("Update failed: No rows updated");
+                                                    } else {
+                                                        System.out.println("Update succeeded: " + rowsUpdated + " rows updated");
+                                                    }
+                                                }
+                                            } catch (SQLException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+
+                                        //اپدیت درخواست شخص فروشنده
+                                        if((demo22==0 && demo11 ==1)) {
+
+                                        }else {
+                                            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                                String query = "UPDATE exchange SET amount = ?, state = ? WHERE username = ? AND time = ? AND date = ? AND sellbuy = ? AND type = ? AND price = ?";//AND amount = ?
+                                                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                    preparedStatement.setDouble(1, amountTxt);
+                                                    if (amountTxt > 0)
+                                                        preparedStatement.setDouble(2, amountTxt);
+                                                    else
+                                                        preparedStatement.setInt(2, 1);
+                                                    preparedStatement.setString(3, thisUsername);
+                                                    preparedStatement.setString(4, nowTime);
+                                                    preparedStatement.setString(5, nowDate);
+                                                    preparedStatement.setInt(6, 0);
+                                                    preparedStatement.setString(7, typeCoinEx);
+                                                    preparedStatement.setInt(8, Integer.parseInt(txtpriceEx1.getText()));
+                                                    preparedStatement.executeUpdate();
+                                                }
+                                            } catch (SQLException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                        }
+
+                                        //اپدیت اطلاعات دارایی شخص فروشنده
+                                        if((demo22==0 && demo11 ==1)) {
+
+                                        }else {
+                                            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                                String query = "UPDATE signin SET money = ?, " + typeCoinEx + " = ? WHERE username = ? ";//AND amount = ?
+                                                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                    preparedStatement.setDouble(1, money2 + ((Integer.parseInt(txtpriceEx1.getText()) * min)*0.995));
+                                                    preparedStatement.setDouble(2, coin2 - min);
+                                                    preparedStatement.setString(3, thisUsername);
+                                                    preparedStatement.executeUpdate();
+                                                }
+                                            } catch (SQLException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                        }
+                                        //اپدیت اطلاعات دارایی شخص فروشنده
+                                        if((demo22==1 && demo11 ==0)) {
+
+                                        }else {
+                                            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                                String query = "UPDATE signin SET money = ?, " + typeCoinEx + " = ? WHERE username = ? ";//AND amount = ?
+                                                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                    preparedStatement.setDouble(1, money1 - (Integer.parseInt(txtpriceEx1.getText()) * min));
+                                                    preparedStatement.setDouble(2, coin1 + (min*0.995));
+                                                    preparedStatement.setString(3, usernameBefore);
+                                                    preparedStatement.executeUpdate();
+                                                }
+                                            } catch (SQLException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                        }
+
+                                        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+                                            String query = "UPDATE manager SET money = ? WHERE username = ? ";//AND amount = ?
+                                            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                                                preparedStatement.setDouble(1, moneyManager +  (min*0.005*priceBefore));
+                                                preparedStatement.setString(2, "1111111111");
+                                                preparedStatement.executeUpdate();
+                                            }
+                                        } catch (SQLException e) {
+                                            throw new RuntimeException(e);
+                                        }
+
+                                    }
                                 }
                             }
                         }
                     }
                 }
-                rs.close();
+
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("we are closed !");
+            alert.showAndWait();
         }
     }
+
+
 
 
 
@@ -1037,6 +1095,27 @@ public class Profile {
 
     @FXML
     void PbtnDonetrans(ActionEvent event) throws SQLException {
+        int demo=0;
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+            String sql = "SELECT * FROM signin WHERE username = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, thisUsername);
+                ResultSet resultSet = statement.executeQuery();
+                if (resultSet.next()) {
+                    demo = resultSet.getInt("demo");
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+
+        if(demo==0)
+        {
         try (Connection connection1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
             String sql1 = "SELECT * FROM signin WHERE username = ?";
             try (PreparedStatement statement1 = connection1.prepareStatement(sql1)) {
@@ -1294,12 +1373,19 @@ public class Profile {
                     System.err.println("Wallet_id not found!");
                 }
             }
+        }}
+        else {  Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("Complete all the parts!");
+            alert.showAndWait();
+
         }
     }
 
     @FXML
     public void initialize() {
-        // افزودن ChangeListener به تب 1
+
         TabProfile.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
@@ -1324,11 +1410,26 @@ public class Profile {
                 }
             }
         });
+        exchangeList = FXCollections.observableArrayList();
+
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        sellbuyColumn.setCellValueFactory(new PropertyValueFactory<>("sellbuy"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        stateColumn.setCellValueFactory(new PropertyValueFactory<>("state"));
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+
+        tableView.setItems(exchangeList);
+        loadDataFromDatabase();
+
+
+        ProfilePic.setId(urll);
     }
 
 @FXML
 void PbtnDoneSWAP(ActionEvent event) throws SQLException {
-
+if(Manager.closeOpen==0){
     String url = "jdbc:mysql://localhost:3306/agiotage2";
     String user = "root";
     String password = "";
@@ -1422,7 +1523,7 @@ void PbtnDoneSWAP(ActionEvent event) throws SQLException {
                     try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
                         String queryYOU = "UPDATE signin SET rippel = ? WHERE username = ?";
                         try (PreparedStatement preparedStatementYOU = connectionYOU.prepareStatement(queryYOU)) {
-                            double y = Double.parseDouble(resultSetYOU1.getString("rippel")) -  Double.parseDouble(txtamoutSWAP.getText());
+                            double y = Double.parseDouble(resultSetYOU1.getString("rippel")) - Double.parseDouble(txtamoutSWAP.getText());
                             preparedStatementYOU.setString(1, String.valueOf(y));
                             preparedStatementYOU.setString(2, thisUsername);
                             preparedStatementYOU.executeUpdate();
@@ -1431,7 +1532,7 @@ void PbtnDoneSWAP(ActionEvent event) throws SQLException {
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (typeTransferSw[1] == 1 && Double.parseDouble(resultSetYOU1.getString("avalanche")) >=  Double.parseDouble(txtamoutSWAP.getText())) {
+                } else if (typeTransferSw[1] == 1 && Double.parseDouble(resultSetYOU1.getString("avalanche")) >= Double.parseDouble(txtamoutSWAP.getText())) {
                     swSWAP = true;
                     typeSell = "avalanche";
                     try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
@@ -1445,13 +1546,13 @@ void PbtnDoneSWAP(ActionEvent event) throws SQLException {
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (typeTransferSw[2] == 1 &&  Double.parseDouble(resultSetYOU1.getString("lightcoin")) >=  Double.parseDouble(txtamoutSWAP.getText())) {
+                } else if (typeTransferSw[2] == 1 && Double.parseDouble(resultSetYOU1.getString("lightcoin")) >= Double.parseDouble(txtamoutSWAP.getText())) {
                     swSWAP = true;
                     typeSell = "lighcoin";
                     try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
                         String queryYOU = "UPDATE signin SET lighcoin = ? WHERE username = ?";
                         try (PreparedStatement preparedStatementYOU = connectionYOU.prepareStatement(queryYOU)) {
-                            double y = Double.parseDouble(resultSetYOU1.getString("lighcoin")) -  Double.parseDouble(txtamoutSWAP.getText());
+                            double y = Double.parseDouble(resultSetYOU1.getString("lighcoin")) - Double.parseDouble(txtamoutSWAP.getText());
                             preparedStatementYOU.setString(1, String.valueOf(y));
                             preparedStatementYOU.setString(2, thisUsername);
                             preparedStatementYOU.executeUpdate();
@@ -1459,7 +1560,7 @@ void PbtnDoneSWAP(ActionEvent event) throws SQLException {
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (typeTransferSw[3] == 1 &&  Double.parseDouble(resultSetYOU1.getString("day")) >=  Double.parseDouble(txtamoutSWAP.getText())) {
+                } else if (typeTransferSw[3] == 1 && Double.parseDouble(resultSetYOU1.getString("day")) >= Double.parseDouble(txtamoutSWAP.getText())) {
                     swSWAP = true;
                     typeSell = "day";
                     try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
@@ -1473,7 +1574,7 @@ void PbtnDoneSWAP(ActionEvent event) throws SQLException {
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (typeTransferSw[4] == 1 &&  Double.parseDouble(resultSetYOU1.getString("stellar")) >=  Double.parseDouble(txtamoutSWAP.getText())) {
+                } else if (typeTransferSw[4] == 1 && Double.parseDouble(resultSetYOU1.getString("stellar")) >= Double.parseDouble(txtamoutSWAP.getText())) {
                     swSWAP = true;
                     typeSell = "stellar";
                     try (Connection connectionYOU = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
@@ -1590,7 +1691,105 @@ void PbtnDoneSWAP(ActionEvent event) throws SQLException {
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }
+}else{
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Warning");
+    alert.setHeaderText(null);
+    alert.setContentText("we are closed !");
+    alert.showAndWait();
 }
+}
+
+
+
+
+
+//    public  void method(double money1,String thisUsername,double money2,String usernameBefore,double newMoneyAmount){
+//        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+//            String query = "UPDATE signin SET money = ? WHERE username = ?";
+//            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+//                preparedStatement.setString(1, usernameBefore);
+//                preparedStatement.setDouble(2, money2-(0.5*newMoneyAmount));
+//                preparedStatement.executeUpdate();
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+//            String query = "UPDATE signin SET money = ? WHERE username = ?";
+//            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+//                preparedStatement.setString(1, thisUsername);
+//                preparedStatement.setDouble(2, money1-(0.5*newMoneyAmount));
+//                preparedStatement.executeUpdate();
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
+
+    @FXML
+    void PbtnFile(ActionEvent event) throws IOException, SQLException {
+
+        String date= null;
+        String time = null;
+        int sellbuy=0;
+        int price=0;
+        double amount=0;
+        String type= null;
+        int state=0;
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
+            String sql = "SELECT * FROM exchange WHERE username = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, thisUsername);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    date= resultSet.getString("date");
+                    time= resultSet.getString("time");
+                    sellbuy= resultSet.getInt("sellbuy");
+                    price= resultSet.getInt("price");
+                    amount= resultSet.getDouble("copyAmount");
+                    type= resultSet.getString("type");
+                    state = resultSet.getInt("state");
+                    writeToAndPrintFile(sellbuy, type, state, amount, price, date, time);
+
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+
+
+
+    public class FileOperations {
+        private static final String FILENAME = "data.txt";
+
+        public static void writeToAndPrintFile(int arg1, String arg2, int arg3, double arg4, int arg5, String arg6, String arg7) {
+            try (PrintWriter writer = new PrintWriter(new FileWriter(FILENAME, true));
+                 BufferedReader reader = new BufferedReader(new FileReader(FILENAME))) {
+
+                // Write to file
+                writer.println(arg1 + "," + arg2 + "," + arg3 + "," + arg4 + "," + arg5 + "," + arg6 + "," + arg7);
+                writer.flush(); // Ensure the data is written immediately
+
+                // Print file contents
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
+
+
 
     @FXML
     void PmnureppleSWAP(ActionEvent event) {
@@ -1710,5 +1909,88 @@ void PbtnDoneSWAP(ActionEvent event) throws SQLException {
         Scene scene = new Scene(root, 794, 637);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+
+    @FXML
+    void PbtnLogout(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnLogout.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("LogeIn.fxml"));
+        Scene scene = new Scene(root, 794, 637);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FXML
+    private TableView<Exchange> tableView;
+    @FXML
+    private TableColumn<Exchange, LocalDate> dateColumn;
+    @FXML
+    private TableColumn<Exchange, LocalTime> timeColumn;
+
+    @FXML
+    private TableColumn<Exchange, Integer> sellbuyColumn;
+    @FXML
+    private TableColumn<Exchange, Integer> priceColumn;
+    @FXML
+    private TableColumn<Exchange, Integer> stateColumn;
+    @FXML
+    private TableColumn<Exchange, Double> amountColumn;
+    @FXML
+    private TableColumn<Exchange, String> typeColumn;
+
+    private ObservableList<Exchange> exchangeList;
+
+
+
+    private void loadDataFromDatabase() {
+        String Url = "jdbc:mysql://localhost:3306/agiotage2";
+        String dbUser = "root";
+        String dbPassword = "";
+
+        String querybef = "SELECT * FROM exchange WHERE username = ?";
+        try (Connection connection = DriverManager.getConnection(Url, dbUser, dbPassword);
+             PreparedStatement preparedStatement = connection.prepareStatement(querybef)) {
+            preparedStatement.setString(1, thisUsername);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    LocalDate date = resultSet.getDate("date").toLocalDate();
+                    LocalTime time = resultSet.getTime("time").toLocalTime();
+
+
+
+                    String type = resultSet.getString("type");
+                    Integer price = resultSet.getInt("price");
+                    Double amount = resultSet.getDouble("copyAmount");
+                    Integer state = resultSet.getInt("state");
+                    String stateEX=null;
+                    if(state==0)
+                        stateEX="pending";
+                    else  stateEX="done";
+
+                    Integer sellbuy = resultSet.getInt("sellbuy");
+
+                    exchangeList.add(new Exchange(date, time,sellbuy,type,amount,price,stateEX));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

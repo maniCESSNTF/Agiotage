@@ -64,10 +64,12 @@ public class CalendarTime {
 
     public static void main(String[] args) {
         CalendarTime s=new CalendarTime();
+        long t=s.now();
+        long g=t-1576000000L;
         String datetime = s + " " + "ff";
 
         System.out.println("-----------------------"+s.formatTime(1718196335501L));
-        long g=1718196335501L;
+
         String dateNow= s.dateNow(g);
         System.out.println(dateNow);
         String dateNow1= s.formatDate(g);

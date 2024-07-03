@@ -15,8 +15,10 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.sql.*;
 
-import static com.example.demo1.Methods.UserNumber;
 import static com.example.demo1.Methods.users;
+
+//import static com.example.demo1.Methods.UserNumber;
+//import static com.example.demo1.Methods.users;
 
 public class SingIn {
 
@@ -34,7 +36,7 @@ public class SingIn {
     private RadioButton rbtnClient;
 
     @FXML
-    private RadioButton rbtnManager;
+    private RadioButton rbtndemo;
 
     @FXML
     private TextField txtEmail;
@@ -143,10 +145,18 @@ public class SingIn {
             }
 
         } else {
+
+            int demo=0;
+            if(rbtndemo.isSelected()) {
+                demo = 1;
+            }
+            else  {
+                demo = 0;
+            }
             userName=InputPass.UsernameGenerator();
 
             try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                String query = "INSERT INTO signin (firstname, lastname, email, phonenumber,password,username,WalletId) VALUES (?, ?, ?, ?,?,?,?)";
+                String query = "INSERT INTO signin (firstname, lastname, email, phonenumber,password,username,WalletId,demo,money) VALUES (?, ?, ?, ?,?,?,?,?,?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                     preparedStatement.setString(1, txtName.getText());
                     preparedStatement.setString(2, txtFamilyName.getText());
@@ -155,10 +165,17 @@ public class SingIn {
                     preparedStatement.setString(5, null);
                     preparedStatement.setString(6, userName);
                     preparedStatement.setString(7, InputPass.GenerateWalletId());
+                    preparedStatement.setInt(8, demo);
+                    if(demo==1) {
+                        preparedStatement.setInt(9, 5000);
+                    }
+                    else
+                        preparedStatement.setInt(9, 0);
+
                     preparedStatement.executeUpdate();
                 }
             }
-                AddUser(new User(txtName.getText(), txtFamilyName.getText(), txtEmail.getText(), txtPhoneNumber.getText(), userName));
+                AddUser(new User(txtName.getText(), txtFamilyName.getText(), txtEmail.getText(), txtPhoneNumber.getText(), userName,demo));
                 Stage stage = (Stage) btnPass.getScene().getWindow();
                 stage.close();
                 Stage primaryStage = new Stage();
@@ -177,16 +194,18 @@ public class SingIn {
 
     @FXML
     void PrbtnClient(ActionEvent event) {
-        if (rbtnManager.isSelected()) {
-            rbtnManager.setSelected(false);
-        }
+        if (rbtnClient.isSelected()) {
+            rbtndemo.setSelected(false);
+        }else
+            rbtndemo.setSelected(true);
     }
 
     @FXML
-    void PrbtnManager(ActionEvent event) {
-        if (rbtnClient.isSelected()) {
+    void Prbtndemo(ActionEvent event) {
+        if (rbtndemo.isSelected()) {
             rbtnClient.setSelected(false);
-        }
+        }else
+            rbtnClient.setSelected(true);
     }
 
     public static void AddUser(User newUser) {
@@ -204,8 +223,8 @@ public class SingIn {
             alert.setContentText("A user has already registered with this Phone number!");
             alert.showAndWait();
         } else if (searchResult == -1) {
-            users[UserNumber] = newUser;
-            UserNumber++;
+//            users[UserNumber] = newUser;
+//            UserNumber++;
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText(null);
@@ -215,6 +234,7 @@ public class SingIn {
     }
 
     public static int SearchUser(User newUser) {
+
         for (User user : users) {
             if (user != null) {
                 if (user.getEmail().equals(newUser.getEmail())) {

@@ -197,5 +197,6 @@
             <Image url="@coin2.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnAvalancheDia" layoutX="104.0" layoutY="376.0" mnemonicParsing="false" onAction="#PbtnAvalancheDia" text="show diagram" />
 </children>
 </AnchorPane>

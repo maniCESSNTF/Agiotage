@@ -122,6 +122,10 @@ public class StellarCoin {
     @FXML
     private Button btnset;
 
+
+    @FXML
+    private Button btnStellarDia;
+
     @FXML
     private Text txt101;
 
@@ -224,6 +228,13 @@ public class StellarCoin {
     }
 
     @FXML
+    void PbtnStellarDia(ActionEvent event) throws IOException {
+        LineChartExample line = new LineChartExample();
+        Stage stage = (Stage) btnHome.getScene().getWindow();
+        line.start(stage);
+    }
+
+    @FXML
     void Pbtnset(ActionEvent event)throws  IOException {
         String[][] changesDuring = new String[10][3];
         String[][] changesAccepted = new String[10][3];
@@ -242,7 +253,7 @@ public class StellarCoin {
                 while (rs.next()) {
                     if(rs.getString("type").equals("stellar")) {
                         if(rs.getInt("state") == 0 && iDuring<10){
-                            changesDuring[iDuring][0] = rs.getString("amount");
+                            changesDuring[iDuring][0] = rs.getString("copyAmount");
                             changesDuring[iDuring][1] = rs.getString("price");
                             if(rs.getString("sellbuy").equals("0")) {
                                 changesDuring[iDuring][2] = "sell";
@@ -251,7 +262,7 @@ public class StellarCoin {
                             }
                             iDuring++;
                         } else if(iAccepted < 10){
-                            changesAccepted[iAccepted][0] = rs.getString("amount");
+                            changesAccepted[iAccepted][0] = rs.getString("copyAmount");
                             changesAccepted[iAccepted][1] = rs.getString("price");
                             changesAccepted[iAccepted][2] = rs.getString("date");
                             iAccepted++;

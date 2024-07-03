@@ -46,7 +46,7 @@
                     </image>
                 </ImageView>
                 <RadioButton fx:id="rbtnClient" layoutX="440.0" layoutY="327.0" mnemonicParsing="false" onAction="#PrbtnClient" selected="true" text="client" textFill="WHITE" />
-                <RadioButton fx:id="rbtnManager" layoutX="440.0" layoutY="353.0" mnemonicParsing="false" onAction="#PrbtnManager" text="manager" textFill="WHITE" />
+                <RadioButton fx:id="rbtndemo" layoutX="440.0" layoutY="353.0" mnemonicParsing="false" onAction="#Prbtndemo" text="demo" textFill="WHITE" />
                 <Label layoutX="46.0" layoutY="-25.0" prefHeight="148.0" prefWidth="252.0" text="welcome" textFill="#097158">
                     <font>
                         <Font name="Script MT Bold" size="77.0" />

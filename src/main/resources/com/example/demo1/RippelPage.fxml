@@ -197,6 +197,10 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="btnrippleDia" layoutX="54.0" layoutY="288.0" mnemonicParsing="false" onAction="#PbtnrippleDia" text="Button" />
+      <Button fx:id="btnrippleDiaD" layoutX="74.0" layoutY="309.0" mnemonicParsing="false" onAction="#PbtnrippleDiaD" text="diagram daily" />
+      <Button fx:id="btnrippleDiaW" layoutX="71.0" layoutY="346.0" mnemonicParsing="false" onAction="#PbtnrippleDiaW" text="diagram weekly" />
+      <Button fx:id="btnrippleDiaM" layoutX="64.0" layoutY="383.0" mnemonicParsing="false" onAction="#PbtnrippleDiaM" text="diagram monthly" />
+      <Button fx:id="btnrippleDiaH" layoutX="72.0" layoutY="275.0" mnemonicParsing="false" onAction="#PbtnrippleDiaH" text="diagram huorly" />
+      <Button fx:id="btnrippleDiaY" layoutX="71.0" layoutY="418.0" mnemonicParsing="false" onAction="#PbtnrippleDiaY" text="diagram yearly" />
    </children>
 </AnchorPane>

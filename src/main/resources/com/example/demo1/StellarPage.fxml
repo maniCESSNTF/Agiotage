@@ -197,5 +197,6 @@
             <Image url="@coin5.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnStellarDia" layoutX="67.0" layoutY="383.0" mnemonicParsing="false" onAction="#PbtnStellarDia" text="show diagram" />
 </children>
 </AnchorPane>

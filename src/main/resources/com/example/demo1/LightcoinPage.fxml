@@ -197,5 +197,6 @@
             <Image url="@coin3.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnLightDia" layoutX="97.0" layoutY="403.0" mnemonicParsing="false" onAction="#PbtnLightDia" text="show diagram" />
 </children>
 </AnchorPane>

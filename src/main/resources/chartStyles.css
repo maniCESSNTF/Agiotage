@@ -1,12 +1,13 @@
 .chart-series-line {
-    -fx-stroke: #0000ff; /* رنگ خط نمودار (آبی) */
+    -fx-stroke: #ff0000; /* رنگ خط نمودار (قرمز) */
 }
 
 .chart-legend-item-symbol {
-    -fx-background-color: #0000ff, white; /* رنگ نماد در لِجند (آبی) */
+    -fx-background-color: #ff0000, white; /* رنگ نماد در لِجند (قرمز) */
 }
+
 .chart-line-symbol {
-    -fx-background-color: orange, white; /* رنگ پس زمینه نقطه (نارنجی) */
-    -fx-background-radius: 0.5px; /* شعاع گوشه‌های گوشه نقطه */
-    -fx-padding:0.5px; /* فاصله بین نقطه و محتوای داخلی آن */
+    -fx-background-color: transparent; /* نقاط را شفاف می‌کند */
+    -fx-padding: 0; /* حذف فاصله بین نقطه‌ها و محتوای داخلی آن‌ها */
+    -fx-background-radius: 0; /* حذف شعاع گوشه‌های نقطه‌ها */
 }

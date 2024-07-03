@@ -13,6 +13,8 @@
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -24,11 +26,11 @@
 
 <AnchorPane fx:id="imgCaptchaCodeWthdrawal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Profile">
     <children>
-        <ButtonBar layoutY="-9.0" prefHeight="69.0" prefWidth="796.0" style="-fx-background-color: #054d3d;">
+        <ButtonBar layoutX="-7.0" layoutY="1.0" prefHeight="69.0" prefWidth="796.0" style="-fx-background-color: #054d3d;">
             <buttons>
                 <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
                 <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
-                <Button mnemonicParsing="false" style="-fx-background-color: #097158;" text="Button" />
+                <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#PbtnLogout" style="-fx-background-color: #097158;" text="Log out" />
                 <Button fx:id="btnGoHomePage" mnemonicParsing="false" onAction="#PbtnGoHomePage" style="-fx-background-color: #097158;" text="Home" />
             </buttons>
         </ButtonBar>
@@ -143,7 +145,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-1.0" pannable="true" prefHeight="485.0" prefWidth="735.0" vbarPolicy="ALWAYS" vmax="2.0">
+                                <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-1.0" pannable="true" prefHeight="485.0" prefWidth="735.0" vbarPolicy="ALWAYS" vmax="2.0" vvalue="2.0">
                            <content>
                               <AnchorPane prefHeight="750.0" prefWidth="700.0">
                                  <children>
@@ -156,7 +158,7 @@
                                     <TextField fx:id="txtPasswordDeposit" layoutX="121.0" layoutY="391.0" opacity="0.8" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #097158; -fx-background-radius: 20; -fx-border-color: #8FBC8F; -fx-border-radius: 25;" />
                                     <Button fx:id="btnSendEmailDeposit" layoutX="298.0" layoutY="395.0" mnemonicParsing="false" onAction="#PbtnSendEmailDeposit" opacity="0.8" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25;" text="Send pass" />
                                     <Button fx:id="btnDoneDeposit" layoutX="120.0" layoutY="489.0" mnemonicParsing="false" onAction="#PbtnDoneDeposit" opacity="0.8" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-color: ff0000; -fx-border-radius: 25;" text="Payment" textFill="RED" />
-                                    <TextArea layoutX="-5.0" layoutY="474.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="269.0" prefWidth="721.0" style="-fx-border-color: #054d3d; -fx-background-color: #000000;" text="راهنما و نکات ایمنی&#10;شماره کارت: 16 رقمی بوده و بصورت 4 قسمت 4 رقمی روی کارت درج شده است.&#10;cvv2: با طول 3 یا 4 رقم کنار شماره کارت و یا پشت کارت درج شده است.&#10;تاریخ انقضا: شامل دو بخش ماه و سال انقضا در کنار شماره کارت درج شده است.&#10;رمز اینترنتی: با عنوان رمز دوم و در برخی موارد با PIN2 شناخته می شود، از طریق بانک صادر کننده کارت تولید شده و همچنین از طریق دستگاه &#10;های خودپرداز بانک صادر کننده قابل تهیه و یا تغییر می باشد.&#10;کد امنیتی: بخشی از محتوای صفحه پرداخت است و لازم است برای ادامه فرایند خرید ، کد موجود که به صورت عددی در تصویر مشخص شده است&#10; در محل پیش بینی شده درج شود.&#10;دروازه پرداخت اینترنتی به پرداخت ملت با استفاده از پروتکل امن https به مشتریان خود ارایه خدمت نموده و با آدرس https://bpm.shaparak.ir &#10;شروع می شود. خواهشمند است به منظور جلوگیری از سوء استفاده های احتمالی پیش از ورود هرگونه اطلاعات، آدرس موجود در بخش مرورگر &#10;وب خود را با آدرس فوق مقایسه نمایید و درصورت مشاهده هر نوع مغایرت احتمالی، موضوع را با ما درمیان بگذارید.&#10;برای جلوگیری از افشای رمز کارت خود،حتی المقدور از صفحه کلید مجازی استفاده فرمایید.&#10;لطفا از صحت نام فروشنده و مبلغ نمایش داده شده، اطمینان حاصل فرمایید.&#10;برای کسب اطلاعات بیشتر، گزارش فروشگاههای مشکوک و همچنین اطلاع از وضعیت پذیرندگان اینترنتی با ما تماس بگیرید" />
+                                    <TextArea layoutX="-5.0" layoutY="545.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="199.0" prefWidth="722.0" style="-fx-border-color: #054d3d; -fx-background-color: #000000;" text="راهنما و نکات ایمنی&#10;شماره کارت: 16 رقمی بوده و بصورت 4 قسمت 4 رقمی روی کارت درج شده است.&#10;cvv2: با طول 3 یا 4 رقم کنار شماره کارت و یا پشت کارت درج شده است.&#10;تاریخ انقضا: شامل دو بخش ماه و سال انقضا در کنار شماره کارت درج شده است.&#10;رمز اینترنتی: با عنوان رمز دوم و در برخی موارد با PIN2 شناخته می شود، از طریق بانک صادر کننده کارت تولید شده و همچنین از طریق دستگاه &#10;های خودپرداز بانک صادر کننده قابل تهیه و یا تغییر می باشد.&#10;کد امنیتی: بخشی از محتوای صفحه پرداخت است و لازم است برای ادامه فرایند خرید ، کد موجود که به صورت عددی در تصویر مشخص شده است&#10; در محل پیش بینی شده درج شود.&#10;دروازه پرداخت اینترنتی به پرداخت ملت با استفاده از پروتکل امن https به مشتریان خود ارایه خدمت نموده و با آدرس https://bpm.shaparak.ir &#10;شروع می شود. خواهشمند است به منظور جلوگیری از سوء استفاده های احتمالی پیش از ورود هرگونه اطلاعات، آدرس موجود در بخش مرورگر &#10;وب خود را با آدرس فوق مقایسه نمایید و درصورت مشاهده هر نوع مغایرت احتمالی، موضوع را با ما درمیان بگذارید.&#10;برای جلوگیری از افشای رمز کارت خود،حتی المقدور از صفحه کلید مجازی استفاده فرمایید.&#10;لطفا از صحت نام فروشنده و مبلغ نمایش داده شده، اطمینان حاصل فرمایید.&#10;برای کسب اطلاعات بیشتر، گزارش فروشگاههای مشکوک و همچنین اطلاع از وضعیت پذیرندگان اینترنتی با ما تماس بگیرید" />
                                     <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#097158" height="266.0" layoutX="471.0" layoutY="101.0" stroke="DARKSEAGREEN" strokeType="INSIDE" width="234.0" />
                                     <Label layoutX="478.0" layoutY="105.0" opacity="0.9" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #8FBC8F; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-color: #054d3d;" text="  اطلاعات پذیرنده">
                                        <font>
@@ -410,7 +412,7 @@
             </Tab>
                 <Tab fx:id="TabProfile" style="-fx-background-color: #097158;" text="پروفایل">
                     <content>
-                        <AnchorPane fx:id="TabPrifile" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane fx:id="TabPrifile" minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="734.0">
                             <children>
                                 <Text fill="WHITE" layoutX="601.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                                     <font>
@@ -447,7 +449,7 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <ImageView fitHeight="87.0" fitWidth="118.0" layoutX="226.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true" />
+                                <ImageView fx:id="ProfilePic" fitHeight="87.0" fitWidth="118.0" layoutX="199.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" />
                                 <Text fx:id="txtPassword" fill="WHITE" layoutX="442.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                     <font>
                                         <Font size="18.0" />
@@ -493,12 +495,32 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
+                        <Button fx:id="btnProfilePic" layoutX="414.0" layoutY="406.0" mnemonicParsing="false" onAction="#PbtnProfilePic" text="profile" />
+                        <Text layoutX="652.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user name" wrappingWidth="113.33673095703125">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
                             </children></AnchorPane>
                     </content>
                 </Tab>
             <Tab style="-fx-background-color: #097158;" text="تاریخچه">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableView" layoutX="10.0" layoutY="91.0" prefHeight="338.0" prefWidth="603.0">
+                          <columns>
+                              <TableColumn fx:id="dateColumn" prefWidth="110.39999389648438" text="Date" />
+                              <TableColumn fx:id="timeColumn" prefWidth="116.0" text="Time" />
+                              <TableColumn fx:id="sellbuyColumn" prefWidth="75.0" text="sellbuy" />
+                              <TableColumn fx:id="typeColumn" prefWidth="75.0" text="type" />
+                              <TableColumn fx:id="amountColumn" prefWidth="75.0" text="amount" />
+                              <TableColumn fx:id="priceColumn" prefWidth="75.0" text="price" />
+                              <TableColumn fx:id="stateColumn" prefWidth="75.0" text="state" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btnFile" layoutX="576.0" layoutY="36.0" mnemonicParsing="false" onAction="#PbtnFile" prefHeight="26.0" prefWidth="136.0" text="give me  a file!!!" />
+                     </children></AnchorPane>
               </content>
             </Tab>
                 <Tab fx:id="tabWallet1" style="-fx-background-color: #097158;" text="هشدار">

@@ -79,17 +79,23 @@ public class LogeIn {
                 stage.close();
                 Stage primaryStage = new Stage();
                 Profile.thisUsername = txtUsername.getText();
-                AnchorPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                AnchorPane root = FXMLLoader.load(getClass().getResource("manager.fxml"));
                 Scene scene = new Scene(root, 794, 637);
                 primaryStage.setScene(scene);
                 primaryStage.show();
             }else {
+
                 User nowUser = SearchUser();
                 if (nowUser != null) {
+
                     Stage stage = (Stage) btnDone.getScene().getWindow();
                     stage.close();
                     Stage primaryStage = new Stage();
-                    Profile.thisUsername = txtUsername.getText();
+                    usernnameSaver.nowUsername=txtUsername.getText();
+                    Profile.thisUsername = usernnameSaver.nowUsername;
+
+                   // Profile.txtUsernameNow.setText(Profile.thisUsername);
+
                     AnchorPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
                     Scene scene = new Scene(root, 794, 637);
                     primaryStage.setScene(scene);
@@ -135,7 +141,8 @@ public class LogeIn {
                             resultSet.getString("lastname"),
                             resultSet.getString("email"),
                             resultSet.getString("phonenumber"),
-                            resultSet.getString("username")
+                            resultSet.getString("username"),
+                            resultSet.getInt("demo")
                             // Add other fields as necessary
                     );
                 }

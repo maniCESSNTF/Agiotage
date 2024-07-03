@@ -18,7 +18,7 @@ public class EmailSender {
    final String host = "smtp.gmail.com";
    final String username = "mani.abdolalizade@gmail.com";
    final String password = "klsa kokk aeuj udnc";
-//klsa kokk aeuj udnc
+   //klsa kokk aeuj udnc
    public  void send (String emailAdress,String code){
       // تنظیمات ارسال ایمیل
       Properties properties = new Properties();

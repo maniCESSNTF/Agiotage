@@ -1,13 +1,14 @@
 package com.example.demo1;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
@@ -24,15 +25,25 @@ public class LineChartExample extends Application {
     static final String DB_URL = "jdbc:mysql://localhost:3306/agiotage2";
     static final String USER = "root";
     static final String PASS = "";
+    static int typeCoin=0;
+    static int typeShowDiagram=0;
+    static String targetDate = "2024-06-14";
+    static String targetTime = "12:12:35";
+
+
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Line Chart Example");
-
+//        LineChartExample.diagramShow();
         // محورهای x و y را ایجاد کنید
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("X Axis");
         yAxis.setLabel("Y Axis");
+
+        // تنظیم واحدهای محور برای افزایش وضوح
+        xAxis.setTickUnit(1);
+        yAxis.setTickUnit(0.1);
 
         // نمودار خطی را ایجاد کنید
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
@@ -41,154 +52,111 @@ public class LineChartExample extends Application {
         // داده‌ها را اضافه کنید
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
         series.setName("My Data");
-        Connection conn = null;
-        Statement stmt = null;
+
         SimpleRegression regressionUSD = new SimpleRegression();
         SimpleRegression regressionEUR = new SimpleRegression();
         SimpleRegression regressionTOMAN = new SimpleRegression();
         SimpleRegression regressionYEN = new SimpleRegression();
         SimpleRegression regressionGBP = new SimpleRegression();
 
-        long milliseconds = 0;
-        try {
-            // Register JDBC driver
-            Class.forName(JDBC_DRIVER);
-            // Open a connection
-            System.out.println("Connecting to database...");
-
-            // Execute a query
-            System.out.println("Creating statement...");
-
-            // نمایش تاریخ و زمان فعلی
-            String currentDate = getCurrentDate();
-            String currentTime = getCurrentTime();
-
-            ResultSet rs = null;
-
-            CombinedTask.LinearRegressionExample linearRegressionExample = new CombinedTask.LinearRegressionExample();
-            int count = 0;
-            long nowMilli = linearRegressionExample.miliSec(currentDate, currentTime);
-            System.out.println(nowMilli);
-            System.out.println("Current date: " + currentDate);
-            System.out.println("Current time: " + currentTime);
-
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            String sql = "SELECT * FROM prices";
-            rs = stmt.executeQuery(sql);
-
-            // Extract data from result set
-            while (rs.next()) {
-                // Retrieve by column name
-                String column1 = rs.getString("TIMA");
-                String column2 = rs.getString("DATE");
-                double columnUSD = rs.getDouble("USD");
-                double columnEUR = rs.getDouble("EUR");
-                double columnTOMAN = rs.getDouble("TOMAN");
-                double columnYEN = rs.getDouble("YEN");
-                double columnGBP = rs.getDouble("GBP");
-                if (columnUSD != 0) {
-                    count++;
-                    String date = column2;
-                    String time = column1;
-
-                    milliseconds = linearRegressionExample.miliSec(date, time);
-                    System.out.println("Milliseconds: " + milliseconds);
-                    System.out.println("USD: " + columnUSD);
-
-//
-                    regressionUSD.addData(count, columnUSD);
-                    series.getData().add(new XYChart.Data<>(count, columnUSD));
-
-//                   regressionUSD.addData(milliseconds, columnUSD);
-//
-//                   series.getData().add(new XYChart.Data<>(milliseconds-1500000000000L, columnUSD));
+        String dbUrl = "jdbc:mysql://localhost:3306/agiotage2";
+        String dbUser = "root";
+        String dbPassword = "";
 
 
-                }
+        try (Connection conn2 = DriverManager.getConnection(dbUrl, dbUser, dbPassword)) {
+            String sql = "SELECT * FROM prices WHERE (DATE > ?) OR (DATE = ? AND TIMA >= ?) ORDER BY DATE, TIMA";
 
-                if (columnEUR != 0) {
-                    count++;
-                    String date = column2;
-                    String time = column1;
+            try (PreparedStatement preparedStatementYOU = conn2.prepareStatement(sql)) {
+                preparedStatementYOU.setString(1, targetDate);
+                preparedStatementYOU.setString(2, targetDate);
+                preparedStatementYOU.setString(3, targetTime);
 
-                    milliseconds = linearRegressionExample.miliSec(date, time);
-                    System.out.println("Milliseconds: " + milliseconds);
-                    System.out.println("EUR: " + columnEUR);
+                ResultSet rs1 = preparedStatementYOU.executeQuery();
+                long milliseconds=0;
+                int count = 0;
+                CombinedTask.LinearRegressionExample linearRegressionExample = new CombinedTask.LinearRegressionExample();
 
-                    regressionEUR.addData(milliseconds, columnEUR);
+                while (rs1.next()) {
+                    String column1 = rs1.getString("TIMA");
+                    String column2 = rs1.getString("DATE");
+                    double columnUSD = rs1.getDouble("USD");
+                    double columnEUR = rs1.getDouble("EUR");
+                    double columnTOMAN = rs1.getDouble("TOMAN");
+                    double columnYEN = rs1.getDouble("YEN");
+                    double columnGBP = rs1.getDouble("GBP");
+                    if (typeCoin==1) {
+                        System.out.println(typeShowDiagram+"-------------------------1");
+                        if (columnUSD != 0) {
+                            count++;
+                            String date = column2;
+                            String time = column1;
+                            milliseconds = linearRegressionExample.miliSec(date, time);
+                            System.out.println("Milliseconds: " + milliseconds);
+                            System.out.println("USD: " + columnUSD);
+                            regressionUSD.addData(count, columnUSD);
+                            series.getData().add(new XYChart.Data<>(count * 100, columnUSD));
+                        }
+                    }
+                    if (typeCoin==2) {
+                        System.out.println(typeShowDiagram+"-------------------------2");
+                        if(columnEUR!=0) {
+                            count++;
+                            String date = column2;
+                            String time = column1;
+                            milliseconds = linearRegressionExample.miliSec(date, time);
+                            System.out.println("Milliseconds: " + milliseconds);
+                            System.out.println("EUR: " + columnEUR);
+                            regressionEUR.addData(milliseconds, columnEUR);
+                            series.getData().add(new XYChart.Data<>(count * 100, columnEUR));
 
-
-
-
-
-                }
-
-                if (columnTOMAN != 0) {
-                    count++;
-                    String date = column2;
-                    String time = column1;
-
-                    milliseconds = linearRegressionExample.miliSec(date, time);
-                    System.out.println("Milliseconds: " + milliseconds);
-                    System.out.println("TOMAN: " + columnTOMAN);
-
-                    regressionTOMAN.addData(milliseconds, columnTOMAN);
-                }
-                if (columnYEN != 0) {
-                    count++;
-                    String date = column2;
-                    String time = column1;
-
-                    milliseconds = linearRegressionExample.miliSec(date, time);
-                    System.out.println("Milliseconds: " + milliseconds);
-                    System.out.println("YEN: " + columnYEN);
-
-                    regressionYEN.addData(milliseconds, columnYEN);
-                }
-                if (columnGBP != 0) {
-                    count++;
-                    String date = column2;
-                    String time = column1;
-
-                    milliseconds = linearRegressionExample.miliSec(date, time);
-                    System.out.println("Milliseconds: " + milliseconds);
-                    System.out.println("GBP: " + columnGBP);
-
-                    regressionGBP.addData(milliseconds, columnGBP);
-                }
+                        }
+                    }
+                    if (typeCoin==3) {
+                        System.out.println(typeShowDiagram+"-------------------------3");
+                        if (columnTOMAN != 0) {
+                            count++;
+                            String date = column2;
+                            String time = column1;
+                            milliseconds = linearRegressionExample.miliSec(date, time);
+                            System.out.println("Milliseconds: " + milliseconds);
+                            System.out.println("TOMAN: " + columnTOMAN);
+                            regressionTOMAN.addData(milliseconds, columnTOMAN);
+                            series.getData().add(new XYChart.Data<>(count * 100, columnTOMAN));
+                        }
+                    }
+                    if (typeCoin==4) {    System.out.println(typeShowDiagram+"-------------------------4");
+                        if (columnYEN != 0) {
+                            count++;
+                            String date = column2;
+                            String time = column1;
+                            milliseconds = linearRegressionExample.miliSec(date, time);
+                            System.out.println("Milliseconds: " + milliseconds);
+                            System.out.println("YEN: " + columnYEN);
+                            regressionYEN.addData(milliseconds, columnYEN);
+                            series.getData().add(new XYChart.Data<>(count * 100, columnYEN));
+                        }
+                    }if (typeCoin==5) {    System.out.println(typeShowDiagram+"-------------------------5");
+                        if (columnGBP != 0) {
+                            count++;
+                            String date = column2;
+                            String time = column1;
+                            milliseconds = linearRegressionExample.miliSec(date, time);
+                            System.out.println("Milliseconds: " + milliseconds);
+                            System.out.println("GBP: " + columnGBP);
+                            regressionGBP.addData(milliseconds, columnGBP);
+                            series.getData().add(new XYChart.Data<>(count * 100, columnGBP));
+                        }
+                    }                }
             }
-
-            // Clean-up environment
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException se) {
-            // Handle errors for JDBC
-            se.printStackTrace();
-        } catch (Exception e) {
-            // Handle errors for Class.forName
+        } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            // Finally block used to close resources
-            try {
-                if (stmt != null) stmt.close();
-            } catch (SQLException se2) {
-            }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
         }
-        System.out.println("Goodbye!");
 
         lineChart.getData().add(series);
-//
-//        Scene scene = new Scene(lineChart, 800, 600);
-//        scene.getStylesheets().add("chartStyles.css");
-//        stage.setScene(scene);
-//        stage.show();
+
+        // اضافه کردن قابلیت بزرگ‌نمایی (zooming)
+        addZooming(lineChart, xAxis, yAxis);
 
         // اضافه کردن دکمه برای بستن پنجره
         Button closeButton = new Button("Close Chart");
@@ -212,6 +180,89 @@ public class LineChartExample extends Application {
         stage.show();
     }
 
+    private void addZooming(LineChart<Number, Number> lineChart, NumberAxis xAxis, NumberAxis yAxis) {
+        lineChart.setOnScroll(new EventHandler<ScrollEvent>() {
+            @Override
+            public void handle(ScrollEvent event) {
+                double zoomFactor = 0.1;
+                if (event.getDeltaY() > 0) {
+                    xAxis.setLowerBound(xAxis.getLowerBound() + zoomFactor);
+                    xAxis.setUpperBound(xAxis.getUpperBound() - zoomFactor);
+                    yAxis.setLowerBound(yAxis.getLowerBound() + zoomFactor);
+                    yAxis.setUpperBound(yAxis.getUpperBound() - zoomFactor);
+                } else {
+                    xAxis.setLowerBound(xAxis.getLowerBound() - zoomFactor);
+                    xAxis.setUpperBound(xAxis.getUpperBound() + zoomFactor);
+                    yAxis.setLowerBound(yAxis.getLowerBound() - zoomFactor);
+                    yAxis.setUpperBound(yAxis.getUpperBound() + zoomFactor);
+                }
+            }
+        });
+    }
+
+
+
+    public static void diagramShow(){
+
+//        CalendarTime calweek=new CalendarTime();
+//        System.out.println(calweek.formatDate(calweek.now()) +"wwwwwwwwwwwwwwwwwwwwwwwwwww");
+//        System.out.println(calweek.formatTime35(calweek.now()) +"ttttttttttttttttttttttttttttttttttw");
+//        long iii=calweek.now();
+//
+//        long g=iii-1576000000L;
+//        long milliweek=g-(7*24*60*60*1000);
+//        long milliday=g-(24*60*60*1000L);
+//        long millimonth=g-(30*24*60*60*1000L);
+//        long millihour=g-(60*60*1000L);
+//        String timeweek=calweek.formatDate(milliweek);
+//        String dateweek=calweek.formatTime35(milliweek);
+//
+//        String timeday=calweek.formatDate(milliday);
+//        String dateday=calweek.formatTime35(milliday);
+//
+//        String timemonth=calweek.formatDate(millimonth);
+//        String datemonth=calweek.formatTime35(millimonth);
+//
+//        String timehour=calweek.formatDate(millihour);
+//        String datehour=calweek.formatTime35(millihour);
+//
+//        String timeyear=calweek.formatDate(calweek.now());
+//        String dateyear=calweek.formatTime35(calweek.now());
+//
+        CalendarTime Now=new CalendarTime();
+        long milliNow=Now.now();
+        String dateNow=Now.formatDate(milliNow);
+        String timeNow=Now.formatTime35(milliNow);
+
+
+        if(typeShowDiagram==0){
+            System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+        }
+        if(typeShowDiagram==5){
+            targetTime="12:12:35";
+            targetDate="2024-05-06";
+        }
+        if(typeShowDiagram==4){
+            targetTime="12:12:35";
+            targetDate="2024-05-06";
+
+        }
+        if(typeShowDiagram==3){
+            targetTime=Now.formatTime35(milliNow-7*24*60*60*1000L);
+            targetDate=Now.formatDate(milliNow-7*24*60*60*1000L);
+
+        }
+        if(typeShowDiagram==2){
+            targetTime=Now.formatTime35(milliNow-24*60*60*1000L);
+            targetDate=Now.formatDate(milliNow-24*60*60*1000L);
+        }
+        if(typeShowDiagram==1){
+            targetTime=Now.formatTime35(milliNow-60*60*1000L);
+            targetDate=Now.formatDate(milliNow-60*60*1000L);
+        }
+    }
+
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -226,4 +277,3 @@ public class LineChartExample extends Application {
         return sdf.format(new Date());
     }
 }
-

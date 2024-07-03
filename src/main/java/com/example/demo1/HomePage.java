@@ -137,6 +137,7 @@ public class HomePage {
 
     @FXML
     void Pbtnavalanche(ActionEvent event) throws IOException {
+        LineChartExample.typeCoin=2;
         Stage stage = (Stage) btnrippel.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
@@ -148,6 +149,7 @@ public class HomePage {
 
     @FXML
     void Pbtnday(ActionEvent event) throws IOException {
+        LineChartExample.typeCoin=4;
         Stage stage = (Stage) btnrippel.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
@@ -159,6 +161,7 @@ public class HomePage {
 
     @FXML
     void Pbtnlightcoin(ActionEvent event) throws IOException {
+        LineChartExample.typeCoin=3;
         Stage stage = (Stage) btnrippel.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
@@ -170,6 +173,7 @@ public class HomePage {
 
     @FXML
     void Pbtnrippel(ActionEvent event) throws IOException {
+        LineChartExample.typeCoin=1;
         Stage stage = (Stage) btnrippel.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
@@ -181,6 +185,7 @@ public class HomePage {
 
     @FXML
     void Pbtnstellar(ActionEvent event) throws IOException {
+        LineChartExample.typeCoin=5;
         Stage stage = (Stage) btnrippel.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
@@ -193,7 +198,9 @@ public class HomePage {
     @FXML
     void Pbtncurrency(ActionEvent event) {
         CalendarTime calendarTime = new CalendarTime();
-
+        long milicec = calendarTime.now() - 24*60*60*1000L;
+        String agotime=calendarTime.formatTime35(milicec);
+        String agodate=calendarTime.formatDate(milicec);
         String url = "jdbc:mysql://localhost:3306/agiotage2";
         String user = "root";
         String password = "";
@@ -202,13 +209,12 @@ public class HomePage {
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);
-            String initialEmail = "2024-06-12";
 
             // همه ردیف‌هایی که ایمیل آن‌ها بزرگتر یا مساوی با ایمیل مورد نظر است را بخوانید
             String sql = "SELECT * FROM prices WHERE DATE >= ? ORDER BY DATE";
 
             try (PreparedStatement preparedStatementYOU = conn.prepareStatement(sql)) {
-                preparedStatementYOU.setString(1, initialEmail);
+                preparedStatementYOU.setString(1, agodate);
                 ResultSet rs = preparedStatementYOU.executeQuery();
 
                 while (rs.next()) {
@@ -323,13 +329,23 @@ public class HomePage {
 
     @FXML
     void Pbtnprofile(ActionEvent event) throws IOException {
+        if(Profile.thisUsername.equals("1111111111")){
+            Stage stage = (Stage) btnprofile.getScene().getWindow();
+            stage.close();
+            Stage primaryStage = new Stage();
+            AnchorPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+            Scene scene = new Scene(root, 794, 637);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
+        else {
         Stage stage = (Stage) btnprofile.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
         AnchorPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
         Scene scene = new Scene(root, 794, 637);
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();}
     }
 
     static class ValueWithIndex {

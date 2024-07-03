@@ -213,6 +213,10 @@ public class AvalanchPage {
     private Text txt93;
 
     @FXML
+    private Button btnAvalancheDia;
+
+
+    @FXML
     void PbtnHome(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnHome.getScene().getWindow();
         stage.close();
@@ -221,6 +225,14 @@ public class AvalanchPage {
         Scene scene = new Scene(root, 794, 637);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+
+    @FXML
+    void PbtnAvalancheDia(ActionEvent event) throws IOException {
+        LineChartExample line = new LineChartExample();
+        Stage stage = (Stage) btnHome.getScene().getWindow();
+        line.start(stage);
     }
 
     @FXML
@@ -242,7 +254,7 @@ public class AvalanchPage {
                 while (rs.next()) {
                     if(rs.getString("type").equals("avalanche")) {
                         if(rs.getInt("state") == 0 && iDuring<10){
-                            changesDuring[iDuring][0] = rs.getString("amount");
+                            changesDuring[iDuring][0] = rs.getString("copyAmount");
                             changesDuring[iDuring][1] = rs.getString("price");
                             if(rs.getString("sellbuy").equals("0")) {
                                 changesDuring[iDuring][2] = "sell";
@@ -251,7 +263,7 @@ public class AvalanchPage {
                             }
                             iDuring++;
                         } else if(iAccepted < 10){
-                            changesAccepted[iAccepted][0] = rs.getString("amount");
+                            changesAccepted[iAccepted][0] = rs.getString("copyAmount");
                             changesAccepted[iAccepted][1] = rs.getString("price");
                             changesAccepted[iAccepted][2] = rs.getString("date");
                             iAccepted++;

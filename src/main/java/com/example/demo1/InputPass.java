@@ -31,7 +31,7 @@ public class InputPass {
     @FXML
     private  Button btnDone;
 
- //   @FXML
+    //   @FXML
 
     @FXML
     private AnchorPane passRE;
@@ -94,10 +94,10 @@ public class InputPass {
                         throw new RuntimeException(e);
                     }
                     Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("successful");
-                alert.setHeaderText(null);
-                alert.setContentText("your password is :"+txtPassword1.getText()+"\n"+"your Username is :"+users[UserNumber-1].getUsername());
-                alert.showAndWait();
+                    alert.setTitle("successful");
+                    alert.setHeaderText(null);
+                    alert.setContentText("your password is :"+txtPassword1.getText()+"\n"+"your Username is :"+users[UserNumber-1].getUsername());
+                    alert.showAndWait();
                     Stage stage = (Stage) btnDone.getScene().getWindow();
                     stage.close();
                     Stage primaryStage = new Stage();

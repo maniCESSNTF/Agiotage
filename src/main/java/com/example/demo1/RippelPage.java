@@ -119,7 +119,19 @@ public class RippelPage {
     private Button btnHome;
 
     @FXML
-    private Button btnrippleDia;
+    private Button btnrippleDiaH;
+
+    @FXML
+    private Button btnrippleDiaD;
+
+    @FXML
+    private Button btnrippleDiaW;
+
+    @FXML
+    private Button btnrippleDiaM;
+
+    @FXML
+    private Button btnrippleDiaY;
 
     @FXML
     private Button btnset;
@@ -224,13 +236,59 @@ public class RippelPage {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
     @FXML
-    void PbtnrippleDia(ActionEvent event) throws IOException {
+    void PbtnrippleDiaH(ActionEvent event) throws IOException {
+        LineChartExample.typeShowDiagram=1;
+        LineChartExample.diagramShow();
         LineChartExample line = new LineChartExample();
         Stage stage = (Stage) btnHome.getScene().getWindow();
         line.start(stage);
-
     }
+
+    @FXML
+    void PbtnrippleDiaD(ActionEvent event) throws IOException {
+        LineChartExample.typeShowDiagram=2;
+        LineChartExample.diagramShow();
+        LineChartExample line = new LineChartExample();
+        Stage stage = (Stage) btnHome.getScene().getWindow();
+        line.start(stage);
+    }
+
+    @FXML
+    void PbtnrippleDiaW(ActionEvent event) throws IOException {
+        LineChartExample.typeShowDiagram=3;
+        LineChartExample.diagramShow();
+        LineChartExample line = new LineChartExample();
+        Stage stage = (Stage) btnHome.getScene().getWindow();
+        line.start(stage);
+    }
+
+    @FXML
+    void PbtnrippleDiaM(ActionEvent event) throws IOException {
+
+
+
+        System.out.println("5555555555555555555555555555555555555555555555555555555555");
+
+        LineChartExample.typeShowDiagram=4;
+        LineChartExample line = new LineChartExample();
+        line.diagramShow();
+        Stage stage = (Stage) btnHome.getScene().getWindow();
+        System.out.println("9999999999999999999999999999");
+        line.start(stage);
+    }
+
+    @FXML
+    void PbtnrippleDiaY(ActionEvent event) throws IOException {
+        LineChartExample.typeShowDiagram=5;
+
+        LineChartExample line = new LineChartExample();
+        line.diagramShow();
+        Stage stage = (Stage) btnHome.getScene().getWindow();
+        line.start(stage);
+    }
+
     @FXML
     void Pbtnset(ActionEvent event)throws  IOException {
         String[][] changesDuring = new String[10][3];
@@ -250,7 +308,7 @@ public class RippelPage {
                 while (rs.next()) {
                     if(rs.getString("type").equals("rippel")) {
                         if(rs.getInt("state") == 0 && iDuring<10){
-                        changesDuring[iDuring][0] = rs.getString("amount");
+                        changesDuring[iDuring][0] = rs.getString("copyAmount");
                         changesDuring[iDuring][1] = rs.getString("price");
                         if(rs.getString("sellbuy").equals("0")) {
                             changesDuring[iDuring][2] = "sell";
@@ -259,7 +317,7 @@ public class RippelPage {
                         }
                             iDuring++;
                         } else if(iAccepted < 10){
-                            changesAccepted[iAccepted][0] = rs.getString("amount");
+                            changesAccepted[iAccepted][0] = rs.getString("copyAmount");
                             changesAccepted[iAccepted][1] = rs.getString("price");
                             changesAccepted[iAccepted][2] = rs.getString("date");
                             iAccepted++;

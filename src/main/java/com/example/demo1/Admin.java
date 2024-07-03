@@ -10,12 +10,12 @@ public  class Admin extends User{
         return admin;
     }
 
-//    public Admin(String username, String password, String fullName, String email, String phoneNumber, String profilePicture) {
+    //    public Admin(String username, String password, String fullName, String email, String phoneNumber, String profilePicture) {
 //        super( username,  password,  fullName,  email,  phoneNumber,  profilePicture);
 //    }
-private Admin(String Name, String LastName, String email, String phoneNumber,String user) {
-    super( Name,  LastName,  email,  phoneNumber,user);
-}
+    private Admin(String Name, String LastName, String email, String phoneNumber,String user) {
+        super( Name,  LastName,  email,  phoneNumber,user,0);
+    }
 
     ///ekhtelas
 }

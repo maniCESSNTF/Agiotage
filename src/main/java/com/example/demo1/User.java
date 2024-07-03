@@ -2,7 +2,7 @@ package com.example.demo1;
 
 public class User {
     ///پروفایل/کیف پول/تاریخچه
-    int Role;
+    int demo=0;
     public String username;
     private String password;
     private String fullName;
@@ -18,16 +18,17 @@ public class User {
     public  int num;////ta 1000 user
     public  int transNum;
 
-    public User( String Name, String LastName, String email, String phoneNumber,String username) {
-    //    this.username = username;
-    //    this.password = password;
+    public User( String Name, String LastName, String email, String phoneNumber,String username,int demo) {
+        //    this.username = username;
+        //    this.password = password;
+        this.demo=demo;
         this.Name=Name;
         this.LastName=LastName;
         this.fullName = Name+LastName;
         this.email = email;
         this.username=username;
         this.phoneNumber = phoneNumber;
-    //    this.profilePicture = profilePicture;
+        //    this.profilePicture = profilePicture;
         this.userWallet.balance = 0.0;
     }
 
