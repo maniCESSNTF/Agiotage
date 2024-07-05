@@ -40,7 +40,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Text fill="WHITE" layoutX="528.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="currentAsset" wrappingWidth="207.73666381835938">
+                                <Text fx:id="txtmoneywallet" fill="WHITE" layoutX="528.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="currentAsset" wrappingWidth="207.73666381835938">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
@@ -63,7 +63,7 @@
                                         <NumberAxis side="LEFT" />
                                     </yAxis>
                                 </StackedAreaChart>
-                                <Text fill="WHITE" layoutX="505.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fx:id="txtxrippelWallet" fill="WHITE" layoutX="505.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
@@ -73,22 +73,22 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="505.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fx:id="txtavalancheWallet" fill="WHITE" layoutX="505.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="505.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fx:id="txtldayWallet" fill="WHITE" layoutX="505.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="505.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fx:id="txtlStellsrWallet" fill="WHITE" layoutX="505.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Text>
-                                <Text fill="WHITE" layoutX="505.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
+                                <Text fx:id="txtlightcoinWallet" fill="WHITE" layoutX="505.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="33.33673095703125">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
@@ -138,6 +138,11 @@
                               <Image url="@coin5.png" />
                            </image>
                         </ImageView>
+                        <Text fill="WHITE" layoutX="500.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="currentAssetext" wrappingWidth="181.8128662109375">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
                             </children></AnchorPane>
                     </content>
                 </Tab>
