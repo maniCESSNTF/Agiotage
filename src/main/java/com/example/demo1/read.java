@@ -74,13 +74,6 @@ public class read {
                     if(yen<yenmin)yenmin=yen;
                     if(eur<eurmin)eurmin=eur;
                 }
-                System.out.println("USD: " + usdmin+"//////////////////" +usdmax);
-                System.out.println("GBP: " + gbpmin+"//////////////////" +gbpmax);
-                System.out.println("yen: " + yenmin+"//////////////////"+ yenmax);
-                System.out.println("toman: " + tomanmin+"//////////////////"+ tomanmin);
-                System.out.println("eur: " + eurmin+"//////////////////" +eurmax);
-
-
                 rs.close();
             }
 

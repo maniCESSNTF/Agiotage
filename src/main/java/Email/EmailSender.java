@@ -11,48 +11,45 @@ import java.util.Properties;
 public class EmailSender {
 
 
-   public String code;
+    public String code;
 
 
-   // اطلاعات اتصال به سرویس ایمیل
-   final String host = "smtp.gmail.com";
-   final String username = "mani.abdolalizade@gmail.com";
-   final String password = "klsa kokk aeuj udnc";
-   //klsa kokk aeuj udnc
-   public  void send (String emailAdress,String code){
-      // تنظیمات ارسال ایمیل
-      Properties properties = new Properties();
-      properties.put("mail.smtp.auth","true");
-      properties.put("mail.smtp.starttls.enable","true");
-      properties.put("mail.smtp.host",host);
-      properties.put("mail.smtp.port","587");
+    // اطلاعات اتصال به سرویس ایمیل
+    final String host = "smtp.gmail.com";
+    final String username = "mani.abdolalizade@gmail.com";
+    final String password = "klsa kokk aeuj udnc";
 
-      // ایجاد جلسه اتصال
-      Session session = Session.getInstance(properties, new Authenticator() {
-         @Override
-         protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(username, password);
-         }
-      });
+    //klsa kokk aeuj udnc
+    public void send(String emailAdress, String code) {
+        // تنظیمات ارسال ایمیل
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "587");
 
-      try
+        // ایجاد جلسه اتصال
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
 
-      {
-         // ایجاد پیام
-         Message message = new MimeMessage(session);
-         message.setFrom(new InternetAddress(username));
-         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAdress));
-         message.setSubject("Forget pass");
-         message.setText(code);
+        try {
+            // ایجاد پیام
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAdress));
+            message.setSubject("Forget pass");
+            message.setText(code);
 
-         // ارسال ایمیل
-         Transport.send(message);
-         System.out.println("email sended");
-      } catch(
-              MessagingException e)
-
-      {
-         e.printStackTrace();
-      }
-   }
+            // ارسال ایمیل
+            Transport.send(message);
+            System.out.println("email sended");
+        } catch (
+                MessagingException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -60,11 +60,13 @@
                 <Image url="@d3e2686ead31b9f31970f8466f5a1ae0.jpg" />
             </image>
         </ImageView>
-        <Button fx:id="btnrefresh" layoutX="257.0" layoutY="415.0" mnemonicParsing="false" onAction="#Pbtnrefresh" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #024d4a; -fx-background-radius: 6516; -fx-border-image-slice: 6516;" textFill="#024d4a" />
-      <ImageView fitHeight="63.0" fitWidth="58.0" layoutX="246.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@6516.png" />
-         </image>
-      </ImageView>
+        <Button fx:id="btnrefresh" layoutX="251.0" layoutY="415.0" mnemonicParsing="false" onAction="#Pbtnrefresh" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #024d4a; -fx-background-radius: 6516; -fx-border-image-slice: 6516;" textFill="#024d4a">
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@6516.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
     </children>
 </AnchorPane>

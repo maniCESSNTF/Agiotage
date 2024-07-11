@@ -33,7 +33,7 @@
             <Font size="18.0" />
         </font>
     </Text>
-    <Text fx:id="txtVolume" fill="WHITE" layoutX="310.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="51.7366943359375">
+    <Text fx:id="txtHajm" fill="WHITE" layoutX="310.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="51.7366943359375">
         <font>
             <Font size="18.0" />
         </font>
@@ -197,6 +197,10 @@
             <Image url="@coin3.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnLightDia" layoutX="97.0" layoutY="403.0" mnemonicParsing="false" onAction="#PbtnLightDia" text="show diagram" />
+      <Button fx:id="btnrippleDiaW" layoutX="108.0" layoutY="392.0" mnemonicParsing="false" onAction="#PbtnrippleDiaW" text="weekly diagram" />
+      <Button fx:id="btnrippleDiaY" layoutX="108.0" layoutY="470.0" mnemonicParsing="false" onAction="#PbtnrippleDiaY" text="yearly diagram" />
+      <Button fx:id="btnrippleDiaM" layoutX="108.0" layoutY="434.0" mnemonicParsing="false" onAction="#PbtnrippleDiaM" text="monthly diagram" />
+      <Button fx:id="btnrippleDiaD" layoutX="108.0" layoutY="349.0" mnemonicParsing="false" onAction="#PbtnrippleDiaD" text="daily diagram" />
+      <Button fx:id="btnrippleDiaH" layoutX="106.0" layoutY="306.0" mnemonicParsing="false" onAction="#PbtnrippleDiaH" text="hourly diagram" />
 </children>
 </AnchorPane>

@@ -13,15 +13,14 @@ public class CaptchaGenerator {
         int height = 40;
         BufferedImage bufferedImage = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics2D = bufferedImage.createGraphics();
-        graphics2D.setColor(Color.pink);
+        graphics2D.setColor(Color.CYAN);
         graphics2D.fillRect(0,0,width,height);
         Font font = new Font("Arial",Font.BOLD,20);
         graphics2D.setColor(Color.darkGray);
         graphics2D.setFont(font);
         graphics2D.drawString(captchaString,10,25);
         graphics2D.dispose();
-
-        ImageIO.write(bufferedImage,"jpg",new File("C://Users//mania//Desktop//New folder (3)//Agiotage//src//main//resources//com//example//demo1//d3e2686ead31b9f31970f8466f5a1ae0.jpg"));
+        ImageIO.write(bufferedImage,"jpg",new File("C://Users//mania//Desktop//Final term project//Agiotage//Agiotage//src//main//resources//com//example//demo1//d3e2686ead31b9f31970f8466f5a1ae0.jpg"));
     }
 
     public static String GenerateCaptcha(){
@@ -34,6 +33,4 @@ public class CaptchaGenerator {
         }
         return captcha.toString();
     }
-
-
 }

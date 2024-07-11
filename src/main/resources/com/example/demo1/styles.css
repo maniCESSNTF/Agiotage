@@ -1,0 +1,16 @@
+.chart-line-symbol {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-visibility: hidden; /* نمایش نقاط را مخفی می‌کند */
+}
+
+
+/* styles.css */
+.chart-series-line.sharp-data {
+    -fx-stroke: red;
+}
+
+.chart-series-line.normal-data {
+    -fx-stroke: blue;
+}

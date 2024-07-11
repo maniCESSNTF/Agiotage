@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="637.0" prefWidth="794.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.MasagePage">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#054d3d" height="72.0" stroke="#00b78c" strokeType="INSIDE" width="794.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#054d3d" height="530.0" layoutX="15.0" layoutY="91.0" stroke="#52c790" strokeType="INSIDE" width="369.0" />
+      <Button fx:id="btnProfile" layoutX="709.0" layoutY="21.0" mnemonicParsing="false" onAction="#PbtnProfile" style="-fx-background-color: #097158;" text="Profile" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtMasageNumber" layoutX="213.0" layoutY="187.0" prefHeight="27.0" prefWidth="114.0" promptText="masage number" style="-fx-background-color: #097158; -fx-border-color: #52c790; -fx-border-radius: 5;" />
+      <Button fx:id="btnShowMasage" layoutX="152.0" layoutY="224.0" mnemonicParsing="false" onAction="#PbtnShowMasage" style="-fx-background-color: #097158; -fx-border-color: #52c790; -fx-border-radius: 5;" text="show masages" textFill="#52c790" />
+      <Text fill="#52c790" layoutX="150.0" layoutY="147.0" opacity="0.59" strokeType="OUTSIDE" strokeWidth="0.0" text="receive">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#054d3d" height="530.0" layoutX="402.0" layoutY="90.0" stroke="#52c790" strokeType="INSIDE" width="377.0" />
+      <Text fill="#52c790" layoutX="557.0" layoutY="147.0" opacity="0.59" strokeType="OUTSIDE" strokeWidth="0.0" text="send">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtMasageForSend" layoutX="421.0" layoutY="284.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="214.0" prefWidth="338.0" promptText="Message text" style="-fx-background-color: #097158; -fx-border-color: #52c790; -fx-border-radius: 5;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Button fx:id="btnSend" layoutX="683.0" layoutY="516.0" mnemonicParsing="false" onAction="#PbtnSend" style="-fx-background-color: #097158; -fx-border-color: #52c790; -fx-border-radius: 5;" text="send" textFill="#52c790" />
+      <TextField fx:id="txtReceiverUsername" layoutX="454.0" layoutY="516.0" promptText="Receiver" style="-fx-background-color: #097158; -fx-border-radius: 5; -fx-border-color: #52c790;" />
+      <Text fill="#52c790" layoutX="427.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To send a message to your friends, enter their username and " />
+      <Text fill="#52c790" layoutX="474.0" layoutY="593.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to send a message to support (1111111111)." />
+      <TextArea fx:id="txtMasageReceive" layoutX="34.0" layoutY="287.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="214.0" prefWidth="331.0" />
+      <TextField fx:id="txtUsernameContact" layoutX="76.0" layoutY="187.0" prefHeight="27.0" prefWidth="114.0" promptText="username contact" style="-fx-background-color: #097158; -fx-border-color: #52c790; -fx-border-radius: 5;" />
+      <Text fx:id="txtPerson1" fill="#92e790" layoutX="53.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnMark" layoutX="50.0" layoutY="517.0" mnemonicParsing="false" onAction="#PbtnMark" style="-fx-background-color: #097158; -fx-border-color: #52c790; -fx-border-radius: 5;" text="Mark as read" />
+      <Button fx:id="btnList" layoutX="587.0" layoutY="21.0" mnemonicParsing="false" onAction="#PbtnList" style="-fx-background-color: #097158;" text="List message" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Text fx:id="txtDate" layoutX="298.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
+      <Text fx:id="txtTime" layoutX="213.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="time" />
+   </children>
+</AnchorPane>

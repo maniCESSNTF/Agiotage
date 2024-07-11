@@ -2,7 +2,7 @@ package com.example.demo1;
 
 public class User {
     ///پروفایل/کیف پول/تاریخچه
-    int demo=0;
+    int demo = 0;
     public String username;
     private String password;
     private String fullName;
@@ -12,21 +12,21 @@ public class User {
     private String phoneNumber;
     private String WalletId;
     private String profilePicture;
-    public  Wallet userWallet = new Wallet();
-    public  History userhistory[]=new History[1000];
+    public Wallet userWallet = new Wallet();
+    public History userhistory[] = new History[1000];
 
-    public  int num;////ta 1000 user
-    public  int transNum;
+    public int num;////ta 1000 user
+    public int transNum;
 
-    public User( String Name, String LastName, String email, String phoneNumber,String username,int demo) {
+    public User(String Name, String LastName, String email, String phoneNumber, String username, int demo) {
         //    this.username = username;
         //    this.password = password;
-        this.demo=demo;
-        this.Name=Name;
-        this.LastName=LastName;
-        this.fullName = Name+LastName;
+        this.demo = demo;
+        this.Name = Name;
+        this.LastName = LastName;
+        this.fullName = Name + LastName;
         this.email = email;
-        this.username=username;
+        this.username = username;
         this.phoneNumber = phoneNumber;
         //    this.profilePicture = profilePicture;
         this.userWallet.balance = 0.0;
@@ -89,10 +89,10 @@ public class User {
     }
 
     public void setEmail(String email) {
-        if((email.matches("[a-zA-Z0-9.]{1,18}@[a-z.-]{1,8}\\.[a-z]{1,4}"))){
+        if ((email.matches("[a-zA-Z0-9.]{1,18}@[a-z.-]{1,8}\\.[a-z]{1,4}"))) {
             this.email = email;
-        }
-        else throw new InvalidIDException("PLEASE ENTER A EMAIL WITH CORRECT FORMAT ---> ....@gmail.com & MUST BE ODD");
+        } else
+            throw new InvalidIDException("PLEASE ENTER A EMAIL WITH CORRECT FORMAT ---> ....@gmail.com & MUST BE ODD");
     }
 
     public String getPhoneNumber() {
@@ -100,9 +100,9 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if((phoneNumber.length()==11&&phoneNumber.matches("[0-9]+")&&phoneNumber.startsWith("09"))) {
-            this.phoneNumber=phoneNumber;}
-        else throw new InvalidIDException("wrong format .enter a new phone number");
+        if ((phoneNumber.length() == 11 && phoneNumber.matches("[0-9]+") && phoneNumber.startsWith("09"))) {
+            this.phoneNumber = phoneNumber;
+        } else throw new InvalidIDException("wrong format .enter a new phone number");
     }
 
     public String getProfilePicture() {

@@ -1,0 +1,26 @@
+.chart-line-symbol {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-visibility: hidden; /* نمایش نقاط را مخفی می‌کند */
+}
+/* CSS برای خطوط متناظر با هر سری داده */
+/* CSS برای خطوط متناظر با هر سری داده */
+.series0 .chart-series-line {
+    -fx-stroke: blue; /* رنگ خط برای داده‌های عادی */
+}
+
+.series1 .chart-series-line {
+    -fx-stroke: red; /* رنگ خط برای داده‌های تیز */
+}
+
+/* CSS برای نقاط متناظر با هر سری داده */
+.series0 .chart-line-symbol {
+    -fx-background-color: blue; /* رنگ نقاط برای داده‌های عادی */
+    -fx-scale-shape: 0.5; /* کاهش اندازه نقاط برای داده‌های عادی */
+}
+
+.series1 .chart-line-symbol {
+    -fx-background-color: red; /* رنگ نقاط برای داده‌های تیز */
+    -fx-scale-shape: 0.5; /* کاهش اندازه نقاط برای داده‌های تیز */
+}

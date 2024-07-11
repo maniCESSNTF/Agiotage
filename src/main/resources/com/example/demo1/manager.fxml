@@ -4,117 +4,132 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Manager">
+<AnchorPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #054d3d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Manager">
    <children>
-      <Text layoutX="103.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DARKSEAGREEN" height="180.0" layoutX="684.0" layoutY="112.0" stroke="WHITE" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DARKSEAGREEN" height="180.0" layoutX="7.0" layoutY="114.0" stroke="WHITE" strokeType="INSIDE" width="243.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DARKSEAGREEN" height="68.0" layoutX="6.0" layoutY="8.0" stroke="WHITE" strokeType="INSIDE" width="787.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DARKSEAGREEN" height="309.0" layoutX="9.0" layoutY="331.0" stroke="WHITE" strokeType="INSIDE" width="243.0" />
+      <Text layoutX="31.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="104.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wallet ID">
+      <Text layoutX="32.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wallet ID">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="103.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password">
+      <Text layoutX="31.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="422.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="money">
+      <Text layoutX="98.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="money">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="btnEkhtelas" layoutX="173.0" layoutY="260.0" mnemonicParsing="false" onAction="#PbtnEkhtelas" text="اختلاس" />
-      <Button fx:id="btnHome" layoutX="717.0" layoutY="31.0" mnemonicParsing="false" onAction="#PbtnHome" text="Home" />
-      <RadioButton fx:id="rBtnOpen" layoutX="114.0" layoutY="484.0" mnemonicParsing="false" onAction="#PrBtnOpen" selected="true" text="open">
+      <Button fx:id="btnEkhtelas" layoutX="23.0" layoutY="25.0" mnemonicParsing="false" onAction="#PbtnEkhtelas" style="-fx-background-color: #097158;" text="اختلاس" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="btnHome" layoutX="714.0" layoutY="24.0" mnemonicParsing="false" onAction="#PbtnHome" style="-fx-background-color: #097158;" text="Home">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <RadioButton fx:id="rBtnOpen" layoutX="698.0" layoutY="185.0" mnemonicParsing="false" onAction="#PrBtnOpen" selected="true" style="-fx-background-color: #097158; -fx-border-radius: 25; -fx-background-radius: 25;" text="open">
          <font>
             <Font size="18.0" />
          </font>
       </RadioButton>
-      <Text fx:id="txtUsername" layoutX="222.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="txtUsername" layoutX="150.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="txtWallet" layoutX="222.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="txtWallet" layoutX="150.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="txtpass" layoutX="224.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="txtpass" layoutX="151.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="txtMoney" layoutX="533.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="txtMoney" layoutX="187.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="443.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="day">
+      <Text layoutX="107.0" layoutY="565.0" strokeType="OUTSIDE" strokeWidth="0.0" text="day">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="437.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="stellar">
+      <Text layoutX="98.0" layoutY="615.0" strokeType="OUTSIDE" strokeWidth="0.0" text="stellar">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="416.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lighteCoin">
+      <Text layoutX="84.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lighteCoin">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="415.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avalanche">
+      <Text layoutX="83.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avalanche">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="426.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rippel">
+      <Text layoutX="101.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rippel">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="txtRippel" layoutX="535.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="txtRippel" layoutX="187.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="txtAvalanch" layoutX="535.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="txtAvalanch" layoutX="187.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="txtLightcoin" layoutX="536.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="txtLightcoin" layoutX="188.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="txtDay" layoutX="536.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="txtDay" layoutX="188.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="txtStellar" layoutX="536.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="txtStellar" layoutX="187.0" layoutY="620.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <RadioButton fx:id="rBtnClose" layoutX="114.0" layoutY="518.0" mnemonicParsing="false" onAction="#PrBtnClose" text="close">
+      <RadioButton fx:id="rBtnClose" layoutX="698.0" layoutY="219.0" mnemonicParsing="false" onAction="#PrBtnClose" style="-fx-background-color: #097158; -fx-background-radius: 50;" text="close">
          <font>
             <Font size="18.0" />
          </font>
       </RadioButton>
-      <Button fx:id="btnLogout" layoutX="621.0" layoutY="31.0" mnemonicParsing="false" onAction="#PbtnLogout" text="Log out" />
-      <TableView fx:id="tableView" layoutX="245.0" layoutY="316.0" prefHeight="291.0" prefWidth="541.0">
+      <Button fx:id="btnLogout" layoutX="626.0" layoutY="24.0" mnemonicParsing="false" onAction="#PbtnLogout" style="-fx-background-color: #097158;" text="Log out">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <TableView fx:id="tableView" layoutX="263.0" layoutY="331.0" prefHeight="309.0" prefWidth="527.0">
         <columns>
           <TableColumn fx:id="stateColumn" prefWidth="75.0" text="state" />
           <TableColumn fx:id="priceColumn" prefWidth="75.0" text="price" />
@@ -125,5 +140,50 @@
             <TableColumn fx:id="dateColumn" prefWidth="75.0" text="date" />
         </columns>
       </TableView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@coin1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="40.0" layoutX="24.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@coin3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="40.0" layoutX="24.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@coin4.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="40.0" layoutX="24.0" layoutY="589.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@coin5.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="40.0" layoutX="24.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@coin2.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="326.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+         <font>
+            <Font name="System Italic" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="714.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="بازار">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnRefresh" layoutX="105.0" layoutY="26.0" mnemonicParsing="false" onAction="#PbtnRefresh" style="-fx-background-color: #097158;" text="Refresh">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnmessage" layoutX="188.0" layoutY="26.0" mnemonicParsing="false" onAction="#Pbtnmessage" style="-fx-background-color: #097158;" text="message">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

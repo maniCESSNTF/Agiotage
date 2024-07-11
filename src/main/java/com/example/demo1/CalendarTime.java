@@ -65,7 +65,7 @@ public class CalendarTime {
     public static void main(String[] args) {
         CalendarTime s=new CalendarTime();
         long t=s.now();
-        long g=t-1576000000L;
+        long g=t-1718525015761L;
         String datetime = s + " " + "ff";
 
         System.out.println("-----------------------"+s.formatTime(1718196335501L));

@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="637.0" prefWidth="794.0" style="-fx-background-color: #097158;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.ForgetPass">
    <children>
-      <ButtonBar layoutX="-7.0" layoutY="-2.0" prefHeight="71.0" prefWidth="801.0" style="-fx-background-color: #024d4a;">
-        <buttons>
-          <Button mnemonicParsing="false" text="Button" />
-        </buttons>
-         <opaqueInsets>
-            <Insets left="50.0" right="50.0" />
-         </opaqueInsets>
-      </ButtonBar>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#01514d" height="403.0" layoutX="243.0" layoutY="151.0" stroke="WHITE" strokeType="INSIDE" width="309.0" />
-      <TextField fx:id="txtEmail" layoutX="356.0" layoutY="264.0" opacity="0.8" style="-fx-text-fill: white; -fx-background-color: #054d3d;" />
-      <TextField fx:id="txtCode" layoutX="356.0" layoutY="311.0" opacity="0.8" style="-fx-text-fill: white; -fx-background-color: #054d3d;" />
-      <Button fx:id="btnSend" layoutX="259.0" layoutY="310.0" mnemonicParsing="false" onAction="#PbtnSend" prefHeight="16.0" prefWidth="75.0" text="Send Code" />
-      <Button fx:id="btnDone" layoutX="376.0" layoutY="436.0" mnemonicParsing="false" onAction="#PbtnDone" text="Done" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#054d3d" height="68.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="794.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#054d3d" height="288.0" layoutX="414.0" layoutY="117.0" opacity="0.9" stroke="DARKSEAGREEN" strokeType="INSIDE" width="332.0" />
+      <TextField fx:id="txtEmail" layoutX="493.0" layoutY="208.0" opacity="0.8" prefHeight="35.0" prefWidth="180.0" style="-fx-text-fill: white; -fx-background-color: #097158;" text="Email" />
+      <TextField fx:id="txtCode" layoutX="538.0" layoutY="258.0" opacity="0.8" prefHeight="35.0" prefWidth="180.0" style="-fx-text-fill: white; -fx-background-color: #097158;" text="Code" />
+      <Button fx:id="btnSend" layoutX="444.0" layoutY="263.0" mnemonicParsing="false" onAction="#PbtnSend" prefHeight="16.0" prefWidth="75.0" style="-fx-background-color: #097158; -fx-text-fill: white;" text="Send Code" />
+      <Button fx:id="btnDone" layoutX="552.0" layoutY="340.0" mnemonicParsing="false" onAction="#PbtnDone" style="-fx-background-color: #097158; -fx-text-fill: white;" text="Done" />
+    <Button fx:id="btnLogeIn" layoutX="709.0" layoutY="21.0" mnemonicParsing="false" onAction="#PbtnLogeIn" style="-fx-background-color: #097158;" text="LogeIn">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtUsername" layoutX="493.0" layoutY="156.0" opacity="0.8" prefHeight="35.0" prefWidth="180.0" style="-fx-text-fill: white; -fx-background-color: #097158;" text="Username" />
+      <ImageView fitHeight="315.0" fitWidth="319.0" layoutX="48.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@download.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

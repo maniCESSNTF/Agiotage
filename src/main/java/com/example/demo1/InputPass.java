@@ -3,6 +3,7 @@ package com.example.demo1;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -26,6 +27,17 @@ import static com.example.demo1.Methods.UserNumber;
 import static com.example.demo1.Methods.users;
 
 public class InputPass {
+
+    String captchaCode;
+
+    private Client client;
+    private String thisUsername;
+
+    public void setClient(Client client, String thisUsername) {
+        this.client = client;
+        this.thisUsername = thisUsername;
+    }
+
     String newCaptcha = GenerateCaptcha();
     static Random rand = new Random();
     @FXML
@@ -46,16 +58,20 @@ public class InputPass {
     public  ImageView imgCaptcha;
     @FXML
     public void Pbtnrefresh(ActionEvent event) throws IOException {
-        newCaptcha = GenerateCaptcha();
-        captcha(newCaptcha);
-        File file = new File("C:\\Users\\mania\\Desktop\\New folder (3)\\Agiotage\\src\\main\\resources\\com\\example\\demo1\\d3e2686ead31b9f31970f8466f5a1ae0.jpg");
-        InputStream inputStream = null;
-        try{
-            inputStream = (InputStream) new FileInputStream(file);
-        }catch (FileNotFoundException e){
-            throw new RuntimeException(e);
+        if (client != null) {
+            captchaCode = client.sendMessage("PbtnRefreshCaptchaDeposit," + thisUsername);
+            System.out.println("Response from server for captchaCode: " + captchaCode);
+            File file = new File("C:\\Users\\mania\\Desktop\\Final term project\\Agiotage\\Agiotage\\src\\main\\resources\\com\\example\\demo1\\d3e2686ead31b9f31970f8466f5a1ae0.jpg");
+            InputStream inputStream;
+            try {
+                inputStream = (InputStream) new FileInputStream(file);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            imgCaptcha.setImage(new Image(inputStream));
+        } else {
+            System.out.println("Client is not initialized");
         }
-        imgCaptcha.setImage(new Image(inputStream));
     }
 
     @FXML
@@ -71,48 +87,48 @@ public class InputPass {
 
     @FXML
     void PbtnDone(ActionEvent event) throws IOException {
-//        imgCaptch=img;
         if(txtPassword1.getText().equals(txtPassword2.getText())){
             if(isPasswordValid(txtPassword1.getText())){
-                if(!txtCapcha.getText().equals(newCaptcha)){
+                if(!txtCapcha.getText().equals(captchaCode)){
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Warning");
                     alert.setHeaderText(null);
                     alert.setContentText("enterd captcha is wrong");
                     alert.showAndWait();
                 }else{
-//                users[UserNumber-1].setPassword(txtPassword1.getText());
-//                users[UserNumber-1].setUsername(UsernameGenerator());
-                    try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agiotage2", "root", "")) {
-                        String query = "UPDATE signin SET password = ? WHERE username = ?";
-                        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                            preparedStatement.setString(1, txtPassword1.getText());
-                            preparedStatement.setString(2, SingIn.userName);
-                            preparedStatement.executeUpdate();
-                        }
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
+                    if (client != null) {
+                        String response = client.sendMessage("setPassword," + thisUsername + "," + txtPassword1.getText());
+                        thisUsername =response;
+                        System.out.println("Response from server: " + response);
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("successful");
+                        alert.setHeaderText(null);
+                        alert.setContentText("your password is :"+txtPassword1.getText()+"\n"+"your Username is :"+response);
+                        alert.showAndWait();
+                    } else {
+                        System.out.println("Client is not initialized");
                     }
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("successful");
-                    alert.setHeaderText(null);
-                    alert.setContentText("your password is :"+txtPassword1.getText()+"\n"+"your Username is :"+users[UserNumber-1].getUsername());
-                    alert.showAndWait();
-                    Stage stage = (Stage) btnDone.getScene().getWindow();
-                    stage.close();
-                    Stage primaryStage = new Stage();
-                    AnchorPane root = FXMLLoader.load(getClass().getResource("LogeIn.fxml"));
-                    Scene scene = new Scene(root, 794, 637);
-                    primaryStage.setScene(scene);
-                    primaryStage.show();
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("LogeIn.fxml"));
+                        Parent mainView = loader.load();
 
+                        LogeIn logeIn = loader.getController();
+                        logeIn.setClient(client,thisUsername);
+
+                        Scene scene = new Scene(mainView);
+                        Stage primaryStage = (Stage) btnDone.getScene().getWindow();
+                        primaryStage.setScene(scene);
+                        primaryStage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             else{
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning");
                 alert.setHeaderText(null);
-                alert.setContentText("The password is not accepted!!");
+                alert.setContentText("The password is not valid!!");
                 alert.showAndWait();
             }
         }
@@ -123,8 +139,6 @@ public class InputPass {
             alert.setContentText("The passwords do not match!!");
             alert.showAndWait();
         }
-
-
     }
 
     public boolean isPasswordValid(String password) {
@@ -162,9 +176,5 @@ public class InputPass {
         }
         return captcha.toString();
     }
-//
-//    @FXML
-//    void Pbtnrefresh(ActionEvent event) {
-//
-//    }
+
 }
